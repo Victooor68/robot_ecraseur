@@ -6,11 +6,12 @@
 #define ROBOT_ECRASEUR_ROBOT_2GEN_H
 
 
+class robot_2gen : public robot{
+public:
 
-class robot_2gen {
+private:
 
 };
-
 
 
 #endif //ROBOT_ECRASEUR_ROBOT_2GEN_H

@@ -6,11 +6,9 @@
 #define ROBOT_ECRASEUR_ENTITE_H
 
 
-
 class entite {
 
 };
-
 
 
 #endif //ROBOT_ECRASEUR_ENTITE_H

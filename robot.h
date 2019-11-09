@@ -6,11 +6,12 @@
 #define ROBOT_ECRASEUR_ROBOT_H
 
 
+class robot : public mouvante{
+public:
 
-class robot {
+private:
 
 };
-
 
 
 #endif //ROBOT_ECRASEUR_ROBOT_H

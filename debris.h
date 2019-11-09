@@ -6,11 +6,12 @@
 #define ROBOT_ECRASEUR_DEBRIS_H
 
 
+class debris : public fixe {
+public:
 
-class debris {
+private:
 
 };
-
 
 
 #endif //ROBOT_ECRASEUR_DEBRIS_H

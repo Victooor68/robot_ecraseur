@@ -6,11 +6,12 @@
 #define ROBOT_ECRASEUR_JOUEURNORMAL_H
 
 
+class joueurNormal : public joueur{
+public:
 
-class joueurNormal {
+private:
 
 };
-
 
 
 #endif //ROBOT_ECRASEUR_JOUEURNORMAL_H
