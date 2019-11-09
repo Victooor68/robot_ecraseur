@@ -5,8 +5,9 @@
 #ifndef ROBOT_ECRASEUR_JOUEUR_H
 #define ROBOT_ECRASEUR_JOUEUR_H
 
+#include "entiteMouvante.h"
 
-class joueur : public mouvante {
+class joueur : public entiteMouvante {
 public:
 
 private:

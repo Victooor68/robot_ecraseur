@@ -5,8 +5,9 @@
 #ifndef ROBOT_ECRASEUR_FIXE_H
 #define ROBOT_ECRASEUR_FIXE_H
 
+#include "entite.h"
 
-class fixe : public entite{
+class entiteFixe : public entite{
 public:
 
 private:

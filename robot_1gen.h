@@ -6,6 +6,8 @@
 #define ROBOT_ECRASEUR_ROBOT_1GEN_H
 
 
+#include "robot.h"
+
 class robot_1gen : public robot{
 public:
 

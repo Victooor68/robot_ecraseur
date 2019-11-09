@@ -5,8 +5,9 @@
 #ifndef ROBOT_ECRASEUR_ROBOT_H
 #define ROBOT_ECRASEUR_ROBOT_H
 
+#include "entiteMouvante.h"
 
-class robot : public mouvante{
+class robot : public entiteMouvante{
 public:
 
 private:
