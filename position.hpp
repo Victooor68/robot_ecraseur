@@ -11,6 +11,16 @@
 
 #include <stdio.h>
 class position{
-    
+public:
+    position();
+    position(int x, int y);
+    int getPosX() const;
+    int getPosY() const;
+    void seDeplaceEn(int x, int y);
+    void seDeplace(int x, int y);
+private:
+    int d_x;
+    int d_y;
+
 };
 #endif /* position_hpp */
