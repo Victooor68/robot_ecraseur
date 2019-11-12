@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -32,7 +34,31 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="debris.cpp" />
+		<Unit filename="debris.h" />
+		<Unit filename="entite.cpp" />
+		<Unit filename="entite.h" />
+		<Unit filename="entiteFixe.cpp" />
+		<Unit filename="entiteFixe.h" />
+		<Unit filename="entiteMouvante.cpp" />
+		<Unit filename="entiteMouvante.h" />
+		<Unit filename="include/terrain.h" />
+		<Unit filename="joueur.cpp" />
+		<Unit filename="joueur.h" />
+		<Unit filename="joueurExpert.cpp" />
+		<Unit filename="joueurExpert.h" />
+		<Unit filename="joueurNormal.cpp" />
+		<Unit filename="joueurNormal.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="position.cpp" />
+		<Unit filename="position.hpp" />
+		<Unit filename="robot.cpp" />
+		<Unit filename="robot.h" />
+		<Unit filename="robot_1gen.cpp" />
+		<Unit filename="robot_1gen.h" />
+		<Unit filename="robot_2gen.cpp" />
+		<Unit filename="robot_2gen.h" />
+		<Unit filename="src/terrain.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
