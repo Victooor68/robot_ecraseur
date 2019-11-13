@@ -7,6 +7,7 @@
 
 #include"position.hpp"
 #include"terrain.h"
+#include<iostream>
 
 class entite {
 public:
@@ -16,7 +17,7 @@ public:
 
 private:
     position d_pos;
-    string d_name;
+    std::string d_name;
     terrain& d_ter;
 };
 
