@@ -19,3 +19,8 @@ void position::seDeplaceEn(int x, int y)
     d_x = x;
     d_y = y;
 }
+void position::seDeplaceDe(int x, int y)
+{
+    d_x += x;
+    d_y += y;
+}
