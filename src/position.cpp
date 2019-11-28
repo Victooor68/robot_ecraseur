@@ -14,3 +14,8 @@ int position::getPosX() const
 {return d_x;}
 int position::getPosY() const
 { return d_y;}
+void position::seDeplaceEn(int x, int y)
+{
+    d_x = x;
+    d_y = y;
+}
