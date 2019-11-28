@@ -9,7 +9,7 @@
 #ifndef position_hpp
 #define position_hpp
 
-#include <stdio.h>
+
 class position{
 public:
     position();
@@ -17,7 +17,7 @@ public:
     int getPosX() const;
     int getPosY() const;
     void seDeplaceEn(int x, int y);
-    void seDeplace(int x, int y);
+    void seDeplaceDe(int x, int y);
 private:
     int d_x;
     int d_y;
