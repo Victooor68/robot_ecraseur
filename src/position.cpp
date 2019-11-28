@@ -8,3 +8,4 @@
 
 #include "position.hpp"
 
+position::position() : d_x{0}, d_y{0}{}
