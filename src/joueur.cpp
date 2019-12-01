@@ -3,3 +3,10 @@
 //
 
 #include "joueur.h"
+
+joueur::joueur(string nom): d_name{nom}{}
+
+joueur::Nom()
+{
+    return d_name;
+}
