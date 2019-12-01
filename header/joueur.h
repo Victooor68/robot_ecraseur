@@ -9,9 +9,10 @@
 
 class joueur : public entiteMouvante {
 public:
-
+    joueur(string nom);
+    string Nom() const;
 private:
-
+    string d_name;
 };
 
 
