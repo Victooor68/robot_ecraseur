@@ -7,18 +7,20 @@
 
 #include"position.hpp"
 #include"terrain.h"
-#include<iostream>
 
 class entite {
 public:
-
-
-
-
+    //constructor with 2 int
+    entite(int x, int y);
+    //constructor with position
+    entite(position position);
+    //accessor type
+    int Type();
+    //accessor position
+    position Position();
 private:
     position d_pos;
-    std::string d_name;
-    terrain& d_ter;
+    int d_type;
 };
 
 
