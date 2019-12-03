@@ -2,10 +2,14 @@
 #define TERRAIN_H
 
 
+#include "entite.h"
+
 class terrain
 {
     public:
         terrain();
+        terrain(int hauteur, int largeur);
+        terrain(int hauteur, int largeur, vector<entite> listEntite);
         virtual ~terrain();
 
         int hauteur() const;
@@ -16,13 +20,13 @@ class terrain
         bool estDansTerrain(entite ent, int direction) const;
         void seDeplaceADroiteSurTerrain(entite ent);
         void seDeplaceAGaucheSurTerrain(entite ent);
-        void seDeplaceEnHautSurTerrain(Entite ent);
-        void seDeplaceEnBasSurTerrain(Entite ent);
+        void seDeplaceEnHautSurTerrain(entite ent);
+        void seDeplaceEnBasSurTerrain(entite ent);
 
     private:
     int d_hauteur;
     int d_largeur;
-    entite[] listEntite;
+    vector<entite> d_listEntite;
 };
 
 #endif // TERRAIN_H
