@@ -1,7 +1,7 @@
 #ifndef TERRAIN_H
 #define TERRAIN_H
 
-
+#include <vector>
 #include "entite.h"
 
 class terrain

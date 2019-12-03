@@ -1,6 +1,7 @@
 
 #include <vector>
 #include <iosfwd>
+#include <iostream>
 #include "../header/terrain.h"
 
 using namespace std;
@@ -34,5 +35,19 @@ entite terrain::getEntite(int i) const {
 }
 
 void terrain::affiche(ostream &os) const {
-    for(int i=0; )
+    if(d_terrain.size>0 && d_terrain[0].size()>0)
+    {
+        for(int i=0; i<d_terrain.size(); i++)
+        {
+            for(int j=0; j<d_terrain[0].size(); j++)
+            {
+                cout<<d_terrain[i][j]+"  ";
+            }
+            cout<<endl;
+        }
+    } else
+    {
+        cout<<"Erreur taille tableau";
+    }
+
 }
