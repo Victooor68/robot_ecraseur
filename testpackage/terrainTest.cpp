@@ -8,7 +8,8 @@
 TEST_CASE("Test constructeur terrain")
 {
     SUBCASE("Test entite sauvegardé dans terrain") {
-        int hauteur = 10, largeur = 10;
+        int hauteur = 10;
+        int largeur = 10;
         std::vector<entite> listEntite;
 
         entite e1{0, 0};
