@@ -9,6 +9,7 @@ class terrain
         terrain(int hauteur, int largeur, std::vector<entite> listEntite);
         virtual ~terrain();
 
+        std::vector<std::vector<int>> getTerrain() const;
         entite getEntite(int i) const;
         void affiche(std::ostream& os) const;
         terrain read(std::istream& is);
