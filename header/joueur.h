@@ -6,6 +6,7 @@
 #define ROBOT_ECRASEUR_JOUEUR_H
 
 #include "entiteMouvante.h"
+#include <string>
 
 class joueur : public entiteMouvante {
 public:

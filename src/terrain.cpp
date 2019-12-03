@@ -5,7 +5,7 @@
 
 using namespace std;
 
-terrain::terrain(const int hauteur,const int largeur, vector<entite> listEntite) : d_listEntite{listEntite}
+/**terrain::terrain(const int hauteur,const int largeur, vector<entite> listEntite) : d_listEntite{listEntite}
 {
     int terrain[hauteur][largeur];
     for(int i=0; i<hauteur; i++)
@@ -35,4 +35,4 @@ entite terrain::getEntite(int i) const {
 
 void terrain::affiche(ostream &os) const {
     for(int i=0; )
-}
+}*/

@@ -7,12 +7,12 @@
 class terrain
 {
     public:
-        terrain(int hauteur, int largeur, vector<entite> listEntite);
+        terrain(int hauteur, int largeur, std::vector<entite> listEntite);
         virtual ~terrain();
 
         entite getEntite(int i) const;
-        void affiche(ostream& os) const;
-        terrain read(istream& is);
+        void affiche(std::ostream& os) const;
+        terrain read(std::istream& is);
         bool estDansTerrain(entite ent, int direction) const;
         void seDeplaceADroiteSurTerrain(entite ent);
         void seDeplaceAGaucheSurTerrain(entite ent);
@@ -20,8 +20,8 @@ class terrain
         void seDeplaceEnBasSurTerrain(entite ent);
 
     private:
-    int d_terrain[][];
-    vector<entite> d_listEntite;
+    std::vector<std::vector<int>> d_terrain;
+    std::vector<entite> d_listEntite;
 };
 
 #endif // TERRAIN_H

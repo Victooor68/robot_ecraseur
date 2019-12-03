@@ -5,6 +5,7 @@
 #ifndef ROBOT_ECRASEUR_JOUEURNORMAL_H
 #define ROBOT_ECRASEUR_JOUEURNORMAL_H
 
+
 #include "joueur.h"
 
 class joueurNormal : public joueur{

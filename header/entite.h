@@ -6,21 +6,21 @@
 #define ROBOT_ECRASEUR_ENTITE_H
 
 #include"position.hpp"
-#include"terrain.h"
 
 class entite {
 public:
-    //constructor with 2 int
+    //Constructor with 2 int
     entite(int x, int y);
-    //constructor with position
+    //Constructor with position
     entite(position position);
-
-    //accessor type
-    int type() const;
+    //Destructor
+    ~entite();
+    //Accessor type
+    int type()const ;
     //accessor position
-    position position() const;
+    position position()const ;
 private:
-    position d_pos;
+    class position d_pos;
     int d_type;
 };
 

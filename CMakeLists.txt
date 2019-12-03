@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 include_directories(src)
 
-add_executable(robot_ecraseur main.cpp
+add_executable(robot_ecraseur
         header/entite.h
         src/entite.cpp
         src/debris.cpp
@@ -30,4 +30,8 @@ add_executable(robot_ecraseur main.cpp
         header/terrain.h
         header/position.hpp
         src/terrain.cpp
-        src/position.cpp)
+        src/position.cpp
+        src/game.cpp
+        header/game.h
+        header/persistance.h
+        src/persistance.cpp testpackage/entiteTest.cpp testpackage/testmain.cpp)
