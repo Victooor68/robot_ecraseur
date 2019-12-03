@@ -2,7 +2,7 @@
 // Created by totoo on 09/11/2019.
 //
 
-#include "joueur.h"
+#include "../header/joueur.h"
 
 joueur::joueur(string nom): d_name{nom}{}
 

@@ -1,4 +1,5 @@
-#include "terrain.h"
+
+#include "../header/terrain.h"
 
 terrain::terrain()
 {
