@@ -7,14 +7,10 @@
 class terrain
 {
     public:
-        terrain();
-        terrain(int hauteur, int largeur);
         terrain(int hauteur, int largeur, vector<entite> listEntite);
         virtual ~terrain();
 
-        int hauteur() const;
-        int largeur() const;
-        int getEntite(int i) const;
+        entite getEntite(int i) const;
         void affiche(ostream& os) const;
         terrain read(istream& is);
         bool estDansTerrain(entite ent, int direction) const;
@@ -24,8 +20,7 @@ class terrain
         void seDeplaceEnBasSurTerrain(entite ent);
 
     private:
-    int d_hauteur;
-    int d_largeur;
+    int d_terrain[][];
     vector<entite> d_listEntite;
 };
 

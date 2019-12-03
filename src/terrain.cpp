@@ -1,18 +1,38 @@
 
 #include <vector>
-#include <cstdlib>
+#include <iosfwd>
 #include "../header/terrain.h"
 
 using namespace std;
 
-terrain::terrain() : d_hauteur{10}, d_largeur{10}, d_listEntite{}
-{}
+terrain::terrain(const int hauteur,const int largeur, vector<entite> listEntite) : d_listEntite{listEntite}
+{
+    int terrain[hauteur][largeur];
+    for(int i=0; i<hauteur; i++)
+    {
+        for(int j=0; j<largeur; j++)
+        {
+            terrain[i][j] = 0;
+        }
+    }
+    for(auto entite : listEntite)
+    {
+        terrain[entite.position().getPosX()][entite.position().getPosY()] = entite.type();
+    }
 
-terrain::terrain(int hauteur, int largeur) : d_hauteur{hauteur}, d_largeur{largeur}, d_listEntite{}
-{}
-
-terrain::terrain(int hauteur, int largeur, vector<entite> listEntite) : d_hauteur{hauteur}, d_largeur{largeur}, d_listEntite{listEntite}
-{}
+    d_terrain{terrain};
+}
 
 terrain::~terrain()
 {}
+
+
+entite terrain::getEntite(int i) const {
+    if(i<d_listEntite.size()){
+        return d_listEntite[i];
+    }
+}
+
+void terrain::affiche(ostream &os) const {
+    for(int i=0; )
+}
