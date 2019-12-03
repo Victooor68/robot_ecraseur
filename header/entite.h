@@ -14,10 +14,11 @@ public:
     entite(int x, int y);
     //constructor with position
     entite(position position);
+
     //accessor type
-    int Type();
+    int type() const;
     //accessor position
-    position Position();
+    position position() const;
 private:
     position d_pos;
     int d_type;
