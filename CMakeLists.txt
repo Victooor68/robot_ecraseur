@@ -34,4 +34,7 @@ add_executable(robot_ecraseur
         src/game.cpp
         header/game.h
         header/persistance.h
-        src/persistance.cpp testpackage/entiteTest.cpp testpackage/testmain.cpp)
+        src/persistance.cpp
+        testpackage/entiteTest.cpp
+        testpackage/testmain.cpp
+        testpackage/terrainTest.cpp)
