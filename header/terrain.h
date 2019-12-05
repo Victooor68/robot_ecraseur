@@ -2,6 +2,7 @@
 #define TERRAIN_H
 
 #include "entite.h"
+#include <vector>
 
 class terrain
 {
