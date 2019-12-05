@@ -6,7 +6,7 @@
 
 using namespace std;
 
-terrain::terrain(int hauteur,int largeur, vector<entite> listEntite) : d_listEntite{listEntite}, d_terrain{}
+terrain::terrain(int hauteur, int largeur, const std::vector<entite>& listEntite) : d_listEntite{listEntite}
 {
     vector<vector<int>> terrain;
     for(int i=0; i<hauteur; i++)

@@ -4,6 +4,7 @@
 #include "../header/doctest.h"
 #include "../header/terrain.h"
 #include "../header/entite.h"
+#include <vector>
 
 TEST_CASE("Test constructeur terrain")
 {
@@ -24,6 +25,6 @@ TEST_CASE("Test constructeur terrain")
 
         terrain ter{hauteur, largeur, listEntite};
 
-        REQUIRE(ter.getEntite(0) == e1);
+        REQUIRE(ter.getEntite(0).position().getPosX() == e1.position().getPosX());
     }
 }

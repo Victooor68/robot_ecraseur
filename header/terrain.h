@@ -1,13 +1,16 @@
 #ifndef TERRAIN_H
 #define TERRAIN_H
 
+#include <iostream>
 #include "entite.h"
 #include <vector>
+
+
 
 class terrain
 {
     public:
-        terrain(int hauteur, int largeur, std::vector<entite> listEntite);
+        terrain(int hauteur, int largeur, const std::vector<entite>& listEntite);
         virtual ~terrain();
 
         std::vector<std::vector<int>> getTerrain() const;
