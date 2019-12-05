@@ -19,6 +19,7 @@ public:
     int type()const ;
     //accessor position
     position position()const ;
+    bool positionEgale(const entite& ent) const;
 private:
     class position d_pos;
     int d_type;
