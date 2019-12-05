@@ -3,7 +3,7 @@ project(robot_ecraseur)
 
 set(CMAKE_CXX_STANDARD 17)
 
-include_directories(src)
+include_directories(header)
 
 add_executable(robot_ecraseur
         header/entite.h
@@ -34,6 +34,10 @@ add_executable(robot_ecraseur
         src/game.cpp
         header/game.h
         header/persistance.h
+        src/persistance.cpp
+        testpackage/entiteTest.cpp
+        testpackage/testmain.cpp
+        testpackage/positionTest.cpp
         src/persistance.cpp
         testpackage/entiteTest.cpp
         testpackage/testmain.cpp

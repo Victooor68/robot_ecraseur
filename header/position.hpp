@@ -18,6 +18,7 @@ public:
     int getPosY() const;
     void seDeplaceEn(int x, int y);
     void seDeplaceDe(int x, int y);
+    bool operator==(const position& pos) const;
 private:
     int d_x;
     int d_y;
