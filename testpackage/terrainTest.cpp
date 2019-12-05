@@ -24,6 +24,7 @@ TEST_CASE("Test constructeur terrain")
 
         terrain ter{hauteur, largeur, listEntite};
 
-        REQUIRE(ter.getEntite(0) == e1);
+        REQUIRE_EQ(ter.getEntite(0).position().getPosX(), e1.position().getPosX());
+        REQUIRE_EQ(ter.getEntite(0).position().getPosY(), e1.position().getPosY());
     }
 }
