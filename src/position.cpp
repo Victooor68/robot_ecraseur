@@ -24,3 +24,10 @@ void position::seDeplaceDe(int x, int y)
     d_x += x;
     d_y += y;
 }
+bool position::operator==(const class position & pos) const
+{
+    if (d_x == pos.d_x && d_y == pos.d_y)
+        return true;
+    else
+        return false;
+}
