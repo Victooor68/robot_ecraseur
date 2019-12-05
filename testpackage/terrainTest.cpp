@@ -15,15 +15,9 @@ TEST_CASE("Test constructeur terrain")
         entite e1{0, 0};
         listEntite.push_back(e1);
 
-        /*
-        entite e2{3, 8};
-        entite e3{6, 9};
-        entite e4{4, 3};
-        entite e5{1, 6};
-         */
-
         terrain ter{hauteur, largeur, listEntite};
 
-        REQUIRE(ter.getEntite(0) == e1);
+        REQUIRE_EQ(ter.getEntite(0).position().getPosX(), e1.position().getPosX());
+        REQUIRE_EQ(ter.getEntite(0).position().getPosY(), e1.position().getPosY());
     }
 }
