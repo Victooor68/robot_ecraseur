@@ -3,6 +3,7 @@
 
 #include "entite.h"
 #include <vector>
+#include <iostream>
 
 class terrain
 {
