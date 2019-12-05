@@ -26,8 +26,6 @@ void position::seDeplaceDe(int x, int y)
 }
 bool position::operator==(const class position & pos) const
 {
-    if (d_x == pos.d_x && d_y == pos.d_y)
-        return true;
-    else
-        return false;
+    return  d_x == pos.d_x && d_y == pos.d_y;
+
 }

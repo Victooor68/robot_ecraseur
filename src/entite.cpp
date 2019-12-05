@@ -18,4 +18,8 @@ int entite::type() const {
     return d_type;
 }
 
+bool entite::positionEgale(const class entite & ent) const
+{
+    return d_pos.getPosX() == ent.d_pos.getPosX() && d_pos.getPosY() == ent.d_pos.getPosY();
+}
 entite::~entite() {}
