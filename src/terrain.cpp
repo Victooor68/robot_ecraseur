@@ -38,7 +38,7 @@ void terrain::affiche(ostream &os) const {
     if (d_terrain.size() > 0 && d_terrain[0].size() > 0) {
         for (int i = 0; i < d_terrain.size(); i++) {
             for (int j = 0; j < d_terrain[0].size(); j++) {
-                cout << d_terrain[i][j] + "  ";
+                cout << d_terrain[i][j] << "  ";
             }
             cout << endl;
         }
