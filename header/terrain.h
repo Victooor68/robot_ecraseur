@@ -8,11 +8,10 @@
 class terrain
 {
     public:
-        terrain(int hauteur, int largeur, std::vector<entite> listEntite);
+        terrain(int largeur, int hauteur);
         virtual ~terrain();
 
         std::vector<std::vector<int>> getTerrain() const;
-        entite getEntite(int i) const;
         void affiche(std::ostream& os) const;
         terrain read(std::istream& is);
         bool estDansTerrain(entite ent, int direction) const;
@@ -23,7 +22,6 @@ class terrain
 
     private:
     std::vector<std::vector<int>> d_terrain;
-    std::vector<entite> d_listEntite;
 };
 
 #endif // TERRAIN_H

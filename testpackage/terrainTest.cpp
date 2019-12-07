@@ -7,17 +7,13 @@
 
 TEST_CASE("Test constructeur terrain")
 {
-    SUBCASE("Test entite sauvegardé dans terrain") {
+    SUBCASE("Test taille terrain") {
         int hauteur = 10;
         int largeur = 10;
-        std::vector<entite> listEntite;
 
-        entite e1{0, 0};
-        listEntite.push_back(e1);
+        terrain ter{hauteur, largeur};
 
-        terrain ter{hauteur, largeur, listEntite};
-
-        REQUIRE_EQ(ter.getEntite(0).position().getPosX(), e1.position().getPosX());
-        REQUIRE_EQ(ter.getEntite(0).position().getPosY(), e1.position().getPosY());
+        REQUIRE_EQ(hauteur, ter.getTerrain().size());
+        REQUIRE_EQ(largeur, ter.getTerrain().at(0).size());
     }
 }

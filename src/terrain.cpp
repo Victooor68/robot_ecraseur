@@ -6,43 +6,35 @@
 
 using namespace std;
 
-terrain::terrain(int hauteur,int largeur, vector<entite> listEntite) : d_listEntite{listEntite}, d_terrain{}
+terrain::terrain(int largeur,int hauteur)
 {
-    vector<vector<int>> terrain;
-    for(int i=0; i<hauteur; i++)
+    for(int i=0; i<largeur; i++)
     {
-        for(int j=0; j<largeur; j++)
+        d_terrain.push_back(std::vector<int>());
+        for(int j=0; j<hauteur; j++)
         {
-            terrain[i][j] = 0;
+            d_terrain.at(i).push_back(0);
         }
     }
-    for(auto entite : listEntite)
-    {
-        terrain[entite.position().getPosX()][entite.position().getPosY()] = entite.type();
-    }
-
-    d_terrain = terrain;
 }
 
 terrain::~terrain()
 {}
 
 
-entite terrain::getEntite(int i) const {
-    if(i<d_listEntite.size()){
-        return d_listEntite[i];
-    }
-}
-
 void terrain::affiche(ostream &os) const {
-    if (d_terrain.size() > 0 && d_terrain[0].size() > 0) {
+    if (d_terrain.size() > 0 && d_terrain.at(0).size() > 0) {
         for (int i = 0; i < d_terrain.size(); i++) {
             for (int j = 0; j < d_terrain[0].size(); j++) {
-                cout << d_terrain[i][j] << "  ";
+                cout << d_terrain.at(i).at(j) << "  ";
             }
             cout << endl;
         }
     } else {
         cout << "Erreur taille tableau";
     }
+}
+
+std::vector<std::vector<int>> terrain::getTerrain() const {
+    return d_terrain;
 }
