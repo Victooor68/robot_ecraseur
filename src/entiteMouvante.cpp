@@ -22,3 +22,18 @@ void entiteMouvante::seDeplaceEnHaut() {
     this->position().seDeplaceDe(0,1);
 }
 
+void entiteMouvante::seDeplaceEnBasADroite() {
+    this->position().seDeplaceDe(1,-1);
+}
+
+void entiteMouvante::seDeplaceEnBasAGauche() {
+    this->position().seDeplaceDe(-1,-1);
+}
+
+void entiteMouvante::seDeplaceEnHautADroite() {
+    this->position().seDeplaceDe(1,1);
+}
+
+void entiteMouvante::seDeplaceEnHautAGauche() {
+    this->position().seDeplaceDe(1,-1);
+}

@@ -35,8 +35,25 @@ public:
      */
     void seDeplaceEnHaut();
 
+    /**
+     * Permet à l'entite de se déplacer en diagonale en haut à droite
+     */
+    void seDeplaceEnHautADroite();
 
+    /**
+     * Permet à l'entite de se déplacer en diagonale en bas à droite
+     */
+    void seDeplaceEnBasADroite();
 
+    /**
+     * Permet à l'entite de se déplacer en diagonale en haut à gauche
+     */
+    void seDeplaceEnHautAGauche();
+
+    /**
+     * Permet à l'entite de se déplacer en diagonale en bas à gauche
+     */
+    void seDeplaceEnBasAGauche();
 private:
 
 };
