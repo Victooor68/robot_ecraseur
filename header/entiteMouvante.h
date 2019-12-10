@@ -14,7 +14,6 @@ public:
 
     entiteMouvante(class position position);
 
-
     /**
      * Permet à l'entité de deplacer sa position de 1 à Droite
      */
