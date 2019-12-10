@@ -4,7 +4,7 @@ entiteMouvante::entiteMouvante(int x, int y): entite(x,y)
 {}
 
 entiteMouvante::entiteMouvante(class position position):entite(position)
-        {}
+{}
 
 void entiteMouvante::seDeplaceADroite() {
     this->d_pos.seDeplaceDe(1,0);

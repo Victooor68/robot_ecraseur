@@ -9,7 +9,7 @@
 
 class robot : public entiteMouvante{
 public:
-
+    robot(int x,int y);
 private:
 
 };

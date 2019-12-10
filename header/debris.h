@@ -9,7 +9,7 @@
 
 class debris : public entiteFixe {
 public:
-
+    debris(int x,int y);
 private:
 
 };

@@ -3,3 +3,6 @@
 //
 
 #include "../header/robot.h"
+
+robot::robot(int x, int y):entiteMouvante(x,y)
+{}

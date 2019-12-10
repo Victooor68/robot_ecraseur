@@ -3,3 +3,6 @@
 //
 
 #include "../header/joueurExpert.h"
+
+joueurExpert::joueurExpert(int x, int y, std::string name):joueur(x,y,name)
+{d_type=JOUEUREXPERT;}

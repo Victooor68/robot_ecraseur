@@ -10,7 +10,7 @@
 
 class joueur : public entiteMouvante {
 public:
-    joueur(std::string nom);
+    joueur(int x, int y, std::string nom);
     std::string Nom() const;
 private:
     std::string d_name;

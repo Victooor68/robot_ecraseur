@@ -3,3 +3,7 @@
 //
 
 #include "../header/debris.h"
+
+debris::debris(int x, int y):entiteFixe(x,y)
+{d_type=DEBRIS;
+}

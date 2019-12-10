@@ -13,12 +13,12 @@ static void lesCoordonnesDuPointSontExactement(const entiteMouvante& e,int x,int
 
 TEST_CASE("Test constructeur entiteMouvante"){
     int x = 3, y=4;
-            SUBCASE("Le constructeur avec des coordonnées est correct" ) {
+    SUBCASE("Le constructeur avec des coordonnées est correct" ) {
 
         entiteMouvante e1 {x,y};
         lesCoordonnesDuPointSontExactement(e1, x, y);
     }
-            SUBCASE("Le constructeur avec position est correct" ) {
+    SUBCASE("Le constructeur avec position est correct" ) {
         position p {x,y};
         entiteMouvante e2 {p};
         lesCoordonnesDuPointSontExactement(e2, x, y);
@@ -61,4 +61,6 @@ TEST_CASE("Test deplacement de l'entité mouvante"){
         e1.seDeplaceEnBasAGauche();
         lesCoordonnesDuPointSontExactement(e1,x-1,y-1);
     }
+
+
 }

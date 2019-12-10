@@ -7,6 +7,12 @@
 
 #include"position.hpp"
 
+const static int DEBRIS=1;
+const static int JOUEURNORMAL=8;
+const static int JOUEUREXPERT=9;
+const static int ROBOT1GEN = 3;
+const static int ROBOT2GEN = 4;
+
 class entite {
 public:
     //Constructor with 2 int

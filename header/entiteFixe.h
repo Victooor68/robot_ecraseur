@@ -9,7 +9,7 @@
 
 class entiteFixe : public entite{
 public:
-
+    entiteFixe(int x,int y);
 private:
 
 };
