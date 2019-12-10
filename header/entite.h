@@ -20,7 +20,8 @@ public:
     //accessor position
     position position()const ;
     bool positionEgale(const entite& ent) const;
-private:
+
+protected:
     class position d_pos;
     int d_type;
 };
