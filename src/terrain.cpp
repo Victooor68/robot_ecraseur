@@ -3,6 +3,7 @@
 #include <iosfwd>
 #include <iostream>
 #include "../header/terrain.h"
+#include "../header/graphics.h"
 
 using namespace std;
 
