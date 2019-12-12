@@ -21,6 +21,16 @@ terrain::terrain(int largeur,int hauteur)
 terrain::~terrain()
 {}
 
+int terrain::hauteur() const
+{
+    return d_hauteur;
+}
+
+int terrain::largeur() const
+{
+    return d_largeur;
+}
+
 
 void terrain::affiche(ostream &os) const {
     if (d_terrain.size() > 0 && d_terrain.at(0).size() > 0) {
