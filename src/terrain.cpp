@@ -45,6 +45,23 @@ void terrain::affiche(ostream &os) const {
     }
 }
 
+void terrain::afficheGraphique() const
+{
+    opengraphsize(750, 750);
+    for (int i = 0; i < largeur(); i++) {
+        for (int j = 0; j < hauteur(); j++) {
+            int x1 = i * 750 / largeur();
+            int x2 = x1 + 750 / largeur();
+            int y1 = j * 750 / hauteur();
+            int y2 = y2 + 750 / hauteur();
+            rectangle(x1, y1, x2, y2 );
+
+        }
+    }
+    getch();
+    closegraph();
+}
+
 std::vector<std::vector<int>> terrain::getTerrain() const {
     return d_terrain;
 }
