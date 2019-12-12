@@ -6,7 +6,7 @@
 
 using namespace std;
 
-terrain::terrain(int largeur,int hauteur)
+terrain::terrain(int largeur,int hauteur): d_largeur{largeur}, d_hauteur{hauteur}
 {
     for(int i=0; i<largeur; i++)
     {
