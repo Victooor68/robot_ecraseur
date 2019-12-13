@@ -55,8 +55,25 @@ void terrain::afficheGraphique() const
             int x2 = x1 + 750 / largeur();
             int y1 = j * 750 / hauteur();
             int y2 = y2 + 750 / hauteur();
-            rectangle(x1, y1, x2, y2 );
 
+            switch (d_terrain){
+                case 0 :
+                    setcolor(BLACK);
+                    break;
+                case 1:
+                    setcolor(WHITE);
+                    break;
+                case 2:
+                    setcolor(RED);
+                    break;
+                case 3:
+                    setcolor(YELLOW);
+                    break;
+                default: //erreur
+                    setcolor(GREEN);
+                    break;
+            }
+            bar(x1,y1,x2,y2);
         }
     }
     getch();
