@@ -11,6 +11,7 @@
 
 
 class position{
+
 public:
     position();
     position(int x, int y);

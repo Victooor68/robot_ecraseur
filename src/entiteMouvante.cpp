@@ -1,5 +1,6 @@
 #include "../header/entiteMouvante.h"
 
+
 entiteMouvante::entiteMouvante(int x, int y): entite(x,y)
 {}
 

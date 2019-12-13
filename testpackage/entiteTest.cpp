@@ -9,6 +9,7 @@ static void lesCoordonnesDuPointSontExactement(const entite& e,int x,int y) {
 
 
 
+
 TEST_CASE("Test constructeur entite"){
     int x = 3, y=4;
     SUBCASE("Le constructeur avec des coordonnées est correct" ) {

@@ -10,6 +10,7 @@
 
 class robot_1gen : public robot{
 public:
+
     robot_1gen(int x,int y);
 
 private:

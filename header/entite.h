@@ -7,6 +7,7 @@
 
 #include"position.hpp"
 
+
 const static int DEBRIS=1;
 const static int JOUEURNORMAL=8;
 const static int JOUEUREXPERT=9;

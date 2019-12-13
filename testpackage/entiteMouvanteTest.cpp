@@ -5,6 +5,7 @@
 #include "../header/doctest.h"
 #include "entiteMouvante.h"
 
+
 static void lesCoordonnesDuPointSontExactement(const entiteMouvante& e,int x,int y) {
     position p = e.position();
             REQUIRE( p.getPosX() == x );

@@ -6,8 +6,15 @@
 #define ROBOT_ECRASEUR_PERSISTANCE_H
 
 
-class persistance {
+#include <iosfwd>
+#include "doctest.h"
+#include "terrain.h"
 
+class persistance {
+public:
+    void static sauve(std::ofstream &f,terrain t);
+
+    terrain restore(std::ifstream &is);
 };
 
 

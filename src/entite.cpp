@@ -4,6 +4,7 @@
 
 #include "../header/entite.h"
 
+
 entite::entite(int x, int y) : d_pos{x,y}, d_type{-1}
 {}
 

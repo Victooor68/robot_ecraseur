@@ -10,6 +10,7 @@
 
 class entiteMouvante : public entite{
 public:
+
     entiteMouvante(int x, int y);
 
     entiteMouvante(class position position);

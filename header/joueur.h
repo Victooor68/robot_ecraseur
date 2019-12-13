@@ -9,6 +9,7 @@
 #include <string>
 
 class joueur : public entiteMouvante {
+
 public:
     joueur(int x, int y, std::string nom);
     std::string Nom() const;

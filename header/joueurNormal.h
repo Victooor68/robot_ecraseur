@@ -9,6 +9,7 @@
 #include "joueur.h"
 
 class joueurNormal : public joueur{
+
 public:
     joueurNormal(int x, int y , std::string name);
 private:

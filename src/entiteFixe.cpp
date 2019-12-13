@@ -4,5 +4,6 @@
 
 #include "../header/entiteFixe.h"
 
+
 entiteFixe::entiteFixe(int x, int y):entite(x,y)
 {}
