@@ -14,7 +14,7 @@ class persistance {
 public:
     void static sauve(std::ofstream &f,terrain t);
 
-    terrain restore(std::ifstream &is);
+    static terrain restore(std::ifstream &is);
 };
 
 

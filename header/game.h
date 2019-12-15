@@ -6,8 +6,14 @@
 #define ROBOT_ECRASEUR_GAME_H
 
 
-class game {
+#include "terrain.h"
 
+class game {
+public:
+    void saveGame(std::string fileName);
+    void restoreGame(std::string fileName);
+private:
+    terrain d_terrain;
 };
 
 
