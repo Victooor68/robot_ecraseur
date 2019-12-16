@@ -123,4 +123,5 @@ bool terrain::estDansTerrain(entite ent, int direction) const {
                 estDansTerrain =true;
             break;
     }
+    return estDansTerrain;
 }

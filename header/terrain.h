@@ -17,7 +17,6 @@ class terrain
     void afficheGraphique() const;
     int largeur() const;
     int hauteur() const;
-    terrain read(std::istream& is);
     bool estDansTerrain(entite ent, int direction) const;
     void seDeplaceADroiteSurTerrain(entite ent);
     void seDeplaceAGaucheSurTerrain(entite ent);
