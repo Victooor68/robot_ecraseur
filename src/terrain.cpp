@@ -90,38 +90,39 @@ terrain::terrain(std::vector<std::vector<int>> terrain):d_terrain(terrain)
 bool terrain::estDansTerrain(entite ent, int direction) const {
     bool estDansTerrain = false;
     switch(direction){
-        case 1 :
+        case BAS_GAUCHE :
             if(ent.position().getPosX()-1 >= 0 && ent.position().getPosY()-1 >= 0)
                 estDansTerrain =true;
             break;
-        case 2 :
+        case BAS :
             if(ent.position().getPosY()-1 >= 0)
                 estDansTerrain = true;
             break;
-        case 3 :
+        case BAS_DROITE :
             if(ent.position().getPosX()+1 < largeur() && ent.position().getPosY()-1 >= 0)
                 estDansTerrain =true;
             break;
-        case 4 :
+        case GAUCHE :
             if(ent.position().getPosX()-1 >= 0)
                 estDansTerrain =true;
             break;
-        case 6 :
+        case DROITE :
             if(ent.position().getPosX()+1 < largeur())
                 estDansTerrain =true;
             break;
-        case 7 :
+        case HAUT_GAUCHE :
             if(ent.position().getPosX()-1 >= 0 && ent.position().getPosY()+1 < hauteur())
                 estDansTerrain =true;
             break;
-        case 8 :
+        case HAUT :
             if(ent.position().getPosY()+1 < hauteur())
                 estDansTerrain =true;
             break;
-        case 9 :
+        case HAUT_DROITE :
             if(ent.position().getPosX()+1 < largeur() && ent.position().getPosY()+1 < hauteur())
                 estDansTerrain =true;
             break;
     }
     return estDansTerrain;
 }
+

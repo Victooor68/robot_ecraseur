@@ -5,6 +5,16 @@
 #include <vector>
 #include <iostream>
 
+#define BAS_GAUCHE 1
+#define BAS 2
+#define BAS_DROITE 3
+#define GAUCHE 4
+#define DROITE 6
+#define HAUT_GAUCHE 7
+#define HAUT 8
+#define HAUT_DROITE 9
+
+
 class terrain
 {
     public:
