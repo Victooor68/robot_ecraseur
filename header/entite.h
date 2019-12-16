@@ -7,7 +7,7 @@
 
 #include"position.hpp"
 
-#define NULL 0;
+#define VIDE 0;
 #define DEBRIS 1;
 #define JOUEUR_NORMAL 8;
 #define JOUEUR_EXPERT 9;

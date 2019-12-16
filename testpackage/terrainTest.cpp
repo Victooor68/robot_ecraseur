@@ -53,5 +53,17 @@ TEST_CASE("Test terrain")
         }
     }
 
+    SUBCASE("Test methodes de deplacements") {
+        entiteMouvante entM{5, 5};
+        entiteMouvante* ent = &entM;
+        SUBCASE("Deplacement a droite") {
+            position pos{5,5};
+            REQUIRE_EQ(pos, ent->position());
+            ent->seDeplaceADroite();
+            position pos2{6, 5};
+            REQUIRE_EQ(pos2, ent->position());
+        }
+    }
+
 }
 

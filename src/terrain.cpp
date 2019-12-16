@@ -16,7 +16,8 @@ terrain::terrain(int largeur,int hauteur)
         d_terrain.push_back(std::vector<int>());
         for(int j=0; j<hauteur; j++)
         {
-            d_terrain.at(i).push_back(0);
+            int valeurCase = VIDE;
+            d_terrain.at(i).push_back(valeurCase);
         }
     }
 }
@@ -129,7 +130,7 @@ bool terrain::estDansTerrain(entiteMouvante* ent, int direction) const {
 
 void terrain::seDeplaceADroiteSurTerrain(entiteMouvante *ent) {
     if(estDansTerrain(ent, DROITE)) {
-        d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = NULL;
+        d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = VIDE;
         ent->seDeplaceADroite();
         d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = ent->type();
     }
@@ -137,7 +138,7 @@ void terrain::seDeplaceADroiteSurTerrain(entiteMouvante *ent) {
 
 void terrain::seDeplaceAGaucheSurTerrain(entiteMouvante *ent) {
     if(estDansTerrain(ent, GAUCHE)) {
-        d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = NULL;
+        d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = VIDE;
         ent->seDeplaceAGauche();
         d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = ent->type();
     }
@@ -145,7 +146,7 @@ void terrain::seDeplaceAGaucheSurTerrain(entiteMouvante *ent) {
 
 void terrain::seDeplaceEnBasSurTerrain(entiteMouvante *ent) {
     if(estDansTerrain(ent, BAS)) {
-        d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = NULL;
+        d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = VIDE;
         ent->seDeplaceEnBas();
         d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = ent->type();
     }
@@ -153,7 +154,7 @@ void terrain::seDeplaceEnBasSurTerrain(entiteMouvante *ent) {
 
 void terrain::seDeplaceEnHautSurTerrain(entiteMouvante *ent) {
     if(estDansTerrain(ent, HAUT)) {
-        d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = NULL;
+        d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = VIDE;
         ent->seDeplaceEnHaut();
         d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = ent->type();
     }
