@@ -2,6 +2,7 @@
 #include <vector>
 #include <iosfwd>
 #include <iostream>
+#include <entiteMouvante.h>
 #include "terrain.h"
 #include "../header/graphics.h"
 
@@ -87,42 +88,47 @@ std::vector<std::vector<int>> terrain::getTerrain() const {
 terrain::terrain(std::vector<std::vector<int>> terrain):d_terrain(terrain)
 {}
 
-bool terrain::estDansTerrain(entite ent, int direction) const {
+bool terrain::estDansTerrain(entiteMouvante* ent, int direction) const {
     bool estDansTerrain = false;
     switch(direction){
         case BAS_GAUCHE :
-            if(ent.position().getPosX()-1 >= 0 && ent.position().getPosY()-1 >= 0)
+            if(ent->position().getPosX()-1 >= 0 && ent->position().getPosY()-1 >= 0)
                 estDansTerrain =true;
             break;
         case BAS :
-            if(ent.position().getPosY()-1 >= 0)
+            if(ent->position().getPosY()-1 >= 0)
                 estDansTerrain = true;
             break;
         case BAS_DROITE :
-            if(ent.position().getPosX()+1 < largeur() && ent.position().getPosY()-1 >= 0)
+            if(ent->position().getPosX()+1 < largeur() && ent->position().getPosY()-1 >= 0)
                 estDansTerrain =true;
             break;
         case GAUCHE :
-            if(ent.position().getPosX()-1 >= 0)
+            if(ent->position().getPosX()-1 >= 0)
                 estDansTerrain =true;
             break;
         case DROITE :
-            if(ent.position().getPosX()+1 < largeur())
+            if(ent->position().getPosX()+1 < largeur())
                 estDansTerrain =true;
             break;
         case HAUT_GAUCHE :
-            if(ent.position().getPosX()-1 >= 0 && ent.position().getPosY()+1 < hauteur())
+            if(ent->position().getPosX()-1 >= 0 && ent->position().getPosY()+1 < hauteur())
                 estDansTerrain =true;
             break;
         case HAUT :
-            if(ent.position().getPosY()+1 < hauteur())
+            if(ent->position().getPosY()+1 < hauteur())
                 estDansTerrain =true;
             break;
         case HAUT_DROITE :
-            if(ent.position().getPosX()+1 < largeur() && ent.position().getPosY()+1 < hauteur())
+            if(ent->position().getPosX()+1 < largeur() && ent->position().getPosY()+1 < hauteur())
                 estDansTerrain =true;
             break;
     }
     return estDansTerrain;
 }
 
+void terrain::seDeplaceADroiteSurTerrain(entiteMouvante* ent) {
+    if(estDansTerrain(ent, DROITE)) {
+        ent
+    }
+}

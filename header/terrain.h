@@ -27,11 +27,11 @@ class terrain
     void afficheGraphique() const;
     int largeur() const;
     int hauteur() const;
-    bool estDansTerrain(entite ent, int direction) const;
-    void seDeplaceADroiteSurTerrain(entite ent);
-    void seDeplaceAGaucheSurTerrain(entite ent);
-    void seDeplaceEnHautSurTerrain(entite ent);
-    void seDeplaceEnBasSurTerrain(entite ent);
+    bool estDansTerrain(entiteMouvante* ent, int direction) const;
+    void seDeplaceADroiteSurTerrain(entiteMouvante* ent);
+    void seDeplaceAGaucheSurTerrain(entiteMouvante* ent);
+    void seDeplaceEnHautSurTerrain(entiteMouvante* ent);
+    void seDeplaceEnBasSurTerrain(entiteMouvante* ent);
 
 private:
     std::vector<std::vector<int>> d_terrain;
