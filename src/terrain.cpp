@@ -127,8 +127,3 @@ bool terrain::estDansTerrain(entiteMouvante* ent, int direction) const {
     return estDansTerrain;
 }
 
-void terrain::seDeplaceADroiteSurTerrain(entiteMouvante* ent) {
-    if(estDansTerrain(ent, DROITE)) {
-        ent
-    }
-}

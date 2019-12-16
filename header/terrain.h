@@ -2,6 +2,7 @@
 #define TERRAIN_H
 
 #include "entite.h"
+#include "entiteMouvante.h"
 #include <vector>
 #include <iostream>
 

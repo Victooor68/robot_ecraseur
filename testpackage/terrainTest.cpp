@@ -24,7 +24,8 @@ TEST_CASE("Test terrain")
     SUBCASE("Test methode estDansTerrain") {
 
         SUBCASE("Deplacements corrects") {
-            entite ent{5, 5};
+            entiteMouvante entM{5, 5};
+            entiteMouvante* ent = &entM;
 
                     REQUIRE_EQ(true, ter.estDansTerrain(ent, 1));
                     REQUIRE_EQ(true, ter.estDansTerrain(ent, 2));
@@ -36,14 +37,16 @@ TEST_CASE("Test terrain")
                     REQUIRE_EQ(true, ter.estDansTerrain(ent, 9));
         }
         SUBCASE("Deplacements incorrects") {
-            entite ent{0, 0};
+            entiteMouvante entM{0, 0};
+            entiteMouvante* ent = &entM;
             REQUIRE_EQ(false, ter.estDansTerrain(ent, 1));
             REQUIRE_EQ(false, ter.estDansTerrain(ent, 2));
             REQUIRE_EQ(false, ter.estDansTerrain(ent, 3));
             REQUIRE_EQ(false, ter.estDansTerrain(ent, 4));
             REQUIRE_EQ(false, ter.estDansTerrain(ent, 7));
 
-            entite ent2{largeur, hauteur};
+            entiteMouvante entM2{largeur, hauteur};
+            entiteMouvante* ent2 = &entM2;
             REQUIRE_EQ(false, ter.estDansTerrain(ent2, 6));
             REQUIRE_EQ(false, ter.estDansTerrain(ent2, 8));
             REQUIRE_EQ(false, ter.estDansTerrain(ent2, 9));
