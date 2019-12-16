@@ -62,6 +62,7 @@ TEST_CASE("Test terrain")
             ent->seDeplaceADroite();
             position pos2{6, 5};
             REQUIRE_EQ(pos2, ent->position());
+
         }
     }
 
