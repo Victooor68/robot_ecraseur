@@ -6,5 +6,5 @@
 #include "../header/robot_1gen.h"
 
 robot_1gen::robot_1gen(int x, int y):robot(x,y) {
-    d_type=ROBOT1GEN;
+    d_type= ROBOT_1GEN;
 }
