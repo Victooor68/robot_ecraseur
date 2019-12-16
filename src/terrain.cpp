@@ -8,7 +8,7 @@
 
 using namespace std;
 
-terrain::terrain(int largeur,int hauteur): d_largeur{largeur}, d_hauteur{hauteur}
+terrain::terrain(int largeur,int hauteur)
 {
     for(int i=0; i<largeur; i++)
     {
@@ -25,12 +25,12 @@ terrain::~terrain()
 
 int terrain::hauteur() const
 {
-    return d_hauteur;
+    return d_terrain.at(0).size();
 }
 
 int terrain::largeur() const
 {
-    return d_largeur;
+    return d_terrain.size();
 }
 
 
@@ -86,3 +86,41 @@ std::vector<std::vector<int>> terrain::getTerrain() const {
 }
 terrain::terrain(std::vector<std::vector<int>> terrain):d_terrain(terrain)
 {}
+
+bool terrain::estDansTerrain(entite ent, int direction) const {
+    bool estDansTerrain = false;
+    switch(direction){
+        case 1 :
+            if(ent.position().getPosX()-1 >= 0 && ent.position().getPosY()-1 >= 0)
+                estDansTerrain =true;
+            break;
+        case 2 :
+            if(ent.position().getPosY()-1 >= 0)
+                estDansTerrain = true;
+            break;
+        case 3 :
+            if(ent.position().getPosX()+1 < largeur() && ent.position().getPosY()-1 >= 0)
+                estDansTerrain =true;
+            break;
+        case 4 :
+            if(ent.position().getPosX()-1 >= 0)
+                estDansTerrain =true;
+            break;
+        case 6 :
+            if(ent.position().getPosX()+1 < largeur())
+                estDansTerrain =true;
+            break;
+        case 7 :
+            if(ent.position().getPosX()-1 >= 0 && ent.position().getPosY()+1 < hauteur())
+                estDansTerrain =true;
+            break;
+        case 8 :
+            if(ent.position().getPosY()+1 < hauteur())
+                estDansTerrain =true;
+            break;
+        case 9 :
+            if(ent.position().getPosX()+1 < largeur() && ent.position().getPosY()+1 < hauteur())
+                estDansTerrain =true;
+            break;
+    }
+}

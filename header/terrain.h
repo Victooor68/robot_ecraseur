@@ -26,9 +26,6 @@ class terrain
 
 private:
     std::vector<std::vector<int>> d_terrain;
-    int d_hauteur;
-    int d_largeur;
-
 };
 
 #endif // TERRAIN_H
