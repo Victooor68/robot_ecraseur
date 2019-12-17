@@ -29,13 +29,19 @@ class terrain
     int largeur() const;
     int hauteur() const;
     bool estDansTerrain(entiteMouvante* ent, int direction) const;
-    void seDeplaceADroiteSurTerrain(entiteMouvante* ent);
-    void seDeplaceAGaucheSurTerrain(entiteMouvante* ent);
-    void seDeplaceEnHautSurTerrain(entiteMouvante* ent);
-    void seDeplaceEnBasSurTerrain(entiteMouvante* ent);
+    void deplacement(int direction, entiteMouvante* ent);
 
 private:
     std::vector<std::vector<int>> d_terrain;
+
+    void deplacement_DROITE(entiteMouvante* ent);
+    void deplacement_GAUCHE(entiteMouvante* ent);
+    void deplacement_HAUT(entiteMouvante* ent);
+    void deplacement_BAS(entiteMouvante* ent);
+    void deplacement_HAUT_GAUCHE(entiteMouvante* ent);
+    void deplacement_HAUT_DROITE(entiteMouvante* ent);
+    void deplacement_BAS_GAUCHE(entiteMouvante* ent);
+    void deplacement_BAS_DROITE(entiteMouvante* ent);
 };
 
 #endif // TERRAIN_H
