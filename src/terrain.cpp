@@ -128,7 +128,21 @@ bool terrain::estDansTerrain(entiteMouvante* ent, int direction) const {
     return estDansTerrain;
 }
 
-void terrain::seDeplaceADroiteSurTerrain(entiteMouvante *ent) {
+void terrain::deplacement(int direction, entiteMouvante *ent) {
+    switch(direction) {
+        case DROITE : deplacement_DROITE(ent);
+        case GAUCHE : deplacement_GAUCHE(ent);
+        case HAUT : deplacement_HAUT(ent);
+        case BAS : deplacement_BAS(ent);
+        case HAUT_GAUCHE : deplacement_HAUT_GAUCHE(ent);
+        case HAUT_DROITE : deplacement_HAUT_DROITE(ent);
+        case BAS_GAUCHE : deplacement_BAS_GAUCHE(ent);
+        case BAS_DROITE : deplacement_BAS_DROITE(ent);
+    }
+}
+
+
+void terrain::deplacement_DROITE(entiteMouvante *ent) {
     if(estDansTerrain(ent, DROITE)) {
         d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = VIDE;
         ent->seDeplaceADroite();
@@ -136,7 +150,7 @@ void terrain::seDeplaceADroiteSurTerrain(entiteMouvante *ent) {
     }
 }
 
-void terrain::seDeplaceAGaucheSurTerrain(entiteMouvante *ent) {
+void terrain::deplacement_GAUCHE(entiteMouvante *ent) {
     if(estDansTerrain(ent, GAUCHE)) {
         d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = VIDE;
         ent->seDeplaceAGauche();
@@ -144,7 +158,7 @@ void terrain::seDeplaceAGaucheSurTerrain(entiteMouvante *ent) {
     }
 }
 
-void terrain::seDeplaceEnBasSurTerrain(entiteMouvante *ent) {
+void terrain::deplacement_BAS(entiteMouvante *ent) {
     if(estDansTerrain(ent, BAS)) {
         d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = VIDE;
         ent->seDeplaceEnBas();
@@ -152,10 +166,43 @@ void terrain::seDeplaceEnBasSurTerrain(entiteMouvante *ent) {
     }
 }
 
-void terrain::seDeplaceEnHautSurTerrain(entiteMouvante *ent) {
+void terrain::deplacement_HAUT(entiteMouvante *ent) {
     if(estDansTerrain(ent, HAUT)) {
         d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = VIDE;
         ent->seDeplaceEnHaut();
         d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = ent->type();
     }
 }
+
+void terrain::deplacement_HAUT_GAUCHE(entiteMouvante *ent) {
+    if(estDansTerrain(ent, HAUT_GAUCHE)) {
+        d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = VIDE;
+        ent->seDeplaceEnHautAGauche();
+        d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = ent->type();
+    }
+}
+
+void terrain::deplacement_HAUT_DROITE(entiteMouvante *ent) {
+    if(estDansTerrain(ent, HAUT_DROITE)) {
+        d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = VIDE;
+        ent->seDeplaceEnHautADroite();
+        d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = ent->type();
+    }
+}
+
+void terrain::deplacement_BAS_GAUCHE(entiteMouvante *ent) {
+    if(estDansTerrain(ent, BAS_GAUCHE)) {
+        d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = VIDE;
+        ent->seDeplaceEnBasAGauche();
+        d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = ent->type();
+    }
+}
+
+void terrain::deplacement_BAS_DROITE(entiteMouvante *ent) {
+    if(estDansTerrain(ent, BAS_DROITE)) {
+        d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = VIDE;
+        ent->seDeplaceEnBasADroite();
+        d_terrain.at(ent->position().getPosX()).at(ent->position().getPosY()) = ent->type();
+    }
+}
+
