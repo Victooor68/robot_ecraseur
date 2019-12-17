@@ -130,14 +130,14 @@ bool terrain::estDansTerrain(entiteMouvante* ent, int direction) const {
 
 void terrain::deplacement(int direction, entiteMouvante *ent) {
     switch(direction) {
-        case DROITE : deplacement_DROITE(ent);
-        case GAUCHE : deplacement_GAUCHE(ent);
-        case HAUT : deplacement_HAUT(ent);
-        case BAS : deplacement_BAS(ent);
-        case HAUT_GAUCHE : deplacement_HAUT_GAUCHE(ent);
-        case HAUT_DROITE : deplacement_HAUT_DROITE(ent);
-        case BAS_GAUCHE : deplacement_BAS_GAUCHE(ent);
-        case BAS_DROITE : deplacement_BAS_DROITE(ent);
+        case DROITE : deplacement_DROITE(ent); break;
+        case GAUCHE : deplacement_GAUCHE(ent); break;
+        case HAUT : deplacement_HAUT(ent); break;
+        case BAS : deplacement_BAS(ent); break;
+        case HAUT_GAUCHE : deplacement_HAUT_GAUCHE(ent); break;
+        case HAUT_DROITE : deplacement_HAUT_DROITE(ent); break;
+        case BAS_GAUCHE : deplacement_BAS_GAUCHE(ent); break;
+        case BAS_DROITE : deplacement_BAS_DROITE(ent); break;
     }
 }
 
