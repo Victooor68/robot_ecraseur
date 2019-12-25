@@ -11,6 +11,7 @@ class robot : public entiteMouvante{
 public:
 
     robot(int x,int y);
+    virtual void deplacementAuto() = 0;
 private:
 
 };

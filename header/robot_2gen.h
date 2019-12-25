@@ -12,6 +12,7 @@ class robot_2gen : public robot{
 public:
 
     robot_2gen(int x,int y);
+    virtual void deplacementAuto() override;
 
 private:
 
