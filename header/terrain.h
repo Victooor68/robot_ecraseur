@@ -18,9 +18,9 @@
 
 class terrain
 {
-    public:
-        terrain(int largeur, int hauteur);
-        terrain( std::vector<std::vector<int>> terrain);
+public:
+    terrain(int largeur, int hauteur);
+    terrain( std::vector<std::vector<int>> terrain);
     virtual ~terrain();
 
     std::vector<std::vector<int>> getTerrain() const;

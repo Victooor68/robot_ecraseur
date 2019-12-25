@@ -6,12 +6,13 @@
 #define ROBOT_ECRASEUR_ROBOT_H
 
 #include "entiteMouvante.h"
+#include "joueur.h"
 
 class robot : public entiteMouvante{
 public:
 
     robot(int x,int y);
-    virtual void deplacementAuto() = 0;
+    virtual position meilleurDeplacement(joueur* j) = 0;
 private:
 
 };

@@ -6,7 +6,7 @@
 #include <fstream>
 #include "../header/persistance.h"
 
-char delimiterChar = '|',endChar='$';
+char delimiterChar = '|', endChar='$';
 
 void  persistance::sauve(std::ofstream &f, terrain t) {
 
