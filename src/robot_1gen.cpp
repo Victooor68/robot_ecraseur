@@ -16,16 +16,16 @@ void robot_1gen::deplacement_Auto(joueur *j) {
 
     //index DROITE
     int score_Deplacement_Droite = abs(d_pos.getPosX() + 1 - j->position().getPosX())
-            + abs(d_pos.getPosY() - j->position().getPosX());
+            + abs(d_pos.getPosY() - j->position().getPosY());
     //index GAUCHE
     int score_Deplacement_Gauche = abs(d_pos.getPosX() - 1 - j->position().getPosX())
-                                   + abs(d_pos.getPosY() - j->position().getPosX());
+                                   + abs(d_pos.getPosY() - j->position().getPosY());
     //index HAUT
     int score_Deplacement_Haut = abs(d_pos.getPosX() - j->position().getPosX())
-                                 + abs(d_pos.getPosY() + 1 - j->position().getPosX());
+                                 + abs(d_pos.getPosY() + 1 - j->position().getPosY());
     //index BAS
     int score_Deplacement_Bas = abs(d_pos.getPosX() - j->position().getPosX())
-                               + abs(d_pos.getPosY() -1 - j->position().getPosX());
+                               + abs(d_pos.getPosY() -1 - j->position().getPosY());
 
     scoreDeplacement.push_back(score_Deplacement_Droite);
     scoreDeplacement.push_back(score_Deplacement_Gauche);
@@ -33,11 +33,11 @@ void robot_1gen::deplacement_Auto(joueur *j) {
     scoreDeplacement.push_back(score_Deplacement_Bas);
 
     int meilleurScore = score_Deplacement_Haut;
-    int indexMeilleurScore = 1;
+    int indexMeilleurScore = 0;
 
-    for(int i=2; i <= scoreDeplacement.size(); ++i)
+    for(int i=1; i < scoreDeplacement.size(); ++i)
     {
-        if(meilleurScore < scoreDeplacement.at(i))
+        if(meilleurScore > scoreDeplacement.at(i))
         {
             meilleurScore = scoreDeplacement.at(i);
             indexMeilleurScore = i;
