@@ -22,7 +22,8 @@ public:
     terrain(int largeur, int hauteur);
     terrain( std::vector<std::vector<int>> terrain);
     virtual ~terrain();
-
+    void setDTerrain(const std::vector<std::vector<int>> terrain);
+    void ajoutDansTerrain(const entite& ent);
     std::vector<std::vector<int>> getTerrain() const;
     void affiche(std::ostream& os) const;
     void afficheGraphique() const;
@@ -34,6 +35,8 @@ public:
 
 private:
     std::vector<std::vector<int>> d_terrain;
+
+private:
 
     void deplacement_DROITE(entiteMouvante* ent);
     void deplacement_GAUCHE(entiteMouvante* ent);

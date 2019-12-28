@@ -210,3 +210,10 @@ bool terrain::estVide(int x, int y) const {
     return d_terrain.at(x).at(y) == VIDE;
 }
 
+void terrain::setDTerrain(const std::vector<std::vector<int>> terrain) {
+    d_terrain = terrain;
+}
+
+void terrain::ajoutDansTerrain(const entite& ent) {
+    d_terrain.at(ent.position().getPosX()).at(ent.position().getPosY()) = ent.type();
+}

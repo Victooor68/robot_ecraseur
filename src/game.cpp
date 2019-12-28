@@ -6,9 +6,13 @@
 #include <persistance.h>
 #include "../header/game.h"
 #include "joueur.h"
-#include "robot.h"
+#include "robot_1gen.h"
 
 using namespace std;
+
+game::game() : d_terrain{terrain{10,10}}{
+    init();
+}
 
 void game::saveGame(std::string fileName) {
     std::ofstream myFile(fileName);
@@ -32,7 +36,16 @@ void game::init(){
     joueur j{(d_terrain.largeur()/2), d_terrain.hauteur()/2, nomJoueur};
     d_entite.push_back(j);
     for(int i = 0; i<nbRobot; i++){
-        //robot r{};
-        //d_entite.push_back(r);
+        bool impossible = true;
+        while(impossible){
+            int x, y;
+            x = rand();
+            if(d_terrain.estVide(0,0)) {
+                robot_1gen r{0, 0};
+                d_terrain.ajoutDansTerrain(r);
+                d_entite.push_back(r);
+            }
+        }
     }
+    //d_terrain.setDTerrain(d_entite);
 }

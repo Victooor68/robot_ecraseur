@@ -11,6 +11,7 @@
 
 class game {
 public:
+    game();
     void init();
     void saveGame(std::string fileName);
     void restoreGame(std::string fileName);
