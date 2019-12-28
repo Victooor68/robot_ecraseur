@@ -30,6 +30,7 @@ public:
     int hauteur() const;
     bool estDansTerrain(entiteMouvante* ent, int direction) const;
     void deplacement(int direction, entiteMouvante* ent);
+    bool estVide(int x, int y) const;
 
 private:
     std::vector<std::vector<int>> d_terrain;

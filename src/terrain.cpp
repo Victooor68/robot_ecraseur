@@ -206,3 +206,7 @@ void terrain::deplacement_BAS_DROITE(entiteMouvante *ent) {
     }
 }
 
+bool terrain::estVide(int x, int y) const {
+    return d_terrain.at(x).at(y) == VIDE;
+}
+
