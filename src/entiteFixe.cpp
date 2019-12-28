@@ -7,3 +7,6 @@
 
 entiteFixe::entiteFixe(int x, int y):entite(x,y)
 {}
+
+entiteFixe::~entiteFixe()
+{}

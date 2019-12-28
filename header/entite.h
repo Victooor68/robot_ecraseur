@@ -19,8 +19,9 @@ public:
     //Constructor with 2 int
     entite(int x, int y);
     //Constructor with position
-    entite(position position);
-    //Destructor
+    entite(const position& position);
+
+//Destructor
     ~entite();
     //Accessor type
     int type()const ;
