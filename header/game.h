@@ -7,13 +7,16 @@
 
 
 #include "terrain.h"
+#include "entite.h"
 
 class game {
 public:
+    void init();
     void saveGame(std::string fileName);
     void restoreGame(std::string fileName);
 private:
     terrain d_terrain;
+    std::vector<entite> d_entite;
 };
 
 
