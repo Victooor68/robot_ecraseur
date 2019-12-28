@@ -7,10 +7,10 @@
 
 #include "robot.h"
 
-#define DROITE 0
-#define GAUCHE 1
-#define HAUT 2
-#define BAS 3
+#define DROITE_DEPLACEMENT 0
+#define GAUCHE_DEPLACEMENT 1
+#define HAUT_DEPLACEMENT 2
+#define BAS_DEPLACEMENT 3
 
 
 class robot_1gen : public robot{

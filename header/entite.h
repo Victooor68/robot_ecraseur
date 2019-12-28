@@ -7,12 +7,12 @@
 
 #include"position.hpp"
 
-#define VIDE 0;
-#define DEBRIS 1;
-#define JOUEUR_NORMAL 8;
-#define JOUEUR_EXPERT 9;
-#define ROBOT_1GEN 3;
-#define ROBOT_2GEN 4;
+#define VIDE 0
+#define DEBRIS 1
+#define JOUEUR_NORMAL 8
+#define JOUEUR_EXPERT 9
+#define ROBOT_1GEN 3
+#define ROBOT_2GEN 4
 
 class entite {
 public:

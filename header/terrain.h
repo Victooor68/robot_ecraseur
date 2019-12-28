@@ -7,12 +7,12 @@
 #include <iostream>
 
 #define BAS_GAUCHE 1
-#define BAS 2
+#define BAS_DEPLACEMENT 2
 #define BAS_DROITE 3
-#define GAUCHE 4
-#define DROITE 6
+#define GAUCHE_DEPLACEMENT 4
+#define DROITE_DEPLACEMENT 6
 #define HAUT_GAUCHE 7
-#define HAUT 8
+#define HAUT_DEPLACEMENT 8
 #define HAUT_DROITE 9
 
 
@@ -32,6 +32,7 @@ public:
     bool estDansTerrain(entiteMouvante* ent, int direction) const;
     void deplacement(int direction, entiteMouvante* ent);
     bool estVide(int x, int y) const;
+    int getCase(int x, int y) const;
 
 private:
     std::vector<std::vector<int>> d_terrain;

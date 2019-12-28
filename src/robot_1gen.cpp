@@ -14,16 +14,16 @@ robot_1gen::robot_1gen(int x, int y):robot(x,y) {
 void robot_1gen::deplacement_Auto(joueur *j) {
     std::vector<int> scoreDeplacement;
 
-    //index DROITE
+    //index DROITE_DEPLACEMENT
     int score_Deplacement_Droite = abs(d_pos.getPosX() + 1 - j->position().getPosX())
             + abs(d_pos.getPosY() - j->position().getPosY());
-    //index GAUCHE
+    //index GAUCHE_DEPLACEMENT
     int score_Deplacement_Gauche = abs(d_pos.getPosX() - 1 - j->position().getPosX())
                                    + abs(d_pos.getPosY() - j->position().getPosY());
-    //index HAUT
+    //index HAUT_DEPLACEMENT
     int score_Deplacement_Haut = abs(d_pos.getPosX() - j->position().getPosX())
                                  + abs(d_pos.getPosY() + 1 - j->position().getPosY());
-    //index BAS
+    //index BAS_DEPLACEMENT
     int score_Deplacement_Bas = abs(d_pos.getPosX() - j->position().getPosX())
                                + abs(d_pos.getPosY() -1 - j->position().getPosY());
 
@@ -45,10 +45,10 @@ void robot_1gen::deplacement_Auto(joueur *j) {
     }
 
     switch(indexMeilleurScore) {
-        case DROITE : seDeplaceADroite();
-        case GAUCHE : seDeplaceAGauche();
-        case HAUT : seDeplaceEnHaut();
-        case BAS : seDeplaceEnBas();
+        case DROITE_DEPLACEMENT : seDeplaceADroite();
+        case GAUCHE_DEPLACEMENT : seDeplaceAGauche();
+        case HAUT_DEPLACEMENT : seDeplaceEnHaut();
+        case BAS_DEPLACEMENT : seDeplaceEnBas();
     }
 
 }
