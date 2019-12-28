@@ -35,17 +35,18 @@ void game::init(){
     cin>>nomJoueur;
     joueur j{(d_terrain.largeur()/2), d_terrain.hauteur()/2, nomJoueur};
     d_entite.push_back(j);
+    d_terrain.ajoutDansTerrain(j);
     for(int i = 0; i<nbRobot; i++){
         bool impossible = true;
         while(impossible){
-            int x, y;
-            x = rand();
-            if(d_terrain.estVide(0,0)) {
-                robot_1gen r{0, 0};
+            int x = rand() % ((d_terrain.largeur() - 0) + 1) + 0;
+            int y = rand() % ((d_terrain.hauteur() - 0) + 1) + 0;
+            if(d_terrain.estVide(x,y)) {
+                robot_1gen r{x, y};
                 d_terrain.ajoutDansTerrain(r);
                 d_entite.push_back(r);
+                impossible = false;
             }
         }
     }
-    //d_terrain.setDTerrain(d_entite);
 }
