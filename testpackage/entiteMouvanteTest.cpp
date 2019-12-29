@@ -1,13 +1,12 @@
 //
 // Created by leand on 10/12/2019.
 //
-#include <iostream>
-#include "../header/doctest.h"
+#include "doctest.h"
 #include "entiteMouvante.h"
 
 
 static void lesCoordonnesDuPointSontExactement(const entiteMouvante& e,int x,int y) {
-    position p = e.position();
+    position p = e.getPosition();
             REQUIRE( p.getPosX() == x );
             REQUIRE( p.getPosY() == y );
 }

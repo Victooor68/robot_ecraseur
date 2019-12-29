@@ -10,8 +10,7 @@
 #define position_hpp
 
 
-class position{
-
+class position {
 public:
     position();
     position(int x, int y);
@@ -20,9 +19,10 @@ public:
     void seDeplaceEn(int x, int y);
     void seDeplaceDe(int x, int y);
     bool operator==(const position& pos) const;
+
 private:
     int d_x;
     int d_y;
-
 };
+
 #endif /* position_hpp */

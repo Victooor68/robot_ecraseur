@@ -1,8 +1,8 @@
-#include "../header/doctest.h"
-#include "../header/entite.h"
+#include "doctest.h"
+#include "entite.h"
 
 static void lesCoordonnesDuPointSontExactement(const entite& e,int x,int y) {
-    position p = e.position();
+    position p = e.getPosition();
             REQUIRE( p.getPosX() == x );
             REQUIRE( p.getPosY() == y );
 }

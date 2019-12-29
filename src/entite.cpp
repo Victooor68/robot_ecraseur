@@ -2,26 +2,26 @@
 // Created by totoo on 09/11/2019.
 //
 
-#include "../header/entite.h"
+#include "entite.h"
 
-
-entite::entite(int x, int y) : d_pos{x,y}, d_type{-1}
+entite::entite(int x, int y) : d_pos{x, y}, d_type{-1}
 {}
 
-entite::entite(const class position &position) : d_pos{position}, d_type{-1}
+entite::entite(const position &position) : d_pos{position}, d_type{-1}
 {}
 
-position entite::position() const{
+entite::~entite()
+{}
+
+position entite::getPosition() const
+{
     return d_pos;
 }
 
-int entite::type() const {
+int entite::getType() const
+{
     return d_type;
 }
 
-bool entite::positionEgale(const class entite & ent) const
-{
-    return d_pos == ent.d_pos;
-}
 
-entite::~entite() {}
+
