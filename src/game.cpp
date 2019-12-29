@@ -10,6 +10,8 @@
 
 using namespace std;
 
+const int VID1E= 0;
+
 game::game() : d_terrain{terrain{10,10}}{
     init();
 }
@@ -24,6 +26,7 @@ void game::restoreGame(std::string fileName) {
     std::ifstream myFile(fileName);
     d_terrain=persistance::restore(myFile);
     myFile.close();
+    d_entite=restoreEntiteDeTerrain(d_terrain);
 }
 
 void game::init(){
@@ -46,6 +49,31 @@ void game::init(){
                 d_terrain.ajoutDansTerrain(r);
                 d_entite.push_back(r);
                 impossible = false;
+            }
+        }
+    }
+}
+
+std::vector<entite> game::restoreEntiteDeTerrain(terrain terrain)
+{
+    std::vector<entite> entite;
+
+    for (int i = 0; i <terrain.hauteur() ; ++i) {
+        for (int j = 0; j <terrain.largeur() ; ++j) {
+            int typeCase=terrain.getCase(i,j);
+            switch(typeCase){
+                case VIDE :
+                    break;
+                case ROBOT_1GEN :
+                    break;
+                case ROBOT_2GEN :
+                    break;
+                case JOUEUR_NORMAL :
+                    break;
+                case JOUEUR_EXPERT :
+                    break;
+                case DEBRIS :
+                    break;
             }
         }
     }

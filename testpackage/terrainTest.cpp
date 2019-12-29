@@ -58,10 +58,10 @@ TEST_CASE("Test terrain")
         entiteMouvante* ent = &entM;
         SUBCASE("Deplacement a droite") {
             position pos{5,5};
-            REQUIRE_EQ(pos, ent->getPosition());
+            REQUIRE_EQ(pos, ent->position());
             ent->seDeplaceADroite();
             position pos2{6, 5};
-            REQUIRE_EQ(pos2, ent->getPosition());
+            REQUIRE_EQ(pos2, ent->position());
 
         }
     }
@@ -73,11 +73,11 @@ TEST_CASE("Test terrain")
         entiteMouvante* ent = &entM;
 
         position pos1{5,5};
-        REQUIRE_EQ(pos1, ent->getPosition());
+        REQUIRE_EQ(pos1, ent->position());
 
         position pos2{6, 5};
-        ter2 .deplacement(DROITE, ent);
-        REQUIRE_EQ(pos2, ent->getPosition());
+        ter2 .deplacement(DROITE_DEPLACEMENT, ent);
+        REQUIRE_EQ(pos2, ent->position());
     }
 
 }

@@ -18,6 +18,8 @@ public:
 private:
     terrain d_terrain;
     std::vector<entite> d_entite;
+
+    std::vector<entite> restoreEntiteDeTerrain(terrain terrain);
 };
 
 

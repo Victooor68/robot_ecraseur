@@ -14,18 +14,18 @@ robot_1gen::robot_1gen(int x, int y):robot(x,y) {
 void robot_1gen::deplacement_Auto(joueur *j) {
     std::vector<int> scoreDeplacement;
 
-    //index DROITE
-    int score_Deplacement_Droite = abs(d_pos.getPosX() + 1 - j->getPosition().getPosX())
-            + abs(d_pos.getPosY() - j->getPosition().getPosY());
-    //index GAUCHE
-    int score_Deplacement_Gauche = abs(d_pos.getPosX() - 1 - j->getPosition().getPosX())
-                                   + abs(d_pos.getPosY() - j->getPosition().getPosY());
-    //index HAUT
-    int score_Deplacement_Haut = abs(d_pos.getPosX() - j->getPosition().getPosX())
-                                 + abs(d_pos.getPosY() + 1 - j->getPosition().getPosY());
-    //index BAS
-    int score_Deplacement_Bas = abs(d_pos.getPosX() - j->getPosition().getPosX())
-                               + abs(d_pos.getPosY() -1 - j->getPosition().getPosY());
+    //index DROITE_DEPLACEMENT
+    int score_Deplacement_Droite = abs(d_pos.getPosX() + 1 - j->position().getPosX())
+            + abs(d_pos.getPosY() - j->position().getPosY());
+    //index GAUCHE_DEPLACEMENT
+    int score_Deplacement_Gauche = abs(d_pos.getPosX() - 1 - j->position().getPosX())
+                                   + abs(d_pos.getPosY() - j->position().getPosY());
+    //index HAUT_DEPLACEMENT
+    int score_Deplacement_Haut = abs(d_pos.getPosX() - j->position().getPosX())
+                                 + abs(d_pos.getPosY() + 1 - j->position().getPosY());
+    //index BAS_DEPLACEMENT
+    int score_Deplacement_Bas = abs(d_pos.getPosX() - j->position().getPosX())
+                               + abs(d_pos.getPosY() -1 - j->position().getPosY());
 
     scoreDeplacement.push_back(score_Deplacement_Droite);
     scoreDeplacement.push_back(score_Deplacement_Gauche);
@@ -45,10 +45,10 @@ void robot_1gen::deplacement_Auto(joueur *j) {
     }
 
     switch(indexMeilleurScore) {
-        case DROITE : seDeplaceADroite();
-        case GAUCHE : seDeplaceAGauche();
-        case HAUT : seDeplaceEnHaut();
-        case BAS : seDeplaceEnBas();
+        case DROITE_DEPLACEMENT : seDeplaceADroite();
+        case GAUCHE_DEPLACEMENT : seDeplaceAGauche();
+        case HAUT_DEPLACEMENT : seDeplaceEnHaut();
+        case BAS_DEPLACEMENT : seDeplaceEnBas();
     }
 
 }
