@@ -15,17 +15,17 @@ void robot_1gen::deplacement_Auto(joueur *j) {
     std::vector<int> scoreDeplacement;
 
     //index DROITE_DEPLACEMENT
-    int score_Deplacement_Droite = abs(d_pos.getPosX() + 1 - j->position().getPosX())
-            + abs(d_pos.getPosY() - j->position().getPosY());
+    int score_Deplacement_Droite = abs(d_pos.getPosX() + 1 - j->getPosition().getPosX())
+            + abs(d_pos.getPosY() - j->getPosition().getPosY());
     //index GAUCHE_DEPLACEMENT
-    int score_Deplacement_Gauche = abs(d_pos.getPosX() - 1 - j->position().getPosX())
-                                   + abs(d_pos.getPosY() - j->position().getPosY());
+    int score_Deplacement_Gauche = abs(d_pos.getPosX() - 1 - j->getPosition().getPosX())
+                                   + abs(d_pos.getPosY() - j->getPosition().getPosY());
     //index HAUT_DEPLACEMENT
-    int score_Deplacement_Haut = abs(d_pos.getPosX() - j->position().getPosX())
-                                 + abs(d_pos.getPosY() + 1 - j->position().getPosY());
+    int score_Deplacement_Haut = abs(d_pos.getPosX() - j->getPosition().getPosX())
+                                 + abs(d_pos.getPosY() + 1 - j->getPosition().getPosY());
     //index BAS_DEPLACEMENT
-    int score_Deplacement_Bas = abs(d_pos.getPosX() - j->position().getPosX())
-                               + abs(d_pos.getPosY() -1 - j->position().getPosY());
+    int score_Deplacement_Bas = abs(d_pos.getPosX() - j->getPosition().getPosX())
+                               + abs(d_pos.getPosY() -1 - j->getPosition().getPosY());
 
     scoreDeplacement.push_back(score_Deplacement_Droite);
     scoreDeplacement.push_back(score_Deplacement_Gauche);

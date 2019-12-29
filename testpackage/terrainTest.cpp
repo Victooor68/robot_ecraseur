@@ -1,9 +1,10 @@
 //
 // Created by totoo on 03/12/2019.
 //
-#include "../header/doctest.h"
-#include "../header/terrain.h"
-#include "../header/entite.h"
+#include "doctest.h"
+#include "terrain.h"
+#include "entite.h"
+#include "robot_1gen.h"
 
 TEST_CASE("Test terrain")
 {
@@ -58,10 +59,10 @@ TEST_CASE("Test terrain")
         entiteMouvante* ent = &entM;
         SUBCASE("Deplacement a droite") {
             position pos{5,5};
-            REQUIRE_EQ(pos, ent->position());
+            REQUIRE_EQ(pos, ent->getPosition());
             ent->seDeplaceADroite();
             position pos2{6, 5};
-            REQUIRE_EQ(pos2, ent->position());
+            REQUIRE_EQ(pos2, ent->getPosition());
 
         }
     }
@@ -73,11 +74,11 @@ TEST_CASE("Test terrain")
         entiteMouvante* ent = &entM;
 
         position pos1{5,5};
-        REQUIRE_EQ(pos1, ent->position());
+        REQUIRE_EQ(pos1, ent->getPosition());
 
         position pos2{6, 5};
         ter2 .deplacement(DROITE_DEPLACEMENT, ent);
-        REQUIRE_EQ(pos2, ent->position());
+        REQUIRE_EQ(pos2, ent->getPosition());
     }
 
 }

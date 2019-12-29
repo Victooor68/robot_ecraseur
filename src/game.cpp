@@ -77,4 +77,6 @@ std::vector<entite> game::restoreEntiteDeTerrain(terrain terrain)
             }
         }
     }
+
+    return entite;
 }
