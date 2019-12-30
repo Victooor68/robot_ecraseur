@@ -93,35 +93,35 @@ bool terrain::estDansTerrain(entiteMouvante* ent, int direction) const {
     bool estDansTerrain = false;
     switch(direction){
         case BAS_GAUCHE :
-            if(ent->getPosition().getPosX()-1 >= 0 && ent->getPosition().getPosY()-1 >= 0)
+            if(ent->getPosition().getPosX()+1 <= largeur() && ent->getPosition().getPosY()-1 >= 0)
                 estDansTerrain =true;
             break;
         case BAS :
-            if(ent->getPosition().getPosY()-1 >= 0)
+            if(ent->getPosition().getPosX()+1 <= largeur())
                 estDansTerrain = true;
             break;
         case BAS_DROITE :
-            if(ent->getPosition().getPosX()+1 < largeur() && ent->getPosition().getPosY()-1 >= 0)
+            if(ent->getPosition().getPosX()+1 <= largeur() && ent->getPosition().getPosY()+1 <= hauteur())
                 estDansTerrain =true;
             break;
         case GAUCHE :
-            if(ent->getPosition().getPosX()-1 >= 0)
+            if(ent->getPosition().getPosY()-1 >= 0)
                 estDansTerrain =true;
             break;
         case DROITE :
-            if(ent->getPosition().getPosX()+1 < largeur())
-                estDansTerrain =true;
-            break;
-        case HAUT_GAUCHE :
-            if(ent->getPosition().getPosX()-1 >= 0 && ent->getPosition().getPosY()+1 < hauteur())
-                estDansTerrain =true;
-            break;
-        case HAUT :
             if(ent->getPosition().getPosY()+1 < hauteur())
                 estDansTerrain =true;
             break;
+        case HAUT_GAUCHE :
+            if(ent->getPosition().getPosX()-1 >= 0 && ent->getPosition().getPosY()-1 >= 0)
+                estDansTerrain =true;
+            break;
+        case HAUT :
+            if(ent->getPosition().getPosX()-1 >=0)
+                estDansTerrain =true;
+            break;
         case HAUT_DROITE :
-            if(ent->getPosition().getPosX()+1 < largeur() && ent->getPosition().getPosY()+1 < hauteur())
+            if(ent->getPosition().getPosX()-1 >=0 && ent->getPosition().getPosY()+1 <= hauteur())
                 estDansTerrain =true;
             break;
     }
