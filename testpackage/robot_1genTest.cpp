@@ -28,7 +28,7 @@ TEST_CASE("Test de la classe robot_1gen")
             robot.deplacement_Auto(joueur);
 
             position pos{3, 5};
-            REQUIRE_EQ(robot.position(), pos);
+            REQUIRE_EQ(robot.getPosition(), pos);
         }
         SUBCASE("avec joueur plus à gauche du robot")
         {
@@ -39,7 +39,7 @@ TEST_CASE("Test de la classe robot_1gen")
             robot.deplacement_Auto(joueur);
 
             position pos{2,6};
-            REQUIRE_EQ(robot.position(), pos);
+            REQUIRE_EQ(robot.getPosition(), pos);
         }
         SUBCASE("avec joueur plus à droite du robot")
         {
@@ -50,8 +50,9 @@ TEST_CASE("Test de la classe robot_1gen")
             robot.deplacement_Auto(joueur);
 
             position pos{4, 3};
-            REQUIRE_EQ(robot.position(), pos);
+            REQUIRE_EQ(robot.getPosition(), pos);
         }
     }
 }
+
 
