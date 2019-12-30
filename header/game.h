@@ -27,6 +27,8 @@ private:
     std::vector<entite> restoreEntiteDeTerrain(terrain terrain);
 
     joueur joueurSelonDifficulte(char difficulte, std::string string);
+
+    void generationDesRobotsAleatoire(int robot);
 };
 
 

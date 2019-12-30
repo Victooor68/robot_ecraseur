@@ -61,7 +61,7 @@ void game::init(){
 }
 
 void game::run(std::ostream &ost, std::istream &ist) {
-    double nbRobot;
+    int nbRobot;
     string nomJoueur;
     char difficulte;
     bool again=true;
@@ -78,19 +78,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
    d_joueur=joueurSelonDifficulte(difficulte, nomJoueur);
    d_terrain.ajoutDansTerrain(d_joueur);
 
-    for(int i = 0; i<nbRobot; i++){
-        bool impossible = true;
-        while(impossible){
-            int x = rand() % ((d_terrain.largeur() - 0) + 1) + 0;
-            int y = rand() % ((d_terrain.hauteur() - 0) + 1) + 0;
-            if(d_terrain.estVide(x,y)) {
-                robot_1gen r{x, y};
-                d_terrain.ajoutDansTerrain(r);
-                d_entite.push_back(r);
-                impossible = false;
-            }
-        }
-    }
+   generationDesRobotsAleatoire(nbRobot);
 
    d_terrain.affiche(ost);
 
@@ -137,4 +125,20 @@ std::vector<entite> game::restoreEntiteDeTerrain(terrain terrain)
     }
 
     return entite;
+}
+
+void game::generationDesRobotsAleatoire(int nbRobot) {
+    for(int i = 0; i<nbRobot; i++){
+        bool impossible = true;
+        while(impossible){
+            int x = rand() %d_terrain.largeur();
+            int y = rand() %d_terrain.hauteur();
+            if(d_terrain.estVide(x,y)) {
+                robot_1gen r{x, y};
+                d_terrain.ajoutDansTerrain(r);
+                d_entite.push_back(r);
+                impossible = false;
+            }
+        }
+    }
 }
