@@ -6,14 +6,20 @@
 #include <persistance.h>
 #include "../header/game.h"
 #include "joueur.h"
+#include "joueurExpert.h"
+#include "joueurNormal.h"
 #include "robot_1gen.h"
+
+const char DIFFICULTE_EXPERT = 'E';
+const char DIFFICULTE_NORMAL = 'N';
 
 using namespace std;
 
-const int VID1E= 0;
 
-game::game() : d_terrain{terrain{10,10}}{
-    init();
+
+game::game() : d_terrain{terrain{10,10}}, d_entite{}
+{
+   // init();
 }
 
 void game::saveGame(std::string fileName) {
@@ -50,6 +56,39 @@ void game::init(){
                 d_entite.push_back(r);
                 impossible = false;
             }
+        }
+    }
+}
+
+void game::run(std::ostream &ost, std::istream &ist) {
+    double nbRobot;
+    string nomJoueur;
+    char difficulte;
+
+    ost<<"Combien de Robot ?"<<endl;
+    ist>>nbRobot;
+
+    ost<<"Nom du joueur :"<<endl;
+    ist>>nomJoueur;
+
+    ost<<"Difficulté Expert ou Normal(E or N) ?";
+    ist>>difficulte;
+
+    d_entite.push_back(joueurSelonDifficulte(difficulte, nomJoueur));
+
+
+}
+
+joueur game::joueurSelonDifficulte(char difficulte, std::string nomJoueur) {
+    
+    if (difficulte==DIFFICULTE_NORMAL){
+        joueurNormal playerNormal{(d_terrain.largeur()/2), d_terrain.hauteur()/2,nomJoueur};
+    } else{
+        if (difficulte==DIFFICULTE_EXPERT){
+            joueurExpert playerExpert{(d_terrain.largeur()/2), d_terrain.hauteur()/2,nomJoueur};
+        }else{
+            joueur j{-1,-1,nomJoueur} ;
+            return  j ;
         }
     }
 }

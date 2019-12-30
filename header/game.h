@@ -8,11 +8,13 @@
 
 #include "terrain.h"
 #include "entite.h"
+#include "joueur.h"
 
 class game {
 public:
     game();
     void init();
+    void run(std::ostream & ost,std::istream & ist);
     void saveGame(std::string fileName);
     void restoreGame(std::string fileName);
 private:
@@ -20,6 +22,8 @@ private:
     std::vector<entite> d_entite;
 
     std::vector<entite> restoreEntiteDeTerrain(terrain terrain);
+
+    joueur joueurSelonDifficulte(char difficulte, std::string string);
 };
 
 
