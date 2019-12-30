@@ -82,23 +82,19 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
    d_terrain.affiche(ost);
 
+   entiteMouvante* mouv = &d_joueur;
+
+   while (again)
+   {
+       int direction;
+       ost<<"Direction ?"<<endl;
+       ist>>direction;
+       d_terrain.deplacement(direction,mouv);
+       d_terrain.affiche(ost);
+   }
 }
 
-joueur game::joueurSelonDifficulte(char difficulte, std::string nomJoueur) {
-    
-    if (difficulte == DIFFICULTE_NORMAL){
-        joueurNormal playerNormal{(d_terrain.largeur()/2), d_terrain.hauteur()/2,nomJoueur};
-        return  playerNormal;
-    } else{
-        if (difficulte == DIFFICULTE_EXPERT){
-            joueurExpert playerExpert{(d_terrain.largeur()/2), d_terrain.hauteur()/2,nomJoueur};
-            return playerExpert;
-        }else{
-            joueur j{1,1,nomJoueur} ;
-            return  j ;
-        }
-    }
-}
+
 
 std::vector<entite> game::restoreEntiteDeTerrain(terrain terrain)
 {
@@ -125,6 +121,22 @@ std::vector<entite> game::restoreEntiteDeTerrain(terrain terrain)
     }
 
     return entite;
+}
+
+joueur game::joueurSelonDifficulte(char difficulte, std::string nomJoueur) {
+
+    if (difficulte == DIFFICULTE_NORMAL){
+        joueurNormal playerNormal{(d_terrain.largeur()/2), d_terrain.hauteur()/2,nomJoueur};
+        return  playerNormal;
+    } else{
+        if (difficulte == DIFFICULTE_EXPERT){
+            joueurExpert playerExpert{(d_terrain.largeur()/2), d_terrain.hauteur()/2,nomJoueur};
+            return playerExpert;
+        }else{
+            joueur j{1,1,nomJoueur} ;
+            return  j ;
+        }
+    }
 }
 
 void game::generationDesRobotsAleatoire(int nbRobot) {
