@@ -31,35 +31,35 @@ TEST_CASE("Test deplacement de l'entité mouvante"){
     entiteMouvante e1 {x,y};
     SUBCASE("Test deplacement à Droite"){
         e1.seDeplaceADroite();
-        lesCoordonnesDuPointSontExactement(e1,x+1,y);
+        lesCoordonnesDuPointSontExactement(e1,x,y+1);
     }
     SUBCASE("Test deplacement à Gauche"){
         e1.seDeplaceAGauche();
-        lesCoordonnesDuPointSontExactement(e1,x-1,y);
+        lesCoordonnesDuPointSontExactement(e1,x,y-1);
     }
     SUBCASE("Test deplacement en Bas"){
         e1.seDeplaceEnBas();
-        lesCoordonnesDuPointSontExactement(e1,x,y-1);
+        lesCoordonnesDuPointSontExactement(e1,x+1,y);
     }
     SUBCASE("Test deplacement en Haut"){
         e1.seDeplaceEnHaut();
-        lesCoordonnesDuPointSontExactement(e1,x,y+1);
+        lesCoordonnesDuPointSontExactement(e1,x-1,y);
     }
     SUBCASE("Test deplacement en Haut à Droite"){
         e1.seDeplaceEnHautADroite();
-        lesCoordonnesDuPointSontExactement(e1,x+1,y+1);
+        lesCoordonnesDuPointSontExactement(e1,x-1,y+1);
     }
     SUBCASE("Test deplacement en Haut à Gauche"){
         e1.seDeplaceEnHautAGauche();
-        lesCoordonnesDuPointSontExactement(e1,x-1,y+1);
+        lesCoordonnesDuPointSontExactement(e1,x-1,y-1);
     }
     SUBCASE("Test deplacement en Bas à Droite"){
         e1.seDeplaceEnBasADroite();
-        lesCoordonnesDuPointSontExactement(e1,x+1,y-1);
+        lesCoordonnesDuPointSontExactement(e1,x+1,y+1);
     }
     SUBCASE("Test deplacement en Bas à Gauche"){
         e1.seDeplaceEnBasAGauche();
-        lesCoordonnesDuPointSontExactement(e1,x-1,y-1);
+        lesCoordonnesDuPointSontExactement(e1,x+1,y-1);
     }
 
 
