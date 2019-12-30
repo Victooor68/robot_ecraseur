@@ -17,7 +17,7 @@ using namespace std;
 
 
 
-game::game() : d_terrain{terrain{10,10}}, d_entite{}
+game::game() : d_terrain{terrain{10,10}},d_joueur{-1,-1,"default"} ,d_entite{}
 {
    // init();
 }
@@ -64,6 +64,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
     double nbRobot;
     string nomJoueur;
     char difficulte;
+    bool again=true,
 
     ost<<"Combien de Robot ?"<<endl;
     ist>>nbRobot;
@@ -74,20 +75,23 @@ void game::run(std::ostream &ost, std::istream &ist) {
     ost<<"Difficulté Expert ou Normal(E or N) ?";
     ist>>difficulte;
 
-    d_entite.push_back(joueurSelonDifficulte(difficulte, nomJoueur));
-
+   d_joueur=joueurSelonDifficulte(difficulte, nomJoueur);
+   d_terrain.ajoutDansTerrain(d_joueur);
+   d_terrain.affiche(ost);
 
 }
 
 joueur game::joueurSelonDifficulte(char difficulte, std::string nomJoueur) {
     
-    if (difficulte==DIFFICULTE_NORMAL){
+    if (difficulte == DIFFICULTE_NORMAL){
         joueurNormal playerNormal{(d_terrain.largeur()/2), d_terrain.hauteur()/2,nomJoueur};
+        return  playerNormal;
     } else{
-        if (difficulte==DIFFICULTE_EXPERT){
+        if (difficulte == DIFFICULTE_EXPERT){
             joueurExpert playerExpert{(d_terrain.largeur()/2), d_terrain.hauteur()/2,nomJoueur};
+            return playerExpert;
         }else{
-            joueur j{-1,-1,nomJoueur} ;
+            joueur j{1,1,nomJoueur} ;
             return  j ;
         }
     }

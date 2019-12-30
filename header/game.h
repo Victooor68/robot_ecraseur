@@ -19,6 +19,9 @@ public:
     void restoreGame(std::string fileName);
 private:
     terrain d_terrain;
+
+    joueur d_joueur;
+
     std::vector<entite> d_entite;
 
     std::vector<entite> restoreEntiteDeTerrain(terrain terrain);
