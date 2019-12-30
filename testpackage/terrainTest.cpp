@@ -79,7 +79,7 @@ TEST_CASE("Test terrain")
         REQUIRE_EQ(pos1, ent->getPosition());
 
         position pos2{5, 6};
-        ter2.deplacement(DROITE_DEPLACEMENT, ent);
+        ter2.deplacement(DROITE, ent);
         REQUIRE_EQ(pos2, ent->getPosition());
     }
 
