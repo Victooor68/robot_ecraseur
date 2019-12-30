@@ -41,15 +41,17 @@ TEST_CASE("Test terrain")
             entiteMouvante entM{0, 0};
             entiteMouvante* ent = &entM;
             REQUIRE_EQ(false, ter.estDansTerrain(ent, 1));
-            REQUIRE_EQ(false, ter.estDansTerrain(ent, 2));
-            REQUIRE_EQ(false, ter.estDansTerrain(ent, 3));
             REQUIRE_EQ(false, ter.estDansTerrain(ent, 4));
+            REQUIRE_EQ(false, ter.estDansTerrain(ent, 9));
+            REQUIRE_EQ(false, ter.estDansTerrain(ent, 8));
             REQUIRE_EQ(false, ter.estDansTerrain(ent, 7));
 
             entiteMouvante entM2{largeur, hauteur};
             entiteMouvante* ent2 = &entM2;
+            REQUIRE_EQ(false, ter.estDansTerrain(ent2, 1));
+            REQUIRE_EQ(false, ter.estDansTerrain(ent2, 2));
             REQUIRE_EQ(false, ter.estDansTerrain(ent2, 6));
-            REQUIRE_EQ(false, ter.estDansTerrain(ent2, 8));
+            REQUIRE_EQ(false, ter.estDansTerrain(ent2, 3));
             REQUIRE_EQ(false, ter.estDansTerrain(ent2, 9));
         }
     }
@@ -61,7 +63,7 @@ TEST_CASE("Test terrain")
             position pos{5,5};
             REQUIRE_EQ(pos, ent->getPosition());
             ent->seDeplaceADroite();
-            position pos2{6, 5};
+            position pos2{5, 6};
             REQUIRE_EQ(pos2, ent->getPosition());
 
         }
@@ -76,8 +78,8 @@ TEST_CASE("Test terrain")
         position pos1{5,5};
         REQUIRE_EQ(pos1, ent->getPosition());
 
-        position pos2{6, 5};
-        ter2 .deplacement(DROITE_DEPLACEMENT, ent);
+        position pos2{5, 6};
+        ter2.deplacement(DROITE_DEPLACEMENT, ent);
         REQUIRE_EQ(pos2, ent->getPosition());
     }
 
