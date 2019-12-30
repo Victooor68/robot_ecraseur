@@ -64,7 +64,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
     double nbRobot;
     string nomJoueur;
     char difficulte;
-    bool again=true,
+    bool again=true;
 
     ost<<"Combien de Robot ?"<<endl;
     ist>>nbRobot;
@@ -77,6 +77,21 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
    d_joueur=joueurSelonDifficulte(difficulte, nomJoueur);
    d_terrain.ajoutDansTerrain(d_joueur);
+
+    for(int i = 0; i<nbRobot; i++){
+        bool impossible = true;
+        while(impossible){
+            int x = rand() % ((d_terrain.largeur() - 0) + 1) + 0;
+            int y = rand() % ((d_terrain.hauteur() - 0) + 1) + 0;
+            if(d_terrain.estVide(x,y)) {
+                robot_1gen r{x, y};
+                d_terrain.ajoutDansTerrain(r);
+                d_entite.push_back(r);
+                impossible = false;
+            }
+        }
+    }
+
    d_terrain.affiche(ost);
 
 }
