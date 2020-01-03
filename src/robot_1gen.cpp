@@ -47,7 +47,8 @@ void robot_1gen::deplacement_Auto(joueur* j) {
         }
     }
 
-    switch(indexMeilleurScore) {
+    switch(indexMeilleurScore)
+    {
         case DROITE_DEPLACEMENT :
             seDeplaceADroite();
             break;
@@ -59,6 +60,8 @@ void robot_1gen::deplacement_Auto(joueur* j) {
             break;
         case BAS_DEPLACEMENT :
             seDeplaceEnBas();
+            break;
+        default:
             break;
     }
 

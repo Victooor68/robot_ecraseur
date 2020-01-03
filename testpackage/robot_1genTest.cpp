@@ -14,7 +14,6 @@ TEST_CASE("Test de la classe robot_1gen")
 
             joueur* joueur = &j;
             robot.deplacement_Auto(joueur);
-            std::cout<<"Position : (x: "<<robot.getPosition().getPosX() <<", y: "<<robot.getPosition().getPosY();
 
             position pos{3, 2};
             REQUIRE_EQ(robot.getPosition(), pos);
