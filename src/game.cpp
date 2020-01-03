@@ -16,6 +16,7 @@ const char DIFFICULTE_NORMAL = 'N';
 const char QUIT_GAME ='Q';
 const char SAVE = 'S';
 const char RESTORE = 'R';
+const char MOUVEMENT = 'M';
 using namespace std;
 
 
@@ -40,7 +41,7 @@ void game::restoreGame(std::string fileName) {
 
 void game::run(std::ostream &ost, std::istream &ist) {
     int nbRobotGen1, nbRobotGen2;
-    string nomJoueur;
+    string nomJoueur,nomFichier;
     char difficulte;
     bool again=true;
 
@@ -78,13 +79,18 @@ void game::run(std::ostream &ost, std::istream &ist) {
            case QUIT_GAME:
                return;
            case SAVE:
-               this->saveGame(" GAGA");
+               ost<<"Nom du fichier ?";
+               ist>>nomFichier;
+               this->saveGame(nomFichier);
                break;
            case RESTORE:
-               this->restoreGame("GAGA");
+               ost<<"Nom du fichier ?";
+               ist>>nomFichier;
+               this->restoreGame(nomFichier);
                break;
-           default:
-               doDirection(direction, ost, ist);
+           case MOUVEMENT:
+              direction=doDirection(ost, ist);
+               break;
        }
 
 
@@ -170,11 +176,11 @@ void game::generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2) {
     }
 }
 
-void game::doDirection(int direction, std::ostream &ost, std::istream &ist) {
+int game::doDirection( std::ostream &ost, std::istream &ist) {
 
+    int direction;
     bool directionIncorrect = true;
     while(directionIncorrect){
-
         ost<<"Direction ?"<<endl;
         ist>>direction;
             if(direction == BAS || direction == BAS_DROITE || direction == BAS_GAUCHE || direction == GAUCHE
@@ -185,5 +191,6 @@ void game::doDirection(int direction, std::ostream &ost, std::istream &ist) {
                 ost<<"Error : Veuillez saisir un chiffre entre 1 et 9"<<endl;
             }
         }
+    return direction;
 }
 
