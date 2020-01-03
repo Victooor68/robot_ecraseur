@@ -41,6 +41,11 @@ int terrain::largeur() const
 void terrain::affiche(ostream &os) const {
     if (d_terrain.size() > 0 && d_terrain.at(0).size() > 0)
     {
+        for(int k = 0; k < d_terrain.size()*2.7; k++)
+        {
+            os << "- ";
+        }
+        os << endl;
         for (int i = 0; i < d_terrain.size(); i++)
         {
             for (int j = 0; j < d_terrain[0].size(); j++)

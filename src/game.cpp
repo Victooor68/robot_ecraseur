@@ -73,7 +73,8 @@ void game::run(std::ostream &ost, std::istream &ist) {
            ist>>direction;
            if(isdigit(direction))
            {
-               if(direction == BAS || direction == BAS_DROITE || direction == BAS_GAUCHE || direction == GAUCHE || direction == DROITE || direction == HAUT || direction == HAUT_GAUCHE || direction == HAUT_DROITE){
+               if(direction == BAS || direction == BAS_DROITE || direction == BAS_GAUCHE || direction == GAUCHE
+               || direction == DROITE || direction == HAUT || direction == HAUT_GAUCHE || direction == HAUT_DROITE){
                    directionIncorrect = false;
                }
                else{
