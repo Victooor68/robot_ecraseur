@@ -33,8 +33,7 @@ public:
     int hauteur() const;
     bool estDansTerrain(entiteMouvante* ent, int direction) const;
     void deplacement(int direction, entiteMouvante* ent);
-    void deplacementRobotGen1Auto(entite* r, entiteMouvante* j);
-    void deplacementRobotGen2Auto(entite* r, entiteMouvante* j);
+    void deplacementRobotAuto(entite* r, entiteMouvante* j);
     bool estVide(int x, int y) const;
     int getCase(int x, int y) const;
 

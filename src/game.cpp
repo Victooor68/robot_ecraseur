@@ -86,11 +86,8 @@ void game::run(std::ostream &ost, std::istream &ist) {
        }
        d_terrain.deplacement(direction,mouv);
        for (int i = 0; i < d_entite.size(); ++i) {
-           if(d_entite.at(i).getType() == ROBOT_1GEN) {
-               d_terrain.deplacementRobotGen1Auto(&d_entite.at(i), mouv);
-           }
-           if(d_entite.at(i).getType() == ROBOT_2GEN) {
-               d_terrain.deplacementRobotGen1Auto(&d_entite.at(i), mouv);
+           if(d_entite.at(i).getType() == ROBOT_1GEN || d_entite.at(i).getType() == ROBOT_2GEN) {
+               d_terrain.deplacementRobotAuto(&d_entite.at(i), mouv);
            }
        }
        d_terrain.affiche(ost);

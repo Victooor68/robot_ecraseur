@@ -245,7 +245,7 @@ int terrain::getCase(int x, int y)const
 }
 
 
-void terrain::deplacementRobotGen1Auto(entite * r, entiteMouvante *j) {
+void terrain::deplacementRobotAuto(entite * r, entiteMouvante *j) {
     d_terrain.at(r->getPosition().getPosX()).at(r->getPosition().getPosY()) = VIDE;
     //r->deplacement_Auto(j);
     d_terrain.at(r->getPosition().getPosX()).at(r->getPosition().getPosY()) = r->getType();
