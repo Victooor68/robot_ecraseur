@@ -58,17 +58,17 @@ void terrain::afficheGraphique() const
             int y1 = j * 750 / hauteur();
             int y2 = y2 + 750 / hauteur();
 
-            switch (d_terrain[i][j]){
-                case 0 : //case vide
+            switch(d_terrain[i][j]){
+                case VIDE :
                     setcolor(BLACK);
                     break;
-                case 1: //joueur
+                case JOUEUR_NORMAL:
                     setcolor(WHITE);
                     break;
-                case 2: //robot
+                case ROBOT_1GEN:
                     setcolor(RED);
                     break;
-                case 3: //debrit
+                case DEBRIS:
                     setcolor(YELLOW);
                     break;
                 default: //erreur
