@@ -39,16 +39,35 @@ int terrain::largeur() const
 
 
 void terrain::affiche(ostream &os) const {
-    if (d_terrain.size() > 0 && d_terrain.at(0).size() > 0) {
-        for (int i = 0; i < d_terrain.size(); i++) {
-            for (int j = 0; j < d_terrain[0].size(); j++) {
-                cout << d_terrain.at(i).at(j) << "  ";
+    if (d_terrain.size() > 0 && d_terrain.at(0).size() > 0)
+    {
+        for (int i = 0; i < d_terrain.size(); i++)
+        {
+            for (int j = 0; j < d_terrain[0].size(); j++)
+            {
+                switch(d_terrain.at(i).at(j))
+                {
+                    case VIDE : cout<<"  ";
+                    case DEBRIS : cout<<"##";
+                    case JOUEUR_NORMAL : cout<<"Jn";
+                    case JOUEUR_EXPERT : cout<<"Je";
+                    case ROBOT_1GEN : cout<<"R1";
+                    case ROBOT_2GEN : cout<<"R2";
+                }
+                cout << " | ";
+            }
+            cout << endl;
+            for(int k = 0; k < d_terrain.size(); k++)
+            {
+                cout << "---";
             }
             cout << endl;
         }
-    } else {
-        cout << "Erreur taille tableau";
     }
+    else
+        {
+            cout << "Erreur taille tableau";
+        }
 }
 
 void terrain::afficheGraphique() const
