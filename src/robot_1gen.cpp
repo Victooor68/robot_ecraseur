@@ -14,19 +14,15 @@ robot_1gen::robot_1gen(int x, int y) : robot(x,y) {
 void robot_1gen::deplacement_Auto(joueur* j) {
     std::vector<int> scoreDeplacement;
 
-    //index DROITE_DEPLACEMENT
     int score_Deplacement_Droite = abs(d_pos.getPosX() + 1 - j->getPosition().getPosX())
             + abs(d_pos.getPosY() - j->getPosition().getPosY());
 
-    //index GAUCHE_DEPLACEMENT
     int score_Deplacement_Gauche = abs(d_pos.getPosX() - 1 - j->getPosition().getPosX())
                                    + abs(d_pos.getPosY() - j->getPosition().getPosY());
 
-    //index HAUT_DEPLACEMENT
     int score_Deplacement_Haut = abs(d_pos.getPosX() - j->getPosition().getPosX())
                                  + abs(d_pos.getPosY() + 1 - j->getPosition().getPosY());
 
-    //index BAS_DEPLACEMENT
     int score_Deplacement_Bas = abs(d_pos.getPosX() - j->getPosition().getPosX())
                                + abs(d_pos.getPosY() -1 - j->getPosition().getPosY());
 

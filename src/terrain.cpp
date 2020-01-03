@@ -47,26 +47,27 @@ void terrain::affiche(ostream &os) const {
             {
                 switch(d_terrain.at(i).at(j))
                 {
-                    case VIDE : cout<<"  ";
-                    case DEBRIS : cout<<"##";
-                    case JOUEUR_NORMAL : cout<<"Jn";
-                    case JOUEUR_EXPERT : cout<<"Je";
-                    case ROBOT_1GEN : cout<<"R1";
-                    case ROBOT_2GEN : cout<<"R2";
+                    case VIDE : os<<"  "; break;
+                    case DEBRIS : os<<"##"; break;
+                    case JOUEUR_NORMAL : os<<"Jn"; break;
+                    case JOUEUR_EXPERT : os<<"Je"; break;
+                    case ROBOT_1GEN : os<<"R1"; break;
+                    case ROBOT_2GEN : os<<"R2"; break;
+                    default: break;
                 }
-                cout << " | ";
+                os << " | ";
             }
-            cout << endl;
-            for(int k = 0; k < d_terrain.size(); k++)
+            os << endl;
+            for(int k = 0; k < d_terrain.size()*2.7; k++)
             {
-                cout << "---";
+                os << "- ";
             }
-            cout << endl;
+            os << endl;
         }
     }
     else
         {
-            cout << "Erreur taille tableau";
+            os << "Erreur taille tableau";
         }
 }
 
