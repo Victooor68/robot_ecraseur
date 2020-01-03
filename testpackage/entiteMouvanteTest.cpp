@@ -61,6 +61,4 @@ TEST_CASE("Test deplacement de l'entité mouvante"){
         e1.seDeplaceEnBasAGauche();
         lesCoordonnesDuPointSontExactement(e1,x-1,y+1);
     }
-
-
 }

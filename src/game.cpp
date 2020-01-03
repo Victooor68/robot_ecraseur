@@ -13,7 +13,9 @@
 
 const char DIFFICULTE_EXPERT = 'E';
 const char DIFFICULTE_NORMAL = 'N';
-
+const char QUIT_GAME ='Q';
+const char SAVE = 'S';
+const char RESTORE = 'R';
 using namespace std;
 
 
@@ -65,26 +67,27 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
    while (again)
    {
-       bool directionIncorrect = true;
        int direction;
+       char commande;
 
-       while(directionIncorrect){
-           ost<<"Direction ?"<<endl;
-           ist>>direction;
-           if(isdigit(direction))
-           {
-               if(direction == BAS || direction == BAS_DROITE || direction == BAS_GAUCHE || direction == GAUCHE
-               || direction == DROITE || direction == HAUT || direction == HAUT_GAUCHE || direction == HAUT_DROITE){
-                   directionIncorrect = false;
-               }
-               else{
-                   ost<<"Error : Veuillez saisir un chiffre entre 1 et 9"<<endl;
-               }
-           }
-           else{
-               ost<<"Error : Veuillez saisir un chiffre"<<endl;
-           }
+       ost<<"Commande ?"<<endl;
+       ist>>commande;
+
+       switch (commande){
+
+           case QUIT_GAME:
+               return;
+           case SAVE:
+               this->saveGame(" GAGA");
+               break;
+           case RESTORE:
+               this->restoreGame("GAGA");
+               break;
+           default:
+               doDirection(direction, ost, ist);
        }
+
+
        d_terrain.deplacement(direction,j);
        for (int i = 0; i < d_robot.size(); ++i) {
            if(d_robot.at(i)->getType() == ROBOT_1GEN || d_robot.at(i)->getType() == ROBOT_2GEN) {
@@ -166,3 +169,21 @@ void game::generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2) {
         }
     }
 }
+
+void game::doDirection(int direction, std::ostream &ost, std::istream &ist) {
+
+    bool directionIncorrect = true;
+    while(directionIncorrect){
+
+        ost<<"Direction ?"<<endl;
+        ist>>direction;
+            if(direction == BAS || direction == BAS_DROITE || direction == BAS_GAUCHE || direction == GAUCHE
+               || direction == DROITE || direction == HAUT || direction == HAUT_GAUCHE || direction == HAUT_DROITE){
+                directionIncorrect = false;
+            }
+            else{
+                ost<<"Error : Veuillez saisir un chiffre entre 1 et 9"<<endl;
+            }
+        }
+}
+
