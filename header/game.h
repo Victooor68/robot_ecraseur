@@ -28,7 +28,7 @@ private:
 
     joueur joueurSelonDifficulte(char difficulte, std::string string);
 
-    void generationDesRobotsAleatoire(int robot);
+    void generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2);
 };
 
 

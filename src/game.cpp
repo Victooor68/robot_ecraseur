@@ -61,13 +61,17 @@ void game::init(){
 }
 
 void game::run(std::ostream &ost, std::istream &ist) {
-    int nbRobot;
+    int nbRobotGen1;
+    int nbRobotGen2;
     string nomJoueur;
     char difficulte;
     bool again=true;
 
-    ost<<"Combien de Robot ?"<<endl;
-    ist>>nbRobot;
+    ost<<"Combien de Robot generation 1 ?"<<endl;
+    ist>>nbRobotGen1;
+
+    ost<<"Combien de Robot generation 2 ?"<<endl;
+    ist>>nbRobotGen2;
 
     ost<<"Nom du joueur :"<<endl;
     ist>>nomJoueur;
@@ -78,7 +82,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
    d_joueur=joueurSelonDifficulte(difficulte, nomJoueur);
    d_terrain.ajoutDansTerrain(d_joueur);
 
-   generationDesRobotsAleatoire(nbRobot);
+   generationDesRobotsAleatoire(nbRobotGen1, nbRobotGen2);
 
    d_terrain.affiche(ost);
 
@@ -139,7 +143,8 @@ joueur game::joueurSelonDifficulte(char difficulte, std::string nomJoueur) {
     }
 }
 
-void game::generationDesRobotsAleatoire(int nbRobot) {
+void game::generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2) {
+    int nbRobot = nbRobotGen1 + nbRobotGen2;
     for(int i = 0; i<nbRobot; i++){
         bool impossible = true;
         while(impossible){
