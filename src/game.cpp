@@ -62,8 +62,7 @@ void game::init(){
 }
 
 void game::run(std::ostream &ost, std::istream &ist) {
-    int nbRobotGen1;
-    int nbRobotGen2;
+    int nbRobotGen1, nbRobotGen2;
     string nomJoueur;
     char difficulte;
     bool again=true;
