@@ -6,7 +6,7 @@
 TEST_CASE("Test de la classe robot_1gen")
 {
     SUBCASE("methode deplacement_Auto")
-    {/*
+    {
         SUBCASE("avec joueur plus haut que le robot")
         {
             robot_1gen robot{3,3};
@@ -14,10 +14,11 @@ TEST_CASE("Test de la classe robot_1gen")
 
             joueur* joueur = &j;
             robot.deplacement_Auto(joueur);
+            std::cout<<"Position : (x: "<<robot.getPosition().getPosX() <<", y: "<<robot.getPosition().getPosY();
 
-            position pos{3, 4};
+            position pos{3, 2};
             REQUIRE_EQ(robot.getPosition(), pos);
-        }*/
+        }
         SUBCASE("avec joueur plus bas que le robot")
         {
             robot_1gen robot{3,6};
@@ -26,7 +27,7 @@ TEST_CASE("Test de la classe robot_1gen")
             joueur* joueur = &j;
             robot.deplacement_Auto(joueur);
 
-            position pos{3, 5};
+            position pos{3, 7};
             REQUIRE_EQ(robot.getPosition(), pos);
         }
         SUBCASE("avec joueur plus à gauche du robot")

@@ -8,7 +8,7 @@ entiteMouvante::entiteMouvante(class position position):entite(position)
 {}
 
 void entiteMouvante::seDeplaceADroite() {
-    this->d_pos.seDeplaceDe(0,1);
+    this->d_pos.seDeplaceDe(1,0);
 }
 
 void entiteMouvante::seDeplaceAGauche() {
