@@ -17,6 +17,7 @@ public:
     void run(std::ostream & ost,std::istream & ist);
     void saveGame(std::string fileName);
     void restoreGame(std::string fileName);
+
 private:
     terrain d_terrain;
 

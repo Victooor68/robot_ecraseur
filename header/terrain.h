@@ -5,6 +5,8 @@
 #include "entiteMouvante.h"
 #include <vector>
 #include <iostream>
+#include "robot.h"
+#include "joueur.h"
 
 #define BAS_GAUCHE 1
 #define BAS 2
@@ -31,6 +33,8 @@ public:
     int hauteur() const;
     bool estDansTerrain(entiteMouvante* ent, int direction) const;
     void deplacement(int direction, entiteMouvante* ent);
+    void deplacementRobotGen1Auto(entite* r, entiteMouvante* j);
+    void deplacementRobotGen2Auto(entite* r, entiteMouvante* j);
     bool estVide(int x, int y) const;
     int getCase(int x, int y) const;
 

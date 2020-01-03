@@ -10,6 +10,7 @@
 #include "joueurNormal.h"
 #include "robot_1gen.h"
 #include "robot_2gen.h"
+#include "robot.h"
 
 const char DIFFICULTE_EXPERT = 'E';
 const char DIFFICULTE_NORMAL = 'N';
@@ -102,14 +103,22 @@ void game::run(std::ostream &ost, std::istream &ist) {
                    directionIncorrect = false;
                }
                else{
-                   ost<<"Error : Veuillez saisir un chiffre entre 1 et 9?"<<endl;
+                   ost<<"Error : Veuillez saisir un chiffre entre 1 et 9"<<endl;
                }
            }
            else{
-               ost<<"Error : Veuillez saisir un chiffre ?"<<endl;
+               ost<<"Error : Veuillez saisir un chiffre"<<endl;
            }
        }
        d_terrain.deplacement(direction,mouv);
+       for (int i = 0; i < d_entite.size(); ++i) {
+           if(d_entite.at(i).getType() == ROBOT_1GEN) {
+               d_terrain.deplacementRobotGen1Auto(&d_entite.at(i), mouv);
+           }
+           if(d_entite.at(i).getType() == ROBOT_2GEN) {
+               d_terrain.deplacementRobotGen1Auto(&d_entite.at(i), mouv);
+           }
+       }
        d_terrain.affiche(ost);
    }
 }
