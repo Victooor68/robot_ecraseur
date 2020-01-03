@@ -61,7 +61,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
    d_terrain.affiche(ost);
 
-   entiteMouvante* mouv = &d_joueur;
+   joueur* j = &d_joueur;
 
    while (again)
    {
@@ -84,10 +84,10 @@ void game::run(std::ostream &ost, std::istream &ist) {
                ost<<"Error : Veuillez saisir un chiffre"<<endl;
            }
        }
-       d_terrain.deplacement(direction,mouv);
-       for (int i = 0; i < d_entite.size(); ++i) {
-           if(d_entite.at(i).getType() == ROBOT_1GEN || d_entite.at(i).getType() == ROBOT_2GEN) {
-               d_terrain.deplacementRobotAuto(&d_entite.at(i), mouv);
+       d_terrain.deplacement(direction,j);
+       for (int i = 0; i < d_robot.size(); ++i) {
+           if(d_robot.at(i)->getType() == ROBOT_1GEN || d_robot.at(i)->getType() == ROBOT_2GEN) {
+               d_terrain.deplacementRobotAuto(d_robot.at(i), j);
            }
        }
        d_terrain.affiche(ost);
@@ -151,10 +151,12 @@ void game::generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2) {
                     robot_1gen r{x, y};
                     d_terrain.ajoutDansTerrain(r);
                     d_entite.push_back(r);
+                    d_robot.push_back(&r);
                 }
                 else{
                     robot_2gen r{x, y};
                     d_terrain.ajoutDansTerrain(r);
+                    d_robot.push_back(&r);
                     d_entite.push_back(r);
                 }
 
