@@ -37,8 +37,6 @@ public:
 private:
     std::vector<std::vector<int>> d_terrain;
 
-private:
-    
     void deplacement_DROITE(entiteMouvante* ent);
     void deplacement_GAUCHE(entiteMouvante* ent);
     void deplacement_HAUT(entiteMouvante* ent);
