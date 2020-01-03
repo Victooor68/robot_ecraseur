@@ -17,17 +17,14 @@ public:
     void run(std::ostream & ost,std::istream & ist);
     void saveGame(std::string fileName);
     void restoreGame(std::string fileName);
+
 private:
     terrain d_terrain;
-
     joueur d_joueur;
-
     std::vector<entite> d_entite;
-
+    std::vector<robot*> d_robot;
     std::vector<entite> restoreEntiteDeTerrain(terrain terrain);
-
     joueur joueurSelonDifficulte(char difficulte, std::string string);
-
     void generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2);
 };
 

@@ -4,6 +4,9 @@
 #include <entiteMouvante.h>
 #include "terrain.h"
 #include "../header/graphics.h"
+#include "entite.h"
+#include "robot.h"
+#include "joueur.h"
 
 
 using namespace std;
@@ -239,4 +242,10 @@ void terrain::ajoutDansTerrain(const entite& ent) {
 int terrain::getCase(int x, int y)const
 {
     return d_terrain.at(x).at(y);
+}
+
+void terrain::deplacementRobotAuto(robot *r, joueur *j) {
+    d_terrain.at(r->getPosition().getPosX()).at(r->getPosition().getPosY()) = VIDE;
+    r->deplacement_Auto(j);
+    d_terrain.at(r->getPosition().getPosX()).at(r->getPosition().getPosY()) = r->getType();
 }

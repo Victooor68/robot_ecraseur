@@ -36,31 +36,6 @@ void game::restoreGame(std::string fileName) {
     d_entite=restoreEntiteDeTerrain(d_terrain);
 }
 
-void game::init(){
-    double nbRobot;
-    string nomJoueur;
-    cout<<"Combien de robot ?"<<endl;
-    cin>>nbRobot;
-    cout<<"Nom du joueur :"<<endl;
-    cin>>nomJoueur;
-    joueur j{(d_terrain.largeur()/2), d_terrain.hauteur()/2, nomJoueur};
-    d_entite.push_back(j);
-    d_terrain.ajoutDansTerrain(j);
-    for(int i = 0; i<nbRobot; i++){
-        bool impossible = true;
-        while(impossible){
-            int x = rand() % ((d_terrain.largeur() - 0) + 1) + 0;
-            int y = rand() % ((d_terrain.hauteur() - 0) + 1) + 0;
-            if(d_terrain.estVide(x,y)) {
-                robot_1gen r{x, y};
-                d_terrain.ajoutDansTerrain(r);
-                d_entite.push_back(r);
-                impossible = false;
-            }
-        }
-    }
-}
-
 void game::run(std::ostream &ost, std::istream &ist) {
     int nbRobotGen1, nbRobotGen2;
     string nomJoueur;
@@ -86,7 +61,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
    d_terrain.affiche(ost);
 
-   entiteMouvante* mouv = &d_joueur;
+   joueur* j = &d_joueur;
 
    while (again)
    {
@@ -102,14 +77,19 @@ void game::run(std::ostream &ost, std::istream &ist) {
                    directionIncorrect = false;
                }
                else{
-                   ost<<"Error : Veuillez saisir un chiffre entre 1 et 9?"<<endl;
+                   ost<<"Error : Veuillez saisir un chiffre entre 1 et 9"<<endl;
                }
            }
            else{
-               ost<<"Error : Veuillez saisir un chiffre ?"<<endl;
+               ost<<"Error : Veuillez saisir un chiffre"<<endl;
            }
        }
-       d_terrain.deplacement(direction,mouv);
+       d_terrain.deplacement(direction,j);
+       for (int i = 0; i < d_robot.size(); ++i) {
+           if(d_robot.at(i)->getType() == ROBOT_1GEN || d_robot.at(i)->getType() == ROBOT_2GEN) {
+               d_terrain.deplacementRobotAuto(d_robot.at(i), j);
+           }
+       }
        d_terrain.affiche(ost);
    }
 }
@@ -171,10 +151,12 @@ void game::generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2) {
                     robot_1gen r{x, y};
                     d_terrain.ajoutDansTerrain(r);
                     d_entite.push_back(r);
+                    d_robot.push_back(&r);
                 }
                 else{
                     robot_2gen r{x, y};
                     d_terrain.ajoutDansTerrain(r);
+                    d_robot.push_back(&r);
                     d_entite.push_back(r);
                 }
 

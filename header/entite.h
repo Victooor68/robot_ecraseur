@@ -20,7 +20,6 @@ public:
     entite(int x, int y);
     entite(const position& position);
     ~entite();
-
     position getPosition() const;
     int getType() const;
 
