@@ -9,6 +9,7 @@
 #include "joueurExpert.h"
 #include "joueurNormal.h"
 #include "robot_1gen.h"
+#include "robot_2gen.h"
 
 const char DIFFICULTE_EXPERT = 'E';
 const char DIFFICULTE_NORMAL = 'N';
@@ -151,9 +152,17 @@ void game::generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2) {
             int x = rand() %d_terrain.largeur();
             int y = rand() %d_terrain.hauteur();
             if(d_terrain.estVide(x,y)) {
-                robot_1gen r{x, y};
-                d_terrain.ajoutDansTerrain(r);
-                d_entite.push_back(r);
+                if((nbRobotGen1 - i) >= 0){
+                    robot_1gen r{x, y};
+                    d_terrain.ajoutDansTerrain(r);
+                    d_entite.push_back(r);
+                }
+                else{
+                    robot_2gen r{x, y};
+                    d_terrain.ajoutDansTerrain(r);
+                    d_entite.push_back(r);
+                }
+
                 impossible = false;
             }
         }
