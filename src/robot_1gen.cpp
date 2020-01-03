@@ -4,6 +4,7 @@
 
 #include "position.hpp"
 #include <vector>
+#include <iostream>
 #include "../header/robot_1gen.h"
 
 
@@ -11,7 +12,7 @@ robot_1gen::robot_1gen(int x, int y):robot(x,y) {
     d_type= ROBOT_1GEN;
 }
 
-void robot_1gen::deplacement_Auto(joueur *j) {
+void robot_1gen::deplacement_Auto(joueur* j) {
     std::vector<int> scoreDeplacement;
 
     //index DROITE_DEPLACEMENT
@@ -32,7 +33,7 @@ void robot_1gen::deplacement_Auto(joueur *j) {
     scoreDeplacement.push_back(score_Deplacement_Haut);
     scoreDeplacement.push_back(score_Deplacement_Bas);
 
-    int meilleurScore = score_Deplacement_Haut;
+    int meilleurScore = score_Deplacement_Droite;
     int indexMeilleurScore = 0;
 
     for(int i=1; i < scoreDeplacement.size(); ++i)
