@@ -90,11 +90,12 @@ void game::run(std::ostream &ost, std::istream &ist) {
                break;
            case MOUVEMENT:
               direction=doDirection(ost, ist);
-               break;
+              d_terrain.deplacement(direction,j);
+              break;
        }
 
 
-       d_terrain.deplacement(direction,j);
+
        for (int i = 0; i < d_robot.size(); ++i) {
            if(d_robot.at(i)->getType() == ROBOT_1GEN || d_robot.at(i)->getType() == ROBOT_2GEN) {
                d_terrain.deplacementRobotAuto(d_robot.at(i), j);
