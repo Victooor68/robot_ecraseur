@@ -62,8 +62,7 @@ void game::init(){
 }
 
 void game::run(std::ostream &ost, std::istream &ist) {
-    int nbRobotGen1;
-    int nbRobotGen2;
+    int nbRobotGen1, nbRobotGen2;
     string nomJoueur;
     char difficulte;
     bool again=true;
@@ -91,9 +90,25 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
    while (again)
    {
+       bool directionIncorrect = true;
        int direction;
-       ost<<"Direction ?"<<endl;
-       ist>>direction;
+
+       while(directionIncorrect){
+           ost<<"Direction ?"<<endl;
+           ist>>direction;
+           if(isdigit(direction))
+           {
+               if(direction == BAS || direction == BAS_DROITE || direction == BAS_GAUCHE || direction == GAUCHE || direction == DROITE || direction == HAUT || direction == HAUT_GAUCHE || direction == HAUT_DROITE){
+                   directionIncorrect = false;
+               }
+               else{
+                   ost<<"Error : Veuillez saisir un chiffre entre 1 et 9?"<<endl;
+               }
+           }
+           else{
+               ost<<"Error : Veuillez saisir un chiffre ?"<<endl;
+           }
+       }
        d_terrain.deplacement(direction,mouv);
        d_terrain.affiche(ost);
    }
