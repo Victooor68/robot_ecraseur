@@ -10,7 +10,6 @@
 #include "joueurNormal.h"
 #include "robot_1gen.h"
 #include "robot_2gen.h"
-#include "robot.h"
 
 const char DIFFICULTE_EXPERT = 'E';
 const char DIFFICULTE_NORMAL = 'N';
@@ -35,31 +34,6 @@ void game::restoreGame(std::string fileName) {
     d_terrain=persistance::restore(myFile);
     myFile.close();
     d_entite=restoreEntiteDeTerrain(d_terrain);
-}
-
-void game::init(){
-    double nbRobot;
-    string nomJoueur;
-    cout<<"Combien de robot ?"<<endl;
-    cin>>nbRobot;
-    cout<<"Nom du joueur :"<<endl;
-    cin>>nomJoueur;
-    joueur j{(d_terrain.largeur()/2), d_terrain.hauteur()/2, nomJoueur};
-    d_entite.push_back(j);
-    d_terrain.ajoutDansTerrain(j);
-    for(int i = 0; i<nbRobot; i++){
-        bool impossible = true;
-        while(impossible){
-            int x = rand() % ((d_terrain.largeur() - 0) + 1) + 0;
-            int y = rand() % ((d_terrain.hauteur() - 0) + 1) + 0;
-            if(d_terrain.estVide(x,y)) {
-                robot_1gen r{x, y};
-                d_terrain.ajoutDansTerrain(r);
-                d_entite.push_back(r);
-                impossible = false;
-            }
-        }
-    }
 }
 
 void game::run(std::ostream &ost, std::istream &ist) {
