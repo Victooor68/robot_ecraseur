@@ -68,38 +68,38 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
    while (again)
    {
-       int direction;
        char commande;
 
-       ost<<"Commande ?"<<endl;
+       ost<<"Commande : "<<endl;
        ist>>commande;
 
-       switch (commande){
-
-           case QUIT_GAME:
-               return;
-           case SAVE:
-               ost<<"Nom du fichier ?";
-               ist>>nomFichier;
-               this->saveGame(nomFichier);
-               break;
-           case RESTORE:
-               ost<<"Nom du fichier ?";
-               ist>>nomFichier;
-               this->restoreGame(nomFichier);
-               break;
-           case MOUVEMENT:
-              direction=doDirection(ost, ist);
-               break;
-       }
-
-
-       d_terrain.deplacement(direction,j);
-       for (int i = 0; i < d_robot.size(); ++i) {
-           if(d_robot.at(i)->getType() == ROBOT_1GEN || d_robot.at(i)->getType() == ROBOT_2GEN) {
-               d_terrain.deplacementRobotAuto(d_robot.at(i), j);
+       if(d_terrain.deplacement(commande-48,j))
+       {
+           for (int i = 0; i < d_robot.size(); ++i)
+           {
+               if(d_robot.at(i)->getType() == ROBOT_1GEN || d_robot.at(i)->getType() == ROBOT_2GEN) {
+                   d_terrain.deplacementRobotAuto(d_robot.at(i), j);
+               }
+           }
+       } else
+       {
+           switch(commande)
+           {
+               case QUIT_GAME:
+                   return;
+               case SAVE:
+                   ost<<"Nom du fichier ?";
+                   ist>>nomFichier;
+                   this->saveGame(nomFichier);
+                   break;
+               case RESTORE:
+                   ost<<"Nom du fichier ?";
+                   ist>>nomFichier;
+                   this->restoreGame(nomFichier);
+                   break;
            }
        }
+
        d_terrain.affiche(ost);
    }
 }

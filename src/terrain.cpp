@@ -145,26 +145,44 @@ bool terrain::estDansTerrain(entiteMouvante* ent, int direction) const {
             break;
         case HAUT :
             if(ent->getPosition().getPosX()-1 >=0)
-                estDansTerrain =true;
+                estDansTerrain = true;
             break;
         case HAUT_DROITE :
             if(ent->getPosition().getPosX()-1 >=0 && ent->getPosition().getPosY()+1 <= hauteur())
-                estDansTerrain =true;
+                estDansTerrain = true;
             break;
     }
     return estDansTerrain;
 }
 
-void terrain::deplacement(int direction, entiteMouvante *ent) {
+bool terrain::deplacement(int direction, entiteMouvante *ent) {
     switch(direction) {
-        case DROITE : deplacement_DROITE(ent); break;
-        case GAUCHE : deplacement_GAUCHE(ent); break;
-        case HAUT : deplacement_HAUT(ent); break;
-        case BAS : deplacement_BAS(ent); break;
-        case HAUT_GAUCHE : deplacement_HAUT_GAUCHE(ent); break;
-        case HAUT_DROITE : deplacement_HAUT_DROITE(ent); break;
-        case BAS_GAUCHE : deplacement_BAS_GAUCHE(ent); break;
-        case BAS_DROITE : deplacement_BAS_DROITE(ent); break;
+        case DROITE :
+            deplacement_DROITE(ent);
+            return true;
+        case GAUCHE :
+            deplacement_GAUCHE(ent);
+            return true;
+        case HAUT :
+            deplacement_HAUT(ent);
+            return true;
+        case BAS :
+            deplacement_BAS(ent);
+            return true;
+        case HAUT_GAUCHE :
+            deplacement_HAUT_GAUCHE(ent);
+            return true;
+        case HAUT_DROITE :
+            deplacement_HAUT_DROITE(ent);
+            return true;
+        case BAS_GAUCHE :
+            deplacement_BAS_GAUCHE(ent);
+            return true;
+        case BAS_DROITE :
+            deplacement_BAS_DROITE(ent);
+            return true;
+        default:
+            return false;
     }
 }
 
