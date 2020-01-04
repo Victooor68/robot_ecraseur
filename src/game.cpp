@@ -74,10 +74,12 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
        if(d_terrain.deplacement(commande-48,j))
        {
+           // deplacement des robots
            for (int i = 0; i < d_robot.size(); ++i)
            {
                if(d_robot.at(i)->getType() == ROBOT_1GEN || d_robot.at(i)->getType() == ROBOT_2GEN) {
                    d_terrain.deplacementRobotAuto(d_robot.at(i), j);
+                   d_terrain.
                }
            }
        } else
