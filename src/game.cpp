@@ -62,7 +62,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
    d_terrain.affiche(ost);
 
-   joueur* j = &d_joueur;
+   joueur* joueur = &d_joueur;
 
    // déroulement du jeu
    while (again)
@@ -72,14 +72,14 @@ void game::run(std::ostream &ost, std::istream &ist) {
        ost<<"Commande : "<<endl;
        ist>>commande;
 
-       if(d_terrain.deplacement(commande-48,j))
+       if(d_terrain.deplacement(commande-48, joueur))
        {
            // deplacement des robots
-           for (int i = 0; i < d_robot.size(); ++i)
+           for(robot* robot : d_robot)
            {
-               d_terrain.deplacementRobotAuto(d_robot.at(i), j);
+               d_terrain.deplacement(robot->deplacement_Auto(joueur), robot);
            }
-       } else
+       }
        {
            switch(commande)
            {
