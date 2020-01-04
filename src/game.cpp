@@ -99,6 +99,10 @@ void game::run(std::ostream &ost, std::istream &ist) {
        }
 
        d_terrain.affiche(ost);
+
+       if(d_robot.size() == 0){ // fin du jeu, gagner car 0 robot
+           again = false;
+       }
    }
 }
 
