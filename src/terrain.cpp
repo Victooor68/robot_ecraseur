@@ -120,35 +120,35 @@ bool terrain::estDansTerrain(entiteMouvante* ent, int direction) const {
     bool estDansTerrain = false;
     switch(direction){
         case BAS_GAUCHE :
-            if(ent->getPosition().getPosX()+1 <= largeur() && ent->getPosition().getPosY()-1 >= 0)
+            if(ent->getPosition().getPosY()+1 < largeur() && ent->getPosition().getPosX()-1 >= 0)
                 estDansTerrain =true;
             break;
         case BAS :
-            if(ent->getPosition().getPosX()+1 <= largeur())
+            if(ent->getPosition().getPosY()+1 < largeur())
                 estDansTerrain = true;
             break;
         case BAS_DROITE :
-            if(ent->getPosition().getPosX()+1 <= largeur() && ent->getPosition().getPosY()+1 <= hauteur())
+            if(ent->getPosition().getPosY()+1 < largeur() && ent->getPosition().getPosX()+1 < hauteur())
                 estDansTerrain =true;
             break;
         case GAUCHE :
-            if(ent->getPosition().getPosY()-1 >= 0)
+            if(ent->getPosition().getPosX()-1 >= 0)
                 estDansTerrain =true;
             break;
         case DROITE :
-            if(ent->getPosition().getPosY()+1 < hauteur())
+            if(ent->getPosition().getPosX()+1 <hauteur())
                 estDansTerrain =true;
             break;
         case HAUT_GAUCHE :
-            if(ent->getPosition().getPosX()-1 >= 0 && ent->getPosition().getPosY()-1 >= 0)
+            if(ent->getPosition().getPosY()-1 >= 0 && ent->getPosition().getPosX()-1 >= 0)
                 estDansTerrain =true;
             break;
         case HAUT :
-            if(ent->getPosition().getPosX()-1 >=0)
+            if(ent->getPosition().getPosY()-1 >=0)
                 estDansTerrain = true;
             break;
         case HAUT_DROITE :
-            if(ent->getPosition().getPosX()-1 >=0 && ent->getPosition().getPosY()+1 <= hauteur())
+            if(ent->getPosition().getPosY()-1 >=0 && ent->getPosition().getPosX()+1 < hauteur())
                 estDansTerrain = true;
             break;
     }
@@ -271,5 +271,10 @@ int terrain::getCase(int x, int y)const
 void terrain::deplacementRobotAuto(robot *r, joueur *j) {
     d_terrain.at(r->getPosition().getPosX()).at(r->getPosition().getPosY()) = VIDE;
     r->deplacement_Auto(j);
-    d_terrain.at(r->getPosition().getPosX()).at(r->getPosition().getPosY()) = r->getType();
+    if((d_terrain.at(r->getPosition().getPosX()).at(r->getPosition().getPosY()) == ROBOT_1GEN) || (d_terrain.at(r->getPosition().getPosX()).at(r->getPosition().getPosY()) == ROBOT_2GEN)) {
+        d_terrain.at(r->getPosition().getPosX()).at(r->getPosition().getPosY()) = DEBRIS;
+    }
+    else{
+        d_terrain.at(r->getPosition().getPosX()).at(r->getPosition().getPosY()) = r->getType();
+    }
 }

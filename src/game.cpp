@@ -21,10 +21,8 @@ using namespace std;
 
 
 
-game::game() : d_terrain{terrain{10,10}},d_joueur{-1,-1,"default"} ,d_entite{}
-{
-   // init();
-}
+game::game() : d_terrain{terrain{10,10}},d_joueur{-1,-1,"default"} ,d_debris{}
+{}
 
 void game::saveGame(std::string fileName) {
     std::ofstream myFile(fileName);
@@ -36,7 +34,7 @@ void game::restoreGame(std::string fileName) {
     std::ifstream myFile(fileName);
     d_terrain=persistance::restore(myFile);
     myFile.close();
-    d_entite=restoreEntiteDeTerrain(d_terrain);
+    restoreEntiteDeTerrain(d_terrain);
 }
 
 void game::run(std::ostream &ost, std::istream &ist) {
@@ -66,6 +64,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
    joueur* j = &d_joueur;
 
+   // déroulement du jeu
    while (again)
    {
        char commande;
@@ -75,6 +74,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
        if(d_terrain.deplacement(commande-48,j))
        {
+           // deplacement des robots
            for (int i = 0; i < d_robot.size(); ++i)
            {
                d_terrain.deplacementRobotAuto(d_robot.at(i), j);
@@ -99,16 +99,17 @@ void game::run(std::ostream &ost, std::istream &ist) {
        }
 
        d_terrain.affiche(ost);
+
+       if(d_robot.size() == 0){ // fin du jeu, gagner car 0 robot
+           again = false;
+       }
    }
 }
 
 
 
-std::vector<entite> game::restoreEntiteDeTerrain(terrain terrain)
-{
-    std::vector<entite> entite;
-
-    for (int i = 0; i <terrain.hauteur() ; ++i) {
+void game::restoreEntiteDeTerrain(terrain terrain)
+{    for (int i = 0; i <terrain.hauteur() ; ++i) {
         for (int j = 0; j <terrain.largeur() ; ++j) {
             int typeCase=terrain.getCase(i,j);
             switch(typeCase){
@@ -128,7 +129,7 @@ std::vector<entite> game::restoreEntiteDeTerrain(terrain terrain)
         }
     }
 
-    return entite;
+
 }
 
 joueur game::joueurSelonDifficulte(char difficulte, std::string nomJoueur) {
@@ -158,14 +159,12 @@ void game::generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2) {
                 if((nbRobotGen1 - i) >= 0){
                     robot_1gen r{x, y};
                     d_terrain.ajoutDansTerrain(r);
-                    d_entite.push_back(r);
                     d_robot.push_back(&r);
                 }
                 else{
                     robot_2gen r{x, y};
                     d_terrain.ajoutDansTerrain(r);
                     d_robot.push_back(&r);
-                    d_entite.push_back(r);
                 }
 
                 impossible = false;

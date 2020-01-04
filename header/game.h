@@ -9,6 +9,7 @@
 #include "terrain.h"
 #include "entite.h"
 #include "joueur.h"
+#include "debris.h"
 
 class game {
 public:
@@ -21,9 +22,9 @@ public:
 private:
     terrain d_terrain;
     joueur d_joueur;
-    std::vector<entite> d_entite;
+    std::vector<debris> d_debris;
     std::vector<robot*> d_robot;
-    std::vector<entite> restoreEntiteDeTerrain(terrain terrain);
+    void restoreEntiteDeTerrain(terrain terrain);
     joueur joueurSelonDifficulte(char difficulte, std::string string);
     void generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2);
 
