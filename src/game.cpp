@@ -64,6 +64,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
    joueur* j = &d_joueur;
 
+   // déroulement du jeu
    while (again)
    {
        char commande;
