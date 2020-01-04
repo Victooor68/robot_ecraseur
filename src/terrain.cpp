@@ -268,13 +268,3 @@ int terrain::getCase(int x, int y)const
     return d_terrain.at(x).at(y);
 }
 
-void terrain::deplacementRobotAuto(robot *r, joueur *j) {
-    d_terrain.at(r->getPosition().getPosX()).at(r->getPosition().getPosY()) = VIDE;
-    r->deplacement_Auto(j);
-    if((d_terrain.at(r->getPosition().getPosX()).at(r->getPosition().getPosY()) == ROBOT_1GEN) || (d_terrain.at(r->getPosition().getPosX()).at(r->getPosition().getPosY()) == ROBOT_2GEN)) {
-        d_terrain.at(r->getPosition().getPosX()).at(r->getPosition().getPosY()) = DEBRIS;
-    }
-    else{
-        d_terrain.at(r->getPosition().getPosX()).at(r->getPosition().getPosY()) = r->getType();
-    }
-}
