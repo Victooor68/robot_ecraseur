@@ -5,7 +5,6 @@
 #ifndef ROBOT_ECRASEUR_ROBOT_2GEN_H
 #define ROBOT_ECRASEUR_ROBOT_2GEN_H
 
-
 #include "robot.h"
 
 class robot_2gen : public robot{

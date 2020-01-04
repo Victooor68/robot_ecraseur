@@ -54,10 +54,10 @@ void game::run(std::ostream &ost, std::istream &ist) {
     ost<<"Nom du joueur :"<<endl;
     ist>>nomJoueur;
 
-    ost<<"Difficulté Expert ou Normal(E or N) ?";
+    ost<<"Difficult Expert ou Normal (E or N) ?";
     ist>>difficulte;
 
-   d_joueur=joueurSelonDifficulte(difficulte, nomJoueur);
+   d_joueur = joueurSelonDifficulte(difficulte, nomJoueur);
    d_terrain.ajoutDansTerrain(d_joueur);
 
    generationDesRobotsAleatoire(nbRobotGen1, nbRobotGen2);
@@ -77,9 +77,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
        {
            for (int i = 0; i < d_robot.size(); ++i)
            {
-               if(d_robot.at(i)->getType() == ROBOT_1GEN || d_robot.at(i)->getType() == ROBOT_2GEN) {
-                   d_terrain.deplacementRobotAuto(d_robot.at(i), j);
-               }
+               d_terrain.deplacementRobotAuto(d_robot.at(i), j);
            }
        } else
        {
