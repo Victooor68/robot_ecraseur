@@ -12,7 +12,7 @@ class robot_1gen : public robot{
 public:
 
     robot_1gen(int x,int y);
-    virtual void deplacement_Auto(joueur* j) override;
+    virtual int deplacement_Auto(joueur* j) override;
 
 private:
 

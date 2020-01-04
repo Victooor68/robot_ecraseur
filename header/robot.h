@@ -22,7 +22,7 @@ class robot : public entiteMouvante{
 public:
 
     robot(int x,int y);
-    virtual void deplacement_Auto(joueur* j) = 0;
+    virtual int deplacement_Auto(joueur* j) = 0;
 private:
 
 };

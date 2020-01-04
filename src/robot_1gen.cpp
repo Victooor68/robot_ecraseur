@@ -5,13 +5,14 @@
 #include "position.hpp"
 #include <vector>
 #include "../header/robot_1gen.h"
+#include "terrain.h"
 
 
 robot_1gen::robot_1gen(int x, int y) : robot(x,y) {
     d_type= ROBOT_1GEN;
 }
 
-void robot_1gen::deplacement_Auto(joueur* j) {
+int robot_1gen::deplacement_Auto(joueur* j) {
     std::vector<int> scoreDeplacement;
 
     int score_Deplacement_Droite = abs(d_pos.getPosX() + 1 - j->getPosition().getPosX())
@@ -47,18 +48,18 @@ void robot_1gen::deplacement_Auto(joueur* j) {
     {
         case DROITE_DEPLACEMENT :
             seDeplaceADroite();
-            break;
+            return DROITE;
         case GAUCHE_DEPLACEMENT :
             seDeplaceAGauche();
-            break;
+            return GAUCHE;
         case HAUT_DEPLACEMENT :
             seDeplaceEnHaut();
-            break;
+            return HAUT;
         case BAS_DEPLACEMENT :
             seDeplaceEnBas();
-            break;
+            return BAS;
         default:
-            break;
+            return -1;
     }
 
 }
