@@ -79,7 +79,6 @@ void game::run(std::ostream &ost, std::istream &ist) {
            {
                if(d_robot.at(i)->getType() == ROBOT_1GEN || d_robot.at(i)->getType() == ROBOT_2GEN) {
                    d_terrain.deplacementRobotAuto(d_robot.at(i), j);
-                   d_terrain.
                }
            }
        } else
