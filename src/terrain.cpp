@@ -96,6 +96,9 @@ void terrain::afficheGraphique() const
                 case ROBOT_1GEN:
                     setcolor(RED);
                     break;
+                case ROBOT_2GEN:
+                    setcolor(BLUE);
+                    break;
                 case DEBRIS:
                     setcolor(YELLOW);
                     break;
