@@ -186,7 +186,6 @@ void game::generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2) {
 
     for(int i = 0; i<nbRobotGen1; i++){
         bool impossible = true;
-        int nombreDeRobot1gen=0;
         while(impossible){
             int x = rand() %d_terrain.largeur();
             int y = rand() %d_terrain.hauteur();
@@ -194,7 +193,6 @@ void game::generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2) {
                     robot_1gen r{x, y};
                     d_terrain.ajoutDansTerrain(r);
                     d_robot1.push_back(r);
-                    nombreDeRobot1gen++;
 
                 impossible = false;
             }
