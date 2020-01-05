@@ -15,7 +15,7 @@ TEST_CASE("Test de la classe robot_1gen")
 
             int direction = robot.deplacement_Auto(joueur);
 
-            REQUIRE_EQ(direction, BAS);
+            REQUIRE_EQ(direction, DROITE);
         }
         SUBCASE("avec joueur plus haut que le robot")
         {
@@ -25,7 +25,7 @@ TEST_CASE("Test de la classe robot_1gen")
 
             int direction = robot.deplacement_Auto(joueur);
 
-            REQUIRE_EQ(direction, HAUT);
+            REQUIRE_EQ(direction, GAUCHE);
         }
         SUBCASE("avec joueur plus à gauche du robot")
         {
@@ -35,7 +35,7 @@ TEST_CASE("Test de la classe robot_1gen")
 
             int direction = robot.deplacement_Auto(joueur);
 
-            REQUIRE_EQ(direction, GAUCHE);
+            REQUIRE_EQ(direction, HAUT);
         }
         SUBCASE("avec joueur plus à droite du robot")
         {
@@ -45,7 +45,7 @@ TEST_CASE("Test de la classe robot_1gen")
 
             int direction = robot.deplacement_Auto(joueur);
 
-            REQUIRE_EQ(direction, DROITE);
+            REQUIRE_EQ(direction, BAS);
         }
     }
 }

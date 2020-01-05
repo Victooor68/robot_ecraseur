@@ -8,14 +8,14 @@
 #include "robot.h"
 #include "joueur.h"
 
-#define BAS_GAUCHE 9
-#define BAS 6
+#define HAUT_DROITE 9
+#define DROITE 6
 #define BAS_DROITE 3
-#define GAUCHE 8
-#define DROITE 2
+#define HAUT 8
+#define BAS 2
 #define HAUT_GAUCHE 7
-#define HAUT 4
-#define HAUT_DROITE 1
+#define GAUCHE 4
+#define BAS_DROIT 1
 
 
 class terrain

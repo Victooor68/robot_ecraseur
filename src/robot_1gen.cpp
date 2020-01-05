@@ -47,13 +47,13 @@ int robot_1gen::deplacement_Auto(joueur* j) {
     switch(indexMeilleurScore)
     {
         case DROITE_DEPLACEMENT :
-            return DROITE;
-        case GAUCHE_DEPLACEMENT :
-            return GAUCHE;
-        case HAUT_DEPLACEMENT :
-            return HAUT;
-        case BAS_DEPLACEMENT :
             return BAS;
+        case GAUCHE_DEPLACEMENT :
+            return HAUT;
+        case HAUT_DEPLACEMENT :
+            return GAUCHE;
+        case BAS_DEPLACEMENT :
+            return DROITE;
         default:
             return -1;
     }

@@ -89,8 +89,10 @@ void game::run(std::ostream &ost, std::istream &ist) {
         ost<<"Commande : "<<endl;
         ist>>commande;
 
-        if(d_terrain.deplacement(commande-48,joueur))
+        if((isdigit(commande)))
         {
+            
+            d_terrain.deplacement(commande-48,joueur);
             score+= 5;
             // deplacement des robots
             for (int i = 0; i < d_robot1.size(); ++i)
@@ -107,6 +109,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
            {
                case QUIT_GAME:
                    again= false;
+                   break;
                case SAVE:
                    ost<<"Nom du fichier ?";
                    ist>>nomFichier;

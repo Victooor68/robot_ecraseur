@@ -123,11 +123,11 @@ terrain::terrain(std::vector<std::vector<int>> terrain):d_terrain(terrain)
 bool terrain::estDansTerrain(entiteMouvante* ent, int direction) const {
     bool estDansTerrain = false;
     switch(direction){
-        case BAS_GAUCHE :
+        case HAUT_DROITE :
             if(ent->getPosition().getPosY()+1 < largeur() && ent->getPosition().getPosX()-1 >= 0)
                 estDansTerrain =true;
             break;
-        case BAS :
+        case DROITE :
             if(ent->getPosition().getPosY()+1 < largeur())
                 estDansTerrain = true;
             break;
@@ -135,11 +135,11 @@ bool terrain::estDansTerrain(entiteMouvante* ent, int direction) const {
             if(ent->getPosition().getPosY()+1 < largeur() && ent->getPosition().getPosX()+1 < hauteur())
                 estDansTerrain =true;
             break;
-        case GAUCHE :
+        case HAUT :
             if(ent->getPosition().getPosX()-1 >= 0)
                 estDansTerrain =true;
             break;
-        case DROITE :
+        case BAS :
             if(ent->getPosition().getPosX()+1 <hauteur())
                 estDansTerrain =true;
             break;
@@ -147,11 +147,11 @@ bool terrain::estDansTerrain(entiteMouvante* ent, int direction) const {
             if(ent->getPosition().getPosY()-1 >= 0 && ent->getPosition().getPosX()-1 >= 0)
                 estDansTerrain =true;
             break;
-        case HAUT :
+        case GAUCHE :
             if(ent->getPosition().getPosY()-1 >=0)
                 estDansTerrain = true;
             break;
-        case HAUT_DROITE :
+        case BAS_DROIT :
             if(ent->getPosition().getPosY()-1 >=0 && ent->getPosition().getPosX()+1 < hauteur())
                 estDansTerrain = true;
             break;
@@ -161,25 +161,25 @@ bool terrain::estDansTerrain(entiteMouvante* ent, int direction) const {
 
 bool terrain::deplacement(int direction, entiteMouvante *ent) {
     switch(direction) {
-        case DROITE :
+        case BAS :
             deplacement_DROITE(ent);
             return true;
-        case GAUCHE :
+        case HAUT :
             deplacement_GAUCHE(ent);
             return true;
-        case HAUT :
+        case GAUCHE :
             deplacement_HAUT(ent);
             return true;
-        case BAS :
+        case DROITE :
             deplacement_BAS(ent);
             return true;
         case HAUT_GAUCHE :
             deplacement_HAUT_GAUCHE(ent);
             return true;
-        case HAUT_DROITE :
+        case BAS_DROIT :
             deplacement_HAUT_DROITE(ent);
             return true;
-        case BAS_GAUCHE :
+        case HAUT_DROITE :
             deplacement_BAS_GAUCHE(ent);
             return true;
         case BAS_DROITE :
@@ -192,7 +192,7 @@ bool terrain::deplacement(int direction, entiteMouvante *ent) {
 
 
 void terrain::deplacement_DROITE(entiteMouvante *ent) {
-    if(estDansTerrain(ent, DROITE)) {
+    if(estDansTerrain(ent, BAS)) {
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = VIDE;
         ent->seDeplaceADroite();
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = ent->getType();
@@ -200,7 +200,7 @@ void terrain::deplacement_DROITE(entiteMouvante *ent) {
 }
 
 void terrain::deplacement_GAUCHE(entiteMouvante *ent) {
-    if(estDansTerrain(ent, GAUCHE)) {
+    if(estDansTerrain(ent, HAUT)) {
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = VIDE;
         ent->seDeplaceAGauche();
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = ent->getType();
@@ -208,7 +208,7 @@ void terrain::deplacement_GAUCHE(entiteMouvante *ent) {
 }
 
 void terrain::deplacement_BAS(entiteMouvante *ent) {
-    if(estDansTerrain(ent, BAS)) {
+    if(estDansTerrain(ent, DROITE)) {
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = VIDE;
         ent->seDeplaceEnBas();
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = ent->getType();
@@ -216,7 +216,7 @@ void terrain::deplacement_BAS(entiteMouvante *ent) {
 }
 
 void terrain::deplacement_HAUT(entiteMouvante *ent) {
-    if(estDansTerrain(ent, HAUT)) {
+    if(estDansTerrain(ent, GAUCHE)) {
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = VIDE;
         ent->seDeplaceEnHaut();
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = ent->getType();
@@ -232,7 +232,7 @@ void terrain::deplacement_HAUT_GAUCHE(entiteMouvante *ent) {
 }
 
 void terrain::deplacement_HAUT_DROITE(entiteMouvante *ent) {
-    if(estDansTerrain(ent, HAUT_DROITE && ent->getType()!=JOUEUR_EXPERT)) {
+    if(estDansTerrain(ent, BAS_DROIT && ent->getType() != JOUEUR_EXPERT)) {
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = VIDE;
         ent->seDeplaceEnHautADroite();
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = ent->getType();
@@ -240,7 +240,7 @@ void terrain::deplacement_HAUT_DROITE(entiteMouvante *ent) {
 }
 
 void terrain::deplacement_BAS_GAUCHE(entiteMouvante *ent) {
-    if(estDansTerrain(ent, BAS_GAUCHE && ent->getType()!=JOUEUR_EXPERT)) {
+    if(estDansTerrain(ent, HAUT_DROITE && ent->getType() != JOUEUR_EXPERT)) {
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = VIDE;
         ent->seDeplaceEnBasAGauche();
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = ent->getType();
