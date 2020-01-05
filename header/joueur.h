@@ -13,8 +13,10 @@ class joueur : public entiteMouvante {
 public:
     joueur(int x, int y, std::string nom);
     std::string Nom() const;
+    bool enVie()const;
 private:
     std::string d_name;
+    bool d_enVie;
 };
 
 

@@ -109,9 +109,11 @@ void game::run(std::ostream &ost, std::istream &ist) {
            }
        }
 
+
+
        d_terrain.affiche(ost);
 
-       if(d_robot1.size() == 0&&d_robot2.size()==0){ // fin du jeu, gagner car 0 robot
+       if(d_robot1.size() == 0&&d_robot2.size()==0||d_joueur.enVie()==false){ // fin du jeu, gagner car 0 robot
            again = false;
        }
    }
