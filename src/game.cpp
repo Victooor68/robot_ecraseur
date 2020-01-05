@@ -77,7 +77,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
            // deplacement des robots
            for(robot* robot : d_robot)
            {
-               d_terrain.deplacement(robot->deplacement_Auto(joueur), robot);
+               //d_terrain.deplacement(robot->deplacement_Auto(joueur), robot);
            }
        }
        {
