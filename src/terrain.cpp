@@ -286,7 +286,11 @@ bool terrain::collisionRobot(robot* robot)
     }
 }
 int terrain::typeSelonDirection(int direction, position entite) {
-    int typeCaseDansDirection;
+    int typeCaseDansDirection=VIDE;
+    if (entite.getPosX()+1>=this->largeur()||entite.getPosX()-1<0||entite.getPosY()+1>=this->hauteur()||entite.getPosY()-1<0){
+        return typeCaseDansDirection;
+
+    }
     switch (direction){
         case HAUT_DROITE :
             typeCaseDansDirection=this->getCase(entite.getPosX()-1,entite.getPosY()+1);
