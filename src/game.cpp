@@ -21,7 +21,7 @@ using namespace std;
 
 
 
-game::game() : d_terrain{terrain{10,10}},d_joueur{-1,-1,"default"} ,d_debris{}
+game::game() : d_terrain{terrain{10,10}},d_joueur{-1,-1,"default"} ,d_debris{},d_robot1{},d_robot2{}
 {}
 
 void game::saveGame(std::string fileName) {
@@ -73,11 +73,13 @@ void game::run(std::ostream &ost, std::istream &ist) {
         ist>>commande;
 
         if(d_terrain.deplacement(commande-48,joueur))
-        {
+        { robot_1gen* r = &d_robot1.at(0);
+
             // deplacement des robots
-            for (int i = 0; i < d_robot.size(); ++i)
+            for (int i = 0; i < d_robot1.size(); ++i)
             {
-                d_terrain.deplacement(d_robot.at(i)->deplacement_Auto(joueur), d_robot.at(i));
+                d_terrain.deplacement(DROITE,r );
+               // d_terrain.deplacement(d_robot.at(i)->deplacement_Auto(joueur), d_robot.at(i));
             }
         } else
        {
@@ -100,7 +102,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
        d_terrain.affiche(ost);
 
-       if(d_robot.size() == 0){ // fin du jeu, gagner car 0 robot
+       if(d_robot1.size() == 0){ // fin du jeu, gagner car 0 robot
            again = false;
        }
    }
@@ -159,12 +161,12 @@ void game::generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2) {
                 if((nbRobotGen1 - i) >= 0){
                     robot_1gen r{x, y};
                     d_terrain.ajoutDansTerrain(r);
-                    d_robot.push_back(&r);
+                    d_robot1.push_back(r);
                 }
                 else{
                     robot_2gen r{x, y};
                     d_terrain.ajoutDansTerrain(r);
-                    d_robot.push_back(&r);
+                    d_robot2.push_back(r);
                 }
 
                 impossible = false;
