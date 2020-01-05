@@ -64,7 +64,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
     ost<<"Nom du joueur :"<<endl;
     ist>>nomJoueur;
 
-    ost<<"Difficulte : expert ou normal (E or N) ?";
+    ost<<"Difficulte : expert ou normal (E or N) ?"<<endl;
     ist>>difficulte;
 
    d_joueur = joueurSelonDifficulte(difficulte, nomJoueur);
@@ -119,8 +119,6 @@ void game::run(std::ostream &ost, std::istream &ist) {
                    break;
            }
        }
-
-
 
        d_terrain.affiche(ost);
 
@@ -229,6 +227,3 @@ void game::generationAleatoireDebris(int nbDebris) {
         }
     }
 }
-
-
-

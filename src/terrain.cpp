@@ -224,7 +224,7 @@ void terrain::deplacement_HAUT(entiteMouvante *ent) {
 }
 
 void terrain::deplacement_HAUT_GAUCHE(entiteMouvante *ent) {
-    if(estDansTerrain(ent, HAUT_GAUCHE)) {
+    if(estDansTerrain(ent, HAUT_GAUCHE && ent->getType()!=JOUEUR_EXPERT)) {
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = VIDE;
         ent->seDeplaceEnHautAGauche();
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = ent->getType();
@@ -232,7 +232,7 @@ void terrain::deplacement_HAUT_GAUCHE(entiteMouvante *ent) {
 }
 
 void terrain::deplacement_HAUT_DROITE(entiteMouvante *ent) {
-    if(estDansTerrain(ent, HAUT_DROITE)) {
+    if(estDansTerrain(ent, HAUT_DROITE && ent->getType()!=JOUEUR_EXPERT)) {
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = VIDE;
         ent->seDeplaceEnHautADroite();
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = ent->getType();
@@ -240,7 +240,7 @@ void terrain::deplacement_HAUT_DROITE(entiteMouvante *ent) {
 }
 
 void terrain::deplacement_BAS_GAUCHE(entiteMouvante *ent) {
-    if(estDansTerrain(ent, BAS_GAUCHE)) {
+    if(estDansTerrain(ent, BAS_GAUCHE && ent->getType()!=JOUEUR_EXPERT)) {
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = VIDE;
         ent->seDeplaceEnBasAGauche();
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = ent->getType();
@@ -248,7 +248,7 @@ void terrain::deplacement_BAS_GAUCHE(entiteMouvante *ent) {
 }
 
 void terrain::deplacement_BAS_DROITE(entiteMouvante *ent) {
-    if(estDansTerrain(ent, BAS_DROITE)) {
+    if(estDansTerrain(ent, BAS_DROITE && ent->getType()!=JOUEUR_EXPERT)) {
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = VIDE;
         ent->seDeplaceEnBasADroite();
         d_terrain.at(ent->getPosition().getPosX()).at(ent->getPosition().getPosY()) = ent->getType();

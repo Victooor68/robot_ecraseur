@@ -34,6 +34,7 @@ private:
     int doDirection( std::ostream &ostream, std::istream &istream);
 
     void generationAleatoireDebris(int debris);
+
 };
 
 
