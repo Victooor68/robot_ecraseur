@@ -287,8 +287,3 @@ bool terrain::collisionRobot(robot* robot)
 }
 
 
-bool terrain::deplacementRobotAuto(robot* robot, joueur *joueur) {
-    d_terrain.at(robot->getPosition().getPosX()).at(robot->getPosition().getPosY()) = VIDE;
-    int direction = robot->deplacement_Auto(joueur);
-    return collisionRobot(robot);
-}
