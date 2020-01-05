@@ -73,13 +73,16 @@ void game::run(std::ostream &ost, std::istream &ist) {
         ist>>commande;
 
         if(d_terrain.deplacement(commande-48,joueur))
-        { robot_1gen* r = &d_robot1.at(0);
+        {
 
             // deplacement des robots
             for (int i = 0; i < d_robot1.size(); ++i)
             {
-                d_terrain.deplacement(DROITE,r );
-               // d_terrain.deplacement(d_robot.at(i)->deplacement_Auto(joueur), d_robot.at(i));
+               d_terrain.deplacement(d_robot1.at(i).deplacement_Auto(joueur), &d_robot1.at(i));
+            }
+            for (int i = 0; i < d_robot2.size(); ++i)
+            {
+                d_terrain.deplacement(d_robot2.at(i).deplacement_Auto(joueur), &d_robot2.at(i));
             }
         } else
        {
