@@ -39,21 +39,32 @@ void game::restoreGame(std::string fileName) {
 }
 
 void game::run(std::ostream &ost, std::istream &ist) {
-    int nbRobotGen1, nbRobotGen2,nbDebris;
+    int nbRobotGen1, nbRobotGen2,nbDebris, score;
     string nomJoueur,nomFichier;
     char difficulte;
     bool again=true;
 
-    ost<<"Combien de Robot generation 1 ?"<<endl;
+    ost<<"\n";
+    ost<<"---------------------------------------------------------"<<endl;
+    ost<<"---------------  ROBOT ECRASEUR GAME 1.0  ---------------"<<endl;
+    ost<<"---------------------------------------------------------"<<endl;
+
+    ost<<"\nCommandes :"<<endl;
+    ost<<"\t- Utilisez le pave numerique pour vous deplacer"<<endl;
+    ost<<"\t- Quit game : Q"<<endl;
+    ost<<"\t- Save game : S"<<endl;
+    ost<<"\t- Restore game : R"<<endl;
+
+    ost<<"\nCombien de robot generation 1 ?"<<endl;
     ist>>nbRobotGen1;
 
-    ost<<"Combien de Robot generation 2 ?"<<endl;
+    ost<<"Combien de robot generation 2 ?"<<endl;
     ist>>nbRobotGen2;
 
     ost<<"Nom du joueur :"<<endl;
     ist>>nomJoueur;
 
-    ost<<"Difficult Expert ou Normal (E or N) ?";
+    ost<<"Difficulte : expert ou normal (E or N) ?";
     ist>>difficulte;
 
    d_joueur = joueurSelonDifficulte(difficulte, nomJoueur);
