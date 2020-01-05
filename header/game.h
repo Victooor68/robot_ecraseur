@@ -32,6 +32,8 @@ private:
     void generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2);
 
     int doDirection( std::ostream &ostream, std::istream &istream);
+
+    void generationAleatoireDebris(int debris);
 };
 
 

@@ -10,6 +10,7 @@
 #include "joueurNormal.h"
 #include "robot_1gen.h"
 #include "robot_2gen.h"
+#include "debris.h"
 
 const char DIFFICULTE_EXPERT = 'E';
 const char DIFFICULTE_NORMAL = 'N';
@@ -38,7 +39,7 @@ void game::restoreGame(std::string fileName) {
 }
 
 void game::run(std::ostream &ost, std::istream &ist) {
-    int nbRobotGen1, nbRobotGen2;
+    int nbRobotGen1, nbRobotGen2,nbDebris;
     string nomJoueur,nomFichier;
     char difficulte;
     bool again=true;
@@ -57,6 +58,11 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
    d_joueur = joueurSelonDifficulte(difficulte, nomJoueur);
    d_terrain.ajoutDansTerrain(d_joueur);
+
+   ost<<"Combien de debris sur le terrain ? "<<endl;
+   ist>>nbDebris;
+
+   generationAleatoireDebris(nbDebris);
 
    generationDesRobotsAleatoire(nbRobotGen1, nbRobotGen2);
 
@@ -143,27 +149,6 @@ void game::restoreEntiteDeTerrain(terrain terrain)
            }
         }
     }
-
-    /*switch(typeCase){
-                   case VIDE :
-                       break;
-                   case ROBOT_1GEN :
-                       break;
-                   case ROBOT_2GEN :
-                       break;
-                   case JOUEUR_NORMAL :
-                       joueurNormal jn {0, 0, d_joueur.Nom()};
-                       jn.getPosition().seDeplaceEn(i, j);
-                       d_joueur=jn;
-                       break;
-                   case JOUEUR_EXPERT :
-                       je.getPosition().seDeplaceEn(i,j);
-                       d_joueur=je;
-                       break;
-                   case DEBRIS :
-                       break;
-
-               }*/
 }
 
 joueur game::joueurSelonDifficulte(char difficulte, std::string nomJoueur) {
@@ -213,6 +198,24 @@ void game::generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2) {
             }
         }
     }
+
+void game::generationAleatoireDebris(int nbDebris) {
+
+    for(int i = 0; i<nbDebris; i++){
+        bool impossible = true;
+        while(impossible){
+            int x = rand() %d_terrain.largeur();
+            int y = rand() %d_terrain.hauteur();
+            if(d_terrain.estVide(x,y)) {
+                debris debris {x,y};
+                d_terrain.ajoutDansTerrain(debris);
+                d_debris.push_back(debris);
+
+                impossible = false;
+            }
+        }
+    }
+}
 
 
 
