@@ -50,7 +50,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
     ost<<"---------------------------------------------------------"<<endl;
 
     ost<<"\nCommandes :"<<endl;
-    ost<<"\t- Utilisez le pave numerique pour vous deplacer"<<endl;
+    ost<<"\t- Utilisez le pave numerique pour vous deplacez"<<endl;
     ost<<"\t- Quit game : Q"<<endl;
     ost<<"\t- Save game : S"<<endl;
     ost<<"\t- Restore game : R"<<endl;
@@ -91,7 +91,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
         if(d_terrain.deplacement(commande-48,joueur))
         {
-
+            score+= 5;
             // deplacement des robots
             for (int i = 0; i < d_robot1.size(); ++i)
             {
@@ -120,14 +120,26 @@ void game::run(std::ostream &ost, std::istream &ist) {
            }
        }
 
-
-
        d_terrain.affiche(ost);
 
-       if(d_robot1.size() == 0&&d_robot2.size()==0||d_joueur.enVie()==false){ // fin du jeu, gagner car 0 robot
+       if(d_robot1.size() == 0 && d_robot2.size()==0) // fin du jeu, gagner car 0 robot
+       {
            again = false;
        }
-   }
+    }
+
+    ost<<"\n"<<endl;
+    ost<<"---------------------------------------------------------"<<endl;
+    if(joueur->enVie())
+    {
+        ost<<"--------------------  !!! YOU WIN !!! -------------------"<<endl;
+    } else
+    {
+        ost<<"-------------------  !!! GAME OVER !!! ------------------"<<endl;
+    }
+    ost<<"---------------------------------------------------------"<<endl;
+    ost<<"|| Score : "<<score<<" ||";
+
 }
 
 
