@@ -91,8 +91,8 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
         if((isdigit(commande)))
         {
-            
-            d_terrain.deplacement(commande-48,joueur);
+            int direction = commande-48;
+            d_terrain.deplacement(direction,joueur);
             score+= 5;
             // deplacement des robots
             for (int i = 0; i < d_robot1.size(); ++i)
