@@ -76,7 +76,7 @@ int robot_2gen::deplacement_Auto(joueur *j) {
         case HAUT_GAUCHE_DEPLACEMENT:
             return HAUT_GAUCHE;
         case HAUT_DROITE_DEPLACEMENT:
-            return BAS_DROIT;
+            return BAS_GAUCHE;
         default:
             return -1;
     }

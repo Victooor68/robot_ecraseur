@@ -92,6 +92,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
         if((isdigit(commande)))
         {
             int direction = commande-48;
+            collisionApresDeplacement(direction,joueur);
             d_terrain.deplacement(direction,joueur);
             score+= 5;
             // deplacement des robots
@@ -244,3 +245,14 @@ void game::generationAleatoireDebris(int nbDebris) {
         }
     }
 }
+
+void game::collisionApresDeplacement(int direction, joueur *joueur) {
+    int typeCaseDansDirection= d_terrain.typeSelonDirection(direction, joueur->getPosition());
+
+    if (typeCaseDansDirection!=VIDE){
+
+    }
+
+}
+
+

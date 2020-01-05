@@ -15,7 +15,7 @@
 #define BAS 2
 #define HAUT_GAUCHE 7
 #define GAUCHE 4
-#define BAS_DROIT 1
+#define BAS_GAUCHE 1
 
 
 class terrain
@@ -36,6 +36,8 @@ public:
     bool estVide(int x, int y) const;
     int getCase(int x, int y) const;
 
+
+    int typeSelonDirection(int direction, position pJoueur);
 
 private:
     std::vector<std::vector<int>> d_terrain;
