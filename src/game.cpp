@@ -98,11 +98,15 @@ void game::run(std::ostream &ost, std::istream &ist) {
             // deplacement des robots
             for (int i = 0; i < d_robot1.size(); ++i)
             {
-               d_terrain.deplacement(d_robot1.at(i).deplacement_Auto(joueur), &d_robot1.at(i));
+                direction=d_robot1.at(i).deplacement_Auto(joueur);
+                collisionApresDeplcement(direction, &d_robot1.at(i), i);
+               d_terrain.deplacement(direction, &d_robot1.at(i));
             }
             for (int i = 0; i < d_robot2.size(); ++i)
             {
-                d_terrain.deplacement(d_robot2.at(i).deplacement_Auto(joueur), &d_robot2.at(i));
+                direction=d_robot2.at(i).deplacement_Auto(joueur);
+                collisionApresDeplcement(direction, &d_robot2.at(i), i);
+                d_terrain.deplacement(direction, &d_robot2.at(i));
             }
         } else
        {
@@ -126,7 +130,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
        d_terrain.affiche(ost);
 
-       if(d_robot1.size() == 0 && d_robot2.size()==0) // fin du jeu, gagner car 0 robot
+       if(d_robot1.size() == 0 && d_robot2.size()==0||!d_joueur.enVie()) // fin du jeu, gagner car 0 robot
        {
            again = false;
        }
@@ -250,9 +254,19 @@ void game::collisionApresDeplacement(int direction, joueur *joueur) {
     int typeCaseDansDirection= d_terrain.typeSelonDirection(direction, joueur->getPosition());
 
     if (typeCaseDansDirection!=VIDE){
-
+    joueur->meurt();
     }
 
+}
+
+void game::collisionApresDeplcement(int direction, robot *gen, int i) {
+    int typeCaseDansDirection= d_terrain.typeSelonDirection(direction, gen->getPosition());
+
+    if (typeCaseDansDirection==ROBOT_2GEN||typeCaseDansDirection==ROBOT_1GEN){
+
+    } else if (typeCaseDansDirection==DEBRIS){
+
+    }
 }
 
 

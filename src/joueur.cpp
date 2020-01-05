@@ -17,3 +17,7 @@ std::string joueur::Nom()const
 bool  joueur::enVie()const {
     return d_enVie;
 }
+
+void joueur::meurt() {
+    d_enVie=false;
+}

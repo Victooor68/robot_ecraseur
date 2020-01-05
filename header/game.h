@@ -36,6 +36,7 @@ private:
     void collisionApresDeplacement(int direction, joueur *pJoueur);
 
 
+    void collisionApresDeplcement(int direction, robot *gen, int i);
 };
 
 

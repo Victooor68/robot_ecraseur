@@ -289,28 +289,28 @@ int terrain::typeSelonDirection(int direction, position entite) {
     int typeCaseDansDirection;
     switch (direction){
         case HAUT_DROITE :
-            typeCaseDansDirection=this->getCase(entite.getPosX(),entite.getPosY()-1);
+            typeCaseDansDirection=this->getCase(entite.getPosX()-1,entite.getPosY()+1);
             break;
         case DROITE :
-            typeCaseDansDirection=this->getCase(entite.getPosX()+1,entite.getPosY());
+            typeCaseDansDirection=this->getCase(entite.getPosX(),entite.getPosY()+1);
             break;
         case BAS_DROITE :
             typeCaseDansDirection=this->getCase(entite.getPosX()+1,entite.getPosY()+1);
             break;
         case HAUT :
-            typeCaseDansDirection=this->getCase(entite.getPosX(),entite.getPosY()-1);
+            typeCaseDansDirection=this->getCase(entite.getPosX()-1,entite.getPosY());
             break;
         case BAS :
-            typeCaseDansDirection=this->getCase(entite.getPosX(),entite.getPosY()+1);
+            typeCaseDansDirection=this->getCase(entite.getPosX()+1,entite.getPosY());
             break;
         case HAUT_GAUCHE :
             typeCaseDansDirection=this->getCase(entite.getPosX()-1,entite.getPosY()-1);
             break;
         case GAUCHE :
-            typeCaseDansDirection=this->getCase(entite.getPosX()-1,entite.getPosY());
+            typeCaseDansDirection=this->getCase(entite.getPosX(),entite.getPosY()-1);
             break;
         case BAS_GAUCHE :
-            typeCaseDansDirection=this->getCase(entite.getPosX()-1,entite.getPosY()+1);
+            typeCaseDansDirection=this->getCase(entite.getPosX()+1,entite.getPosY()-1);
             break;
     }
     return typeCaseDansDirection;
