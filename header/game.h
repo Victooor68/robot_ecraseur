@@ -10,6 +10,8 @@
 #include "entite.h"
 #include "joueur.h"
 #include "debris.h"
+#include "robot_1gen.h"
+#include "robot_2gen.h"
 
 class game {
 public:
@@ -23,7 +25,8 @@ private:
     terrain d_terrain;
     joueur d_joueur;
     std::vector<debris> d_debris;
-    std::vector<robot*> d_robot;
+    std::vector<robot_1gen> d_robot1;
+    std::vector<robot_2gen> d_robot2;
     void restoreEntiteDeTerrain(terrain terrain);
     joueur joueurSelonDifficulte(char difficulte, std::string string);
     void generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2);

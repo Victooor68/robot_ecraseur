@@ -21,10 +21,10 @@ int robot_2gen::deplacement_Auto(joueur *j) {
                                    + abs(d_pos.getPosY() - j->getPosition().getPosY());
 
     int score_Deplacement_Haut = abs(d_pos.getPosX() - j->getPosition().getPosX())
-                                 + abs(d_pos.getPosY() + 1 - j->getPosition().getPosY());
+                                 + abs(d_pos.getPosY() - 1 - j->getPosition().getPosY());
 
     int score_Deplacement_Bas = abs(d_pos.getPosX() - j->getPosition().getPosX())
-                                + abs(d_pos.getPosY() -1 - j->getPosition().getPosY());
+                                + abs(d_pos.getPosY() +1 - j->getPosition().getPosY());
 
     int score_Deplacement_Bas_Gauche = abs(d_pos.getPosX() -1 - j->getPosition().getPosX())
                                        + abs(d_pos.getPosY() +1 - j->getPosition().getPosY());
@@ -50,7 +50,7 @@ int robot_2gen::deplacement_Auto(joueur *j) {
     int meilleurScore = score_Deplacement_Droite;
     int indexMeilleurScore = 0;
 
-    for(int i=1; i < scoreDeplacement.size(); ++i)
+    for(int i=0; i < scoreDeplacement.size(); ++i)
     {
         if(meilleurScore > scoreDeplacement.at(i))
         {
@@ -62,30 +62,30 @@ int robot_2gen::deplacement_Auto(joueur *j) {
     switch(indexMeilleurScore)
     {
         case DROITE_DEPLACEMENT :
-            seDeplaceADroite();
+            //seDeplaceADroite();
             return DROITE;
         case GAUCHE_DEPLACEMENT :
-            seDeplaceAGauche();
+            //seDeplaceAGauche();
             return GAUCHE;
         case HAUT_DEPLACEMENT :
-            seDeplaceEnHaut();
+            //seDeplaceEnHaut();
             return HAUT;
         case BAS_DEPLACEMENT :
-            seDeplaceEnBas();
+            //seDeplaceEnBas();
             return BAS;
         case BAS_GAUCHE_DEPLACEMENT:
-            seDeplaceEnBasAGauche();
+            //seDeplaceEnBasAGauche();
             return BAS_GAUCHE;
         case BAS_DROITE_DEPLACEMENT:
-            seDeplaceEnBasADroite();
+            //seDeplaceEnBasADroite();
             return BAS_DROITE;
         case HAUT_GAUCHE_DEPLACEMENT:
-            seDeplaceEnHautAGauche();
+            //seDeplaceEnHautAGauche();
             return HAUT_GAUCHE;
         case HAUT_DROITE_DEPLACEMENT:
-            seDeplaceEnHautADroite();
+            //seDeplaceEnHautADroite();
             return HAUT_DROITE;
         default:
-            break;
+            return -1;
     }
 }
