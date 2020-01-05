@@ -62,28 +62,20 @@ int robot_2gen::deplacement_Auto(joueur *j) {
     switch(indexMeilleurScore)
     {
         case DROITE_DEPLACEMENT :
-            //seDeplaceADroite();
             return DROITE;
         case GAUCHE_DEPLACEMENT :
-            //seDeplaceAGauche();
             return GAUCHE;
         case HAUT_DEPLACEMENT :
-            //seDeplaceEnHaut();
             return HAUT;
         case BAS_DEPLACEMENT :
-            //seDeplaceEnBas();
             return BAS;
         case BAS_GAUCHE_DEPLACEMENT:
-            //seDeplaceEnBasAGauche();
             return BAS_GAUCHE;
         case BAS_DROITE_DEPLACEMENT:
-            //seDeplaceEnBasADroite();
             return BAS_DROITE;
         case HAUT_GAUCHE_DEPLACEMENT:
-            //seDeplaceEnHautAGauche();
             return HAUT_GAUCHE;
         case HAUT_DROITE_DEPLACEMENT:
-            //seDeplaceEnHautADroite();
             return HAUT_DROITE;
         default:
             return -1;
