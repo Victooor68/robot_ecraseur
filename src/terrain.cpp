@@ -41,13 +41,14 @@ int terrain::largeur() const
 void terrain::affiche(ostream &os) const {
     if (d_terrain.size() > 0 && d_terrain.at(0).size() > 0)
     {
-        for(int k = 0; k < d_terrain.size()*2.7; k++)
+        for(int k = 0; k < d_terrain.size()*2.6; k++)
         {
             os << "- ";
         }
         os << endl;
         for (int i = 0; i < d_terrain.size(); i++)
         {
+            os << "| ";
             for (int j = 0; j < d_terrain[0].size(); j++)
             {
                 switch(d_terrain.at(i).at(j))
@@ -63,7 +64,7 @@ void terrain::affiche(ostream &os) const {
                 os << " | ";
             }
             os << endl;
-            for(int k = 0; k < d_terrain.size()*2.7; k++)
+            for(int k = 0; k < d_terrain.size()*2.6; k++)
             {
                 os << "- ";
             }
@@ -258,7 +259,7 @@ bool terrain::estVide(int x, int y) const {
     return d_terrain.at(x).at(y) == VIDE;
 }
 
-void terrain::setDTerrain(const std::vector<std::vector<int>> terrain) {
+void terrain::setTerrain(const std::vector<std::vector<int>> terrain) {
     d_terrain = terrain;
 }
 
@@ -271,3 +272,23 @@ int terrain::getCase(int x, int y)const
     return d_terrain.at(x).at(y);
 }
 
+bool terrain::collisionRobot(robot* robot)
+{
+    if((d_terrain.at(robot->getPosition().getPosX()).at(robot->getPosition().getPosY()) == ROBOT_1GEN)
+    || (d_terrain.at(robot->getPosition().getPosX()).at(robot->getPosition().getPosY()) == ROBOT_2GEN))
+    {
+        d_terrain.at(robot->getPosition().getPosX()).at(robot->getPosition().getPosY()) = DEBRIS;
+        return true;
+    } else
+    {
+        d_terrain.at(robot->getPosition().getPosX()).at(robot->getPosition().getPosY()) = robot->getType();
+        return false;
+    }
+}
+
+
+bool terrain::deplacementRobotAuto(robot* robot, joueur *joueur) {
+    d_terrain.at(robot->getPosition().getPosX()).at(robot->getPosition().getPosY()) = VIDE;
+    int direction = robot->deplacement_Auto(joueur);
+    return collisionRobot(robot);
+}

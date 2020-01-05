@@ -24,7 +24,7 @@ public:
     terrain(int largeur, int hauteur);
     terrain( std::vector<std::vector<int>> terrain);
     virtual ~terrain();
-    void setDTerrain(const std::vector<std::vector<int>> terrain);
+    void setTerrain(const std::vector<std::vector<int>> terrain);
     void ajoutDansTerrain(const entite& ent);
     std::vector<std::vector<int>> getTerrain() const;
     void affiche(std::ostream& os) const;
@@ -33,9 +33,10 @@ public:
     int hauteur() const;
     bool estDansTerrain(entiteMouvante* ent, int direction) const;
     bool deplacement(int direction, entiteMouvante* ent);
-    void deplacementRobotAuto(robot* r, joueur* j);
+    bool deplacementRobotAuto(robot* r, joueur* j);
     bool estVide(int x, int y) const;
     int getCase(int x, int y) const;
+
 
 private:
     std::vector<std::vector<int>> d_terrain;
@@ -48,6 +49,8 @@ private:
     void deplacement_HAUT_DROITE(entiteMouvante* ent);
     void deplacement_BAS_GAUCHE(entiteMouvante* ent);
     void deplacement_BAS_DROITE(entiteMouvante* ent);
+
+    bool collisionRobot(robot* robot);
 };
 
 #endif // TERRAIN_H

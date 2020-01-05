@@ -50,7 +50,7 @@ int robot_2gen::deplacement_Auto(joueur *j) {
     int meilleurScore = score_Deplacement_Droite;
     int indexMeilleurScore = 0;
 
-    for(int i=1; i < scoreDeplacement.size(); ++i)
+    for(int i=0; i < scoreDeplacement.size(); ++i)
     {
         if(meilleurScore > scoreDeplacement.at(i))
         {
@@ -86,6 +86,6 @@ int robot_2gen::deplacement_Auto(joueur *j) {
             seDeplaceEnHautADroite();
             return HAUT_DROITE;
         default:
-            break;
+            return -1;
     }
 }

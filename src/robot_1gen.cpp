@@ -17,15 +17,19 @@ int robot_1gen::deplacement_Auto(joueur* j) {
 
     int score_Deplacement_Droite = abs(d_pos.getPosX() + 1 - j->getPosition().getPosX())
             + abs(d_pos.getPosY() - j->getPosition().getPosY());
+    std::cout<<"Deplacement Droite : "<<score_Deplacement_Droite<<std::endl;
 
     int score_Deplacement_Gauche = abs(d_pos.getPosX() - 1 - j->getPosition().getPosX())
                                    + abs(d_pos.getPosY() - j->getPosition().getPosY());
+    std::cout<<"Deplacement Gauche : "<<score_Deplacement_Gauche<<std::endl;
 
     int score_Deplacement_Haut = abs(d_pos.getPosX() - j->getPosition().getPosX())
-                                 + abs(d_pos.getPosY() + 1 - j->getPosition().getPosY());
+                                 + abs(d_pos.getPosY() - 1 - j->getPosition().getPosY());
+    std::cout<<"Deplacement Haut : "<<score_Deplacement_Haut<<std::endl;
 
     int score_Deplacement_Bas = abs(d_pos.getPosX() - j->getPosition().getPosX())
-                               + abs(d_pos.getPosY() -1 - j->getPosition().getPosY());
+                               + abs(d_pos.getPosY() +1 - j->getPosition().getPosY());
+    std::cout<<"Deplacement Bas : "<<score_Deplacement_Bas<<std::endl;
 
     scoreDeplacement.push_back(score_Deplacement_Droite);
     scoreDeplacement.push_back(score_Deplacement_Gauche);
@@ -35,7 +39,7 @@ int robot_1gen::deplacement_Auto(joueur* j) {
     int meilleurScore = score_Deplacement_Droite;
     int indexMeilleurScore = 0;
 
-    for(int i=1; i < scoreDeplacement.size(); ++i)
+    for(int i=0; i < scoreDeplacement.size(); ++i)
     {
         if(meilleurScore > scoreDeplacement.at(i))
         {
@@ -43,20 +47,22 @@ int robot_1gen::deplacement_Auto(joueur* j) {
             indexMeilleurScore = i;
         }
     }
+    std::cout<<"Meilleure score = "<<meilleurScore<<std::endl;
+    std::cout<<"Index : "<<indexMeilleurScore<<std::endl;
 
     switch(indexMeilleurScore)
     {
         case DROITE_DEPLACEMENT :
-            seDeplaceADroite();
+            //seDeplaceADroite();
             return DROITE;
         case GAUCHE_DEPLACEMENT :
-            seDeplaceAGauche();
+            //seDeplaceAGauche();
             return GAUCHE;
         case HAUT_DEPLACEMENT :
-            seDeplaceEnHaut();
+            //seDeplaceEnHaut();
             return HAUT;
         case BAS_DEPLACEMENT :
-            seDeplaceEnBas();
+            //seDeplaceEnBas();
             return BAS;
         default:
             return -1;
