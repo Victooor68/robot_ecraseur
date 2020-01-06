@@ -61,6 +61,9 @@ void game::run(std::ostream &ost, std::istream &ist) {
     ost<<"Combien de robot generation 2 ?"<<endl;
     ist>>nbRobotGen2;
 
+    ost<<"Combien de debris sur le terrain ? "<<endl;
+    ist>>nbDebris;
+
     ost<<"Nom du joueur :"<<endl;
     ist>>nomJoueur;
 
@@ -69,9 +72,6 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
    d_joueur = joueurSelonDifficulte(difficulte, nomJoueur);
    d_terrain.ajoutDansTerrain(d_joueur);
-
-   ost<<"Combien de debris sur le terrain ? "<<endl;
-   ist>>nbDebris;
 
    generationAleatoireDebris(nbDebris);
 
@@ -92,7 +92,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
         if((isdigit(commande)))
         {
             int direction = commande-48;
-            collisionApresDeplacement(direction,joueur);
+            collisionApresDeplacementJoueur(direction, joueur);
             d_terrain.deplacement(direction,joueur);
             score+= 5;
             // deplacement des robots
@@ -256,7 +256,7 @@ void game::generationAleatoireDebris(int nbDebris) {
     }
 }
 
-void game::collisionApresDeplacement(int direction, joueur *joueur) {
+void game::collisionApresDeplacementJoueur(int direction, joueur *joueur) {
     int typeCaseDansDirection= d_terrain.typeSelonDirection(direction, joueur->getPosition());
 
     if (typeCaseDansDirection!=VIDE){
@@ -265,31 +265,33 @@ void game::collisionApresDeplacement(int direction, joueur *joueur) {
 
 }
 
-bool game::collisionApresDeplacement(int direction, robot *gen, int i) {
-    int typeCaseDansDirection= d_terrain.typeSelonDirection(direction, gen->getPosition());
+bool game::collisionApresDeplacement(int direction, robot *robotEffectuantLeDeplacement, int indexRobotDansVector) {
+    int typeCaseDansDirection= d_terrain.typeSelonDirection(direction, robotEffectuantLeDeplacement->getPosition());
     bool collision=false;
     if (typeCaseDansDirection==ROBOT_2GEN||typeCaseDansDirection==ROBOT_1GEN){
 
-        position positionEntite = d_terrain.getPositionDansDirection(gen->getPosition(),direction);
+        position positionEntite = d_terrain.getPositionDansDirection(robotEffectuantLeDeplacement->getPosition(), direction);
         for (int j = 0; j <d_robot1.size() ; ++j) {
-            if (d_robot1.at(i).getPosition()==positionEntite){
+            if (d_robot1.at(indexRobotDansVector).getPosition() == positionEntite){
                 destructionRobot(&d_robot1.at(j), j);
             }
         }
         for (int k = 0; k <d_robot2.size() ; ++k) {
-            if (d_robot2.at(i).getPosition()==positionEntite){
+            if (d_robot2.at(indexRobotDansVector).getPosition() == positionEntite){
                 destructionRobot(&d_robot2.at(k), k);
             }
         }
 
         debris debrisCollision{positionEntite.getPosY(), positionEntite.getPosX()};
+
         d_terrain.ajoutDansTerrain(debrisCollision);
         d_debris.push_back(debrisCollision);
-        //robot* robotADetruire= getRobotAPosition(gen->getPosition(),direction);
-        destructionRobot(gen, i);
+
+        destructionRobot(robotEffectuantLeDeplacement, indexRobotDansVector);
+
         collision=true;
     } else if (typeCaseDansDirection==DEBRIS){
-        destructionRobot(gen, i);
+        destructionRobot(robotEffectuantLeDeplacement, indexRobotDansVector);
         collision= true;
     } else if (typeCaseDansDirection==JOUEUR_EXPERT||typeCaseDansDirection==JOUEUR_NORMAL){
         d_joueur.meurt();
@@ -297,14 +299,14 @@ bool game::collisionApresDeplacement(int direction, robot *gen, int i) {
     return collision;
 }
 
-void game::destructionRobot(robot *pRobot, int i) {
+void game::destructionRobot(robot *pRobot, int indexRobotDansVector) {
     if (pRobot->getType() == ROBOT_1GEN){
         d_terrain.enleveEntiteTerrain(pRobot);
-        d_robot1.erase(d_robot1.begin()+i);
+        d_robot1.erase(d_robot1.begin() + indexRobotDansVector);
     }
     else{
         d_terrain.enleveEntiteTerrain(pRobot);
-        d_robot2.erase(d_robot2.begin()+i);
+        d_robot2.erase(d_robot2.begin() + indexRobotDansVector);
     }
 }
 

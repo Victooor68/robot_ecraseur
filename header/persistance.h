@@ -12,8 +12,18 @@
 
 class persistance {
 public:
+    /**
+     * Sauve le terrain donne en parametre dans un fichier
+     * @param f
+     * @param t
+     */
     void static sauve(std::ofstream &f,terrain t);
 
+    /**
+     * Renvoie un terrain a partir d'un fichier
+     * @param is
+     * @return terainRestaure
+     */
     static terrain restore(std::ifstream &is);
 };
 

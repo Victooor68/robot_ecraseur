@@ -272,19 +272,6 @@ int terrain::getCase(int x, int y)const
     return d_terrain.at(x).at(y);
 }
 
-bool terrain::collisionRobot(robot* robot)
-{
-    if((d_terrain.at(robot->getPosition().getPosX()).at(robot->getPosition().getPosY()) == ROBOT_1GEN)
-    || (d_terrain.at(robot->getPosition().getPosX()).at(robot->getPosition().getPosY()) == ROBOT_2GEN))
-    {
-        d_terrain.at(robot->getPosition().getPosX()).at(robot->getPosition().getPosY()) = DEBRIS;
-        return true;
-    } else
-    {
-        d_terrain.at(robot->getPosition().getPosX()).at(robot->getPosition().getPosY()) = robot->getType();
-        return false;
-    }
-}
 int terrain::typeSelonDirection(int direction, position pos) {
     int typeCaseDansDirection=VIDE;
     if (pos.getPosX()+1>=this->largeur()||pos.getPosX()-1<0||pos.getPosY()+1>=this->hauteur()||pos.getPosY()-1<0){
@@ -329,35 +316,27 @@ position terrain::getPositionDansDirection(position positionInit, int direction)
     switch (direction){
         case HAUT_DROITE :
             positionApresDeplacement.seDeplaceDe(1,-1);
-                    //this->getCase(pos.getPosX()-1,pos.getPosY()+1);
             break;
         case DROITE :
             positionApresDeplacement.seDeplaceDe(1,0);
-            //=this->getCase(pos.getPosX(),pos.getPosY()+1);
             break;
         case BAS_DROITE :
             positionApresDeplacement.seDeplaceDe(1,1);
-            //=this->getCase(pos.getPosX()+1,pos.getPosY()+1);
             break;
         case HAUT :
             positionApresDeplacement.seDeplaceDe(0,-1);
-            //=this->getCase(pos.getPosX()-1,pos.getPosY());
             break;
         case BAS :
             positionApresDeplacement.seDeplaceDe(0,1);
-            //=this->getCase(pos.getPosX()+1,pos.getPosY());
             break;
         case HAUT_GAUCHE :
             positionApresDeplacement.seDeplaceDe(-1,-1);
-                    //this->getCase(pos.getPosX()-1,pos.getPosY()-1);
             break;
         case GAUCHE :
             positionApresDeplacement.seDeplaceDe(-1,0);
-            //=this->getCase(pos.getPosX(),pos.getPosY()-1);
             break;
         case BAS_GAUCHE :
             positionApresDeplacement.seDeplaceDe(-1,1);
-            //=this->getCase(pos.getPosX()+1,pos.getPosY()-1);
             break;
     }
     return positionApresDeplacement;

@@ -10,7 +10,6 @@
 
 class entiteMouvante : public entite{
 public:
-
     entiteMouvante(int x, int y);
 
     entiteMouvante(class position position);
@@ -54,8 +53,6 @@ public:
      * Permet à l'entite de se déplacer en diagonale en bas à gauche
      */
     void seDeplaceEnBasAGauche();
-private:
-
 };
 
 
