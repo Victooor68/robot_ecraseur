@@ -285,36 +285,35 @@ bool terrain::collisionRobot(robot* robot)
         return false;
     }
 }
-int terrain::typeSelonDirection(int direction, position entite) {
+int terrain::typeSelonDirection(int direction, position pos) {
     int typeCaseDansDirection=VIDE;
-    if (entite.getPosX()+1>=this->largeur()||entite.getPosX()-1<0||entite.getPosY()+1>=this->hauteur()||entite.getPosY()-1<0){
+    if (pos.getPosX()+1>=this->largeur()||pos.getPosX()-1<0||pos.getPosY()+1>=this->hauteur()||pos.getPosY()-1<0){
         return typeCaseDansDirection;
-
     }
     switch (direction){
         case HAUT_DROITE :
-            typeCaseDansDirection=this->getCase(entite.getPosX()-1,entite.getPosY()+1);
+            typeCaseDansDirection=this->getCase(pos.getPosX()-1,pos.getPosY()+1);
             break;
         case DROITE :
-            typeCaseDansDirection=this->getCase(entite.getPosX(),entite.getPosY()+1);
+            typeCaseDansDirection=this->getCase(pos.getPosX(),pos.getPosY()+1);
             break;
         case BAS_DROITE :
-            typeCaseDansDirection=this->getCase(entite.getPosX()+1,entite.getPosY()+1);
+            typeCaseDansDirection=this->getCase(pos.getPosX()+1,pos.getPosY()+1);
             break;
         case HAUT :
-            typeCaseDansDirection=this->getCase(entite.getPosX()-1,entite.getPosY());
+            typeCaseDansDirection=this->getCase(pos.getPosX()-1,pos.getPosY());
             break;
         case BAS :
-            typeCaseDansDirection=this->getCase(entite.getPosX()+1,entite.getPosY());
+            typeCaseDansDirection=this->getCase(pos.getPosX()+1,pos.getPosY());
             break;
         case HAUT_GAUCHE :
-            typeCaseDansDirection=this->getCase(entite.getPosX()-1,entite.getPosY()-1);
+            typeCaseDansDirection=this->getCase(pos.getPosX()-1,pos.getPosY()-1);
             break;
         case GAUCHE :
-            typeCaseDansDirection=this->getCase(entite.getPosX(),entite.getPosY()-1);
+            typeCaseDansDirection=this->getCase(pos.getPosX(),pos.getPosY()-1);
             break;
         case BAS_GAUCHE :
-            typeCaseDansDirection=this->getCase(entite.getPosX()+1,entite.getPosY()-1);
+            typeCaseDansDirection=this->getCase(pos.getPosX()+1,pos.getPosY()-1);
             break;
     }
     return typeCaseDansDirection;
