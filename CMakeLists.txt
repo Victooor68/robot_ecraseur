@@ -46,4 +46,5 @@ add_executable(robot_ecraseur
         testpackage/joueurTest.cpp
         src/winbgi.cpp
         header/graphics.h
-        testpackage/robot_1genTest.cpp)
+        testpackage/robot_1genTest.cpp
+        testpackage/gameTest.cpp)
