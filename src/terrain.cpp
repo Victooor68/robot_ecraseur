@@ -272,19 +272,6 @@ int terrain::getCase(int x, int y)const
     return d_terrain.at(x).at(y);
 }
 
-bool terrain::collisionRobot(robot* robot)
-{
-    if((d_terrain.at(robot->getPosition().getPosX()).at(robot->getPosition().getPosY()) == ROBOT_1GEN)
-    || (d_terrain.at(robot->getPosition().getPosX()).at(robot->getPosition().getPosY()) == ROBOT_2GEN))
-    {
-        d_terrain.at(robot->getPosition().getPosX()).at(robot->getPosition().getPosY()) = DEBRIS;
-        return true;
-    } else
-    {
-        d_terrain.at(robot->getPosition().getPosX()).at(robot->getPosition().getPosY()) = robot->getType();
-        return false;
-    }
-}
 int terrain::typeSelonDirection(int direction, position pos) {
     int typeCaseDansDirection=VIDE;
     if (pos.getPosX()+1>=this->largeur()||pos.getPosX()-1<0||pos.getPosY()+1>=this->hauteur()||pos.getPosY()-1<0){

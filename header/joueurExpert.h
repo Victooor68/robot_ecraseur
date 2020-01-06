@@ -11,9 +11,6 @@ class joueurExpert : public joueur{
 
 public:
     joueurExpert(int x, int y , std::string name);
-
-private:
-
 };
 
 

@@ -92,7 +92,6 @@ private:
     void deplacement_BAS_GAUCHE(entiteMouvante* ent);
     void deplacement_BAS_DROITE(entiteMouvante* ent);
 
-    bool collisionRobot(robot* robot);
 };
 
 #endif // TERRAIN_H

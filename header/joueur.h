@@ -12,9 +12,23 @@ class joueur : public entiteMouvante {
 
 public:
     joueur(int x, int y, std::string nom);
+    /**
+     * renvoie le nom du joueur
+     * @return
+     */
     std::string Nom() const;
+
+    /**
+     * renvoie l'etat de sante du joueur ( en vie ou non)
+     * @return
+     */
     bool enVie()const;
+
+    /**
+     * methode mettant l'etat de santé du joueur (enVie) a false
+     */
     void meurt();
+
 private:
     std::string d_name;
     bool d_enVie;
