@@ -39,6 +39,10 @@ public:
 
     int typeSelonDirection(int direction, position pJoueur);
 
+    void enleveEntiteTerrain(entite *entite);
+
+    position getPositionDansDiretion(position positionInit,int direction);
+
 private:
     std::vector<std::vector<int>> d_terrain;
 

@@ -36,7 +36,9 @@ private:
     void collisionApresDeplacement(int direction, joueur *pJoueur);
 
 
-    void collisionApresDeplcement(int direction, robot *gen, int i);
+    bool collisionApresDeplacement(int direction, robot *gen, int i);
+
+    void destructionRobot(robot *pRobot, int i);
 };
 
 

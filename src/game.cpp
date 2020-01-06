@@ -99,14 +99,16 @@ void game::run(std::ostream &ost, std::istream &ist) {
             for (int i = 0; i < d_robot1.size(); ++i)
             {
                 direction=d_robot1.at(i).deplacement_Auto(joueur);
-                collisionApresDeplcement(direction, &d_robot1.at(i), i);
-               d_terrain.deplacement(direction, &d_robot1.at(i));
+                if (!collisionApresDeplacement(direction, &d_robot1.at(i), i)){
+                    d_terrain.deplacement(direction, &d_robot1.at(i));
+                }
             }
             for (int i = 0; i < d_robot2.size(); ++i)
             {
                 direction=d_robot2.at(i).deplacement_Auto(joueur);
-                collisionApresDeplcement(direction, &d_robot2.at(i), i);
-                d_terrain.deplacement(direction, &d_robot2.at(i));
+                if(!collisionApresDeplacement(direction, &d_robot2.at(i), i)){
+                    d_terrain.deplacement(direction, &d_robot2.at(i));
+                }
             }
         } else
        {
@@ -194,7 +196,7 @@ joueur game::joueurSelonDifficulte(char difficulte, std::string nomJoueur) {
             joueurExpert playerExpert{(d_terrain.largeur()/2), d_terrain.hauteur()/2,nomJoueur};
             return playerExpert;
         }else{
-            joueur j{1,1,nomJoueur} ;
+            joueurNormal j{1,1,nomJoueur} ;
             return  j ;
         }
     }
@@ -259,13 +261,46 @@ void game::collisionApresDeplacement(int direction, joueur *joueur) {
 
 }
 
-void game::collisionApresDeplcement(int direction, robot *gen, int i) {
+bool game::collisionApresDeplacement(int direction, robot *gen, int i) {
     int typeCaseDansDirection= d_terrain.typeSelonDirection(direction, gen->getPosition());
-
+    bool collision=false;
     if (typeCaseDansDirection==ROBOT_2GEN||typeCaseDansDirection==ROBOT_1GEN){
 
-    } else if (typeCaseDansDirection==DEBRIS){
+        position positionEntite = d_terrain.getPositionDansDiretion(gen->getPosition(),direction);
+        for (int j = 0; j <d_robot1.size() ; ++j) {
+            if (d_robot1.at(i).getPosition()==positionEntite){
+                destructionRobot(&d_robot1.at(j), j);
+            }
+        }
+        for (int k = 0; k <d_robot2.size() ; ++k) {
+            if (d_robot2.at(i).getPosition()==positionEntite){
+                destructionRobot(&d_robot2.at(k), k);
+            }
+        }
 
+        debris debrisCollision{positionEntite.getPosY(),positionEntite.getPosX()};
+        d_terrain.ajoutDansTerrain(debrisCollision);
+        d_debris.push_back(debrisCollision);
+        //robot* robotADetruire= getRobotAPosition(gen->getPosition(),direction);
+        destructionRobot(gen, i);
+    collision=true;
+    } else if (typeCaseDansDirection==DEBRIS){
+        destructionRobot(gen, i);
+        collision= true;
+    } else if (typeCaseDansDirection==JOUEUR_EXPERT||typeCaseDansDirection==JOUEUR_NORMAL){
+        d_joueur.meurt();
+    }
+    return collision;
+}
+
+void game::destructionRobot(robot *pRobot, int i) {
+    if (pRobot->getType() == ROBOT_1GEN){
+        d_terrain.enleveEntiteTerrain(pRobot);
+        d_robot1.erase(d_robot1.begin()+i);
+    }
+    else{
+        d_terrain.enleveEntiteTerrain(pRobot);
+        d_robot2.erase(d_robot2.begin()+i);
     }
 }
 
