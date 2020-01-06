@@ -83,9 +83,9 @@ void terrain::afficheGraphique() const
     for (int i = 0; i < largeur(); i++) {
         for (int j = 0; j < hauteur(); j++) {
             int x1 = i * 750 / largeur();
-            int x2 = x1 + 750 / largeur();
+            int x2 = 750 / largeur() + i * 750 / largeur();
             int y1 = j * 750 / hauteur();
-            int y2 = y2 + 750 / hauteur();
+            int y2 = 750 / hauteur() + j * 750 / hauteur();
 
             switch(d_terrain[i][j]){
                 case VIDE :
