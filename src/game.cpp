@@ -39,7 +39,7 @@ void game::restoreGame(std::string fileName) {
 }
 
 void game::run(std::ostream &ost, std::istream &ist) {
-    int nbRobotGen1, nbRobotGen2,nbDebris, score;
+    int nbRobotGen1, nbRobotGen2,nbDebris, score = 0;
     string nomJoueur,nomFichier;
     char difficulte;
     bool again=true;
@@ -101,6 +101,9 @@ void game::run(std::ostream &ost, std::istream &ist) {
                 direction=d_robot1.at(i).deplacement_Auto(joueur);
                 if (!collisionApresDeplacement(direction, &d_robot1.at(i), i)){
                     d_terrain.deplacement(direction, &d_robot1.at(i));
+                } else
+                {
+                    score+=15;
                 }
             }
             for (int i = 0; i < d_robot2.size(); ++i)
@@ -109,6 +112,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
                 if(!collisionApresDeplacement(direction, &d_robot2.at(i), i)){
                     d_terrain.deplacement(direction, &d_robot2.at(i));
                 }
+                score+=25;
             }
         } else
        {
