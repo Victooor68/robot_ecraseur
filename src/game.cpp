@@ -278,7 +278,7 @@ bool game::collisionApresDeplacement(int direction, robot *gen, int i) {
             }
         }
 
-        debris debrisCollision{positionEntite.getPosY(),positionEntite.getPosX()};
+        debris debrisCollision{positionEntite.getPosY(), positionEntite.getPosX()};
         d_terrain.ajoutDansTerrain(debrisCollision);
         d_debris.push_back(debrisCollision);
         //robot* robotADetruire= getRobotAPosition(gen->getPosition(),direction);

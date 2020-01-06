@@ -17,10 +17,28 @@
 
 class entite {
 public:
+    /**
+     * Creer une entite a partir de x et y
+     * @param x
+     * @param y
+     */
     entite(int x, int y);
+    /**
+     * Creer une entite a partir d'une position
+     * @param position
+     */
     entite(const position& position);
     ~entite();
+    /**
+     * Renvoie la position de l'entite
+     * @return position
+     */
     position getPosition() const;
+    /**
+     * Renvoie le type de l'entite
+     * @return type
+     * @return type
+     */
     int getType() const;
 
 protected:

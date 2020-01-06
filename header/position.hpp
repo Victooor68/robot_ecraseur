@@ -13,10 +13,31 @@
 class position {
 public:
     position();
+    /**
+     * Creer une position a partir de x et y
+     * @param x
+     * @param y
+     */
     position(int x, int y);
+    /**
+     * Renvoie la valeur de x
+     * @return x
+     */
     int getPosX() const;
+    /**
+     * Renvoie la valeur de y
+     * @return y
+     */
     int getPosY() const;
+    /**
+     * Change la position en x et y
+     */
     void seDeplaceEn(int x, int y);
+    /**
+     * Decale la position de x et y
+     * @param x
+     * @param y
+     */
     void seDeplaceDe(int x, int y);
     bool operator==(const position& pos) const;
 
