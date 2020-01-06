@@ -10,13 +10,14 @@
 #include "joueurNormal.h"
 #include "robot_1gen.h"
 #include "robot_2gen.h"
+#include "debris.h"
 
 const char DIFFICULTE_EXPERT = 'E';
 const char DIFFICULTE_NORMAL = 'N';
 const char QUIT_GAME ='Q';
 const char SAVE = 'S';
 const char RESTORE = 'R';
-const char MOUVEMENT = 'M';
+
 using namespace std;
 
 
@@ -38,25 +39,41 @@ void game::restoreGame(std::string fileName) {
 }
 
 void game::run(std::ostream &ost, std::istream &ist) {
-    int nbRobotGen1, nbRobotGen2;
+    int nbRobotGen1, nbRobotGen2,nbDebris, score;
     string nomJoueur,nomFichier;
     char difficulte;
     bool again=true;
 
-    ost<<"Combien de Robot generation 1 ?"<<endl;
+    ost<<"\n";
+    ost<<"---------------------------------------------------------"<<endl;
+    ost<<"---------------  ROBOT ECRASEUR GAME 1.0  ---------------"<<endl;
+    ost<<"---------------------------------------------------------"<<endl;
+
+    ost<<"\nCommandes :"<<endl;
+    ost<<"\t- Utilisez le pave numerique pour vous deplacez"<<endl;
+    ost<<"\t- Quit game : Q"<<endl;
+    ost<<"\t- Save game : S"<<endl;
+    ost<<"\t- Restore game : R"<<endl;
+
+    ost<<"\nCombien de robot generation 1 ?"<<endl;
     ist>>nbRobotGen1;
 
-    ost<<"Combien de Robot generation 2 ?"<<endl;
+    ost<<"Combien de robot generation 2 ?"<<endl;
     ist>>nbRobotGen2;
 
     ost<<"Nom du joueur :"<<endl;
     ist>>nomJoueur;
 
-    ost<<"Difficult Expert ou Normal (E or N) ?";
+    ost<<"Difficulte : expert ou normal (E or N) ?"<<endl;
     ist>>difficulte;
 
    d_joueur = joueurSelonDifficulte(difficulte, nomJoueur);
    d_terrain.ajoutDansTerrain(d_joueur);
+
+   ost<<"Combien de debris sur le terrain ? "<<endl;
+   ist>>nbDebris;
+
+   generationAleatoireDebris(nbDebris);
 
    generationDesRobotsAleatoire(nbRobotGen1, nbRobotGen2);
 
@@ -72,24 +89,34 @@ void game::run(std::ostream &ost, std::istream &ist) {
         ost<<"Commande : "<<endl;
         ist>>commande;
 
-        if(d_terrain.deplacement(commande-48,joueur))
+        if((isdigit(commande)))
         {
-
+            int direction = commande-48;
+            collisionApresDeplacement(direction,joueur);
+            d_terrain.deplacement(direction,joueur);
+            score+= 5;
             // deplacement des robots
             for (int i = 0; i < d_robot1.size(); ++i)
             {
-               d_terrain.deplacement(d_robot1.at(i).deplacement_Auto(joueur), &d_robot1.at(i));
+                direction=d_robot1.at(i).deplacement_Auto(joueur);
+                if (!collisionApresDeplacement(direction, &d_robot1.at(i), i)){
+                    d_terrain.deplacement(direction, &d_robot1.at(i));
+                }
             }
             for (int i = 0; i < d_robot2.size(); ++i)
             {
-                d_terrain.deplacement(d_robot2.at(i).deplacement_Auto(joueur), &d_robot2.at(i));
+                direction=d_robot2.at(i).deplacement_Auto(joueur);
+                if(!collisionApresDeplacement(direction, &d_robot2.at(i), i)){
+                    d_terrain.deplacement(direction, &d_robot2.at(i));
+                }
             }
         } else
        {
            switch(commande)
            {
                case QUIT_GAME:
-                   return;
+                   again= false;
+                   break;
                case SAVE:
                    ost<<"Nom du fichier ?";
                    ist>>nomFichier;
@@ -105,36 +132,58 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
        d_terrain.affiche(ost);
 
-       if(d_robot1.size() == 0){ // fin du jeu, gagner car 0 robot
+       if(d_robot1.size() == 0 && d_robot2.size()==0||!d_joueur.enVie()) // fin du jeu, gagner car 0 robot
+       {
            again = false;
        }
-   }
+    }
+
+    ost<<"\n"<<endl;
+    ost<<"---------------------------------------------------------"<<endl;
+    if(joueur->enVie())
+    {
+        ost<<"--------------------  !!! YOU WIN !!! -------------------"<<endl;
+    } else
+    {
+        ost<<"-------------------  !!! GAME OVER !!! ------------------"<<endl;
+    }
+    ost<<"---------------------------------------------------------"<<endl;
+    ost<<"|| Score : "<<score<<" ||";
+
 }
 
 
 
 void game::restoreEntiteDeTerrain(terrain terrain)
-{    for (int i = 0; i <terrain.hauteur() ; ++i) {
+{
+    joueurExpert je {0,0,d_joueur.Nom()};
+
+    for (int i = 0; i <terrain.hauteur() ; ++i) {
         for (int j = 0; j <terrain.largeur() ; ++j) {
             int typeCase=terrain.getCase(i,j);
-            switch(typeCase){
-                case VIDE :
-                    break;
-                case ROBOT_1GEN :
-                    break;
-                case ROBOT_2GEN :
-                    break;
-                case JOUEUR_NORMAL :
-                    break;
-                case JOUEUR_EXPERT :
-                    break;
-                case DEBRIS :
-                    break;
-            }
+            if (typeCase==JOUEUR_NORMAL)
+           {
+               joueurNormal joueurNormal{i,j,d_joueur.Nom()};
+               d_joueur=joueurNormal;
+           } else if (typeCase==JOUEUR_EXPERT)
+           {
+               joueurExpert joueurExpert{i,j,d_joueur.Nom()};
+               d_joueur=joueurExpert;
+           } else if (typeCase==ROBOT_1GEN){
+               robot_1gen robot1Gen{i,j};
+               d_robot1.clear();
+               d_robot1.push_back(robot1Gen);
+           } else if (typeCase==ROBOT_2GEN){
+                robot_2gen robot2Gen{i,j};
+                d_robot2.clear();
+                d_robot2.push_back(robot2Gen);
+           }else if (typeCase==DEBRIS){
+               debris debris{i,j};
+               d_debris.clear();
+               d_debris.push_back(debris);
+           }
         }
     }
-
-
 }
 
 joueur game::joueurSelonDifficulte(char difficulte, std::string nomJoueur) {
@@ -147,30 +196,55 @@ joueur game::joueurSelonDifficulte(char difficulte, std::string nomJoueur) {
             joueurExpert playerExpert{(d_terrain.largeur()/2), d_terrain.hauteur()/2,nomJoueur};
             return playerExpert;
         }else{
-            joueur j{1,1,nomJoueur} ;
+            joueurNormal j{1,1,nomJoueur} ;
             return  j ;
         }
     }
 }
 
 void game::generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2) {
-    int nbRobot = nbRobotGen1 + nbRobotGen2;
-    for(int i = 0; i<nbRobot; i++){
+
+    for(int i = 0; i<nbRobotGen1; i++){
         bool impossible = true;
         while(impossible){
             int x = rand() %d_terrain.largeur();
             int y = rand() %d_terrain.hauteur();
             if(d_terrain.estVide(x,y)) {
-                if((nbRobotGen1 - i) >= 0){
                     robot_1gen r{x, y};
                     d_terrain.ajoutDansTerrain(r);
                     d_robot1.push_back(r);
-                }
-                else{
+
+                impossible = false;
+            }
+        }
+    }
+
+    for(int i = 0; i<nbRobotGen2; i++){
+        bool impossible = true;
+        while(impossible){
+            int x = rand() %d_terrain.largeur();
+            int y = rand() %d_terrain.hauteur();
+            if(d_terrain.estVide(x,y)) {
                     robot_2gen r{x, y};
                     d_terrain.ajoutDansTerrain(r);
                     d_robot2.push_back(r);
                 }
+                impossible = false;
+            }
+        }
+    }
+
+void game::generationAleatoireDebris(int nbDebris) {
+
+    for(int i = 0; i<nbDebris; i++){
+        bool impossible = true;
+        while(impossible){
+            int x = rand() %d_terrain.largeur();
+            int y = rand() %d_terrain.hauteur();
+            if(d_terrain.estVide(x,y)) {
+                debris debris {x,y};
+                d_terrain.ajoutDansTerrain(debris);
+                d_debris.push_back(debris);
 
                 impossible = false;
             }
@@ -178,21 +252,56 @@ void game::generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2) {
     }
 }
 
-int game::doDirection( std::ostream &ost, std::istream &ist) {
+void game::collisionApresDeplacement(int direction, joueur *joueur) {
+    int typeCaseDansDirection= d_terrain.typeSelonDirection(direction, joueur->getPosition());
 
-    int direction;
-    bool directionIncorrect = true;
-    while(directionIncorrect){
-        ost<<"Direction ?"<<endl;
-        ist>>direction;
-            if(direction == BAS || direction == BAS_DROITE || direction == BAS_GAUCHE || direction == GAUCHE
-               || direction == DROITE || direction == HAUT || direction == HAUT_GAUCHE || direction == HAUT_DROITE){
-                directionIncorrect = false;
-            }
-            else{
-                ost<<"Error : Veuillez saisir un chiffre entre 1 et 9"<<endl;
+    if (typeCaseDansDirection!=VIDE){
+    joueur->meurt();
+    }
+
+}
+
+bool game::collisionApresDeplacement(int direction, robot *gen, int i) {
+    int typeCaseDansDirection= d_terrain.typeSelonDirection(direction, gen->getPosition());
+    bool collision=false;
+    if (typeCaseDansDirection==ROBOT_2GEN||typeCaseDansDirection==ROBOT_1GEN){
+
+        position positionEntite = d_terrain.getPositionDansDiretion(gen->getPosition(),direction);
+        for (int j = 0; j <d_robot1.size() ; ++j) {
+            if (d_robot1.at(i).getPosition()==positionEntite){
+                destructionRobot(&d_robot1.at(j), j);
             }
         }
-    return direction;
+        for (int k = 0; k <d_robot2.size() ; ++k) {
+            if (d_robot2.at(i).getPosition()==positionEntite){
+                destructionRobot(&d_robot2.at(k), k);
+            }
+        }
+
+        debris debrisCollision{positionEntite.getPosY(),positionEntite.getPosX()};
+        d_terrain.ajoutDansTerrain(debrisCollision);
+        d_debris.push_back(debrisCollision);
+        //robot* robotADetruire= getRobotAPosition(gen->getPosition(),direction);
+        destructionRobot(gen, i);
+    collision=true;
+    } else if (typeCaseDansDirection==DEBRIS){
+        destructionRobot(gen, i);
+        collision= true;
+    } else if (typeCaseDansDirection==JOUEUR_EXPERT||typeCaseDansDirection==JOUEUR_NORMAL){
+        d_joueur.meurt();
+    }
+    return collision;
 }
+
+void game::destructionRobot(robot *pRobot, int i) {
+    if (pRobot->getType() == ROBOT_1GEN){
+        d_terrain.enleveEntiteTerrain(pRobot);
+        d_robot1.erase(d_robot1.begin()+i);
+    }
+    else{
+        d_terrain.enleveEntiteTerrain(pRobot);
+        d_robot2.erase(d_robot2.begin()+i);
+    }
+}
+
 

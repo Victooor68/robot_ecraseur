@@ -31,7 +31,14 @@ private:
     joueur joueurSelonDifficulte(char difficulte, std::string string);
     void generationDesRobotsAleatoire(int nbRobotGen1, int nbRobotGen2);
 
-    int doDirection( std::ostream &ostream, std::istream &istream);
+    void generationAleatoireDebris(int debris);
+
+    void collisionApresDeplacement(int direction, joueur *pJoueur);
+
+
+    bool collisionApresDeplacement(int direction, robot *gen, int i);
+
+    void destructionRobot(robot *pRobot, int i);
 };
 
 

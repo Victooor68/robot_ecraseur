@@ -8,14 +8,14 @@
 #include "robot.h"
 #include "joueur.h"
 
-#define BAS_GAUCHE 9
-#define BAS 6
+#define HAUT_DROITE 9
+#define DROITE 6
 #define BAS_DROITE 3
-#define GAUCHE 8
-#define DROITE 2
+#define HAUT 8
+#define BAS 2
 #define HAUT_GAUCHE 7
-#define HAUT 4
-#define HAUT_DROITE 1
+#define GAUCHE 4
+#define BAS_GAUCHE 1
 
 
 class terrain
@@ -33,10 +33,15 @@ public:
     int hauteur() const;
     bool estDansTerrain(entiteMouvante* ent, int direction) const;
     bool deplacement(int direction, entiteMouvante* ent);
-    bool deplacementRobotAuto(robot* r, joueur* j);
     bool estVide(int x, int y) const;
     int getCase(int x, int y) const;
 
+
+    int typeSelonDirection(int direction, position pJoueur);
+
+    void enleveEntiteTerrain(entite *entite);
+
+    position getPositionDansDiretion(position positionInit,int direction);
 
 private:
     std::vector<std::vector<int>> d_terrain;
