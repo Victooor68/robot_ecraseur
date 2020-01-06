@@ -266,7 +266,7 @@ bool game::collisionApresDeplacement(int direction, robot *gen, int i) {
     bool collision=false;
     if (typeCaseDansDirection==ROBOT_2GEN||typeCaseDansDirection==ROBOT_1GEN){
 
-        position positionEntite = d_terrain.getPositionDansDiretion(gen->getPosition(),direction);
+        position positionEntite = d_terrain.getPositionDansDirection(gen->getPosition(),direction);
         for (int j = 0; j <d_robot1.size() ; ++j) {
             if (d_robot1.at(i).getPosition()==positionEntite){
                 destructionRobot(&d_robot1.at(j), j);
@@ -283,7 +283,7 @@ bool game::collisionApresDeplacement(int direction, robot *gen, int i) {
         d_debris.push_back(debrisCollision);
         //robot* robotADetruire= getRobotAPosition(gen->getPosition(),direction);
         destructionRobot(gen, i);
-    collision=true;
+        collision=true;
     } else if (typeCaseDansDirection==DEBRIS){
         destructionRobot(gen, i);
         collision= true;

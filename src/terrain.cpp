@@ -323,28 +323,28 @@ void terrain::enleveEntiteTerrain(entite *entite) {
     d_terrain.at(entite->getPosition().getPosX()).at(entite->getPosition().getPosY())=VIDE;
 }
 
-position terrain::getPositionDansDiretion(position positionInit, int direction) {
+position terrain::getPositionDansDirection(position positionInit, int direction) {
     position positionApresDeplacement=positionInit;
 
     switch (direction){
         case HAUT_DROITE :
-            positionApresDeplacement.seDeplaceDe(-1,+1);
+            positionApresDeplacement.seDeplaceDe(1,-1);
                     //this->getCase(pos.getPosX()-1,pos.getPosY()+1);
             break;
         case DROITE :
-            positionApresDeplacement.seDeplaceDe(0,+1);
+            positionApresDeplacement.seDeplaceDe(1,0);
             //=this->getCase(pos.getPosX(),pos.getPosY()+1);
             break;
         case BAS_DROITE :
-            positionApresDeplacement.seDeplaceDe(+1,+1);
+            positionApresDeplacement.seDeplaceDe(1,1);
             //=this->getCase(pos.getPosX()+1,pos.getPosY()+1);
             break;
         case HAUT :
-            positionApresDeplacement.seDeplaceDe(-1,0);
+            positionApresDeplacement.seDeplaceDe(0,-1);
             //=this->getCase(pos.getPosX()-1,pos.getPosY());
             break;
         case BAS :
-            positionApresDeplacement.seDeplaceDe(+1,0);
+            positionApresDeplacement.seDeplaceDe(0,1);
             //=this->getCase(pos.getPosX()+1,pos.getPosY());
             break;
         case HAUT_GAUCHE :
@@ -352,11 +352,11 @@ position terrain::getPositionDansDiretion(position positionInit, int direction) 
                     //this->getCase(pos.getPosX()-1,pos.getPosY()-1);
             break;
         case GAUCHE :
-            positionApresDeplacement.seDeplaceDe(0,-1);
+            positionApresDeplacement.seDeplaceDe(-1,0);
             //=this->getCase(pos.getPosX(),pos.getPosY()-1);
             break;
         case BAS_GAUCHE :
-            positionApresDeplacement.seDeplaceDe(+1,-1);
+            positionApresDeplacement.seDeplaceDe(-1,1);
             //=this->getCase(pos.getPosX()+1,pos.getPosY()-1);
             break;
     }

@@ -41,7 +41,7 @@ public:
 
     void enleveEntiteTerrain(entite *entite);
 
-    position getPositionDansDiretion(position positionInit,int direction);
+    position getPositionDansDirection(position positionInit,int direction);
 
 private:
     std::vector<std::vector<int>> d_terrain;
