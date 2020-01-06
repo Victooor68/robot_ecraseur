@@ -22,6 +22,11 @@ class robot : public entiteMouvante{
 public:
 
     robot(int x,int y);
+    /**
+     * Donne la direction du meilleur deplacement pour un robot en fonction du joueur
+     * @param j
+     * @return direction
+     */
     virtual int deplacement_Auto(joueur* j) = 0;
 private:
 
