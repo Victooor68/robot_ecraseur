@@ -61,6 +61,9 @@ void game::run(std::ostream &ost, std::istream &ist) {
     ost<<"Combien de robot generation 2 ?"<<endl;
     ist>>nbRobotGen2;
 
+    ost<<"Combien de debris sur le terrain ? "<<endl;
+    ist>>nbDebris;
+
     ost<<"Nom du joueur :"<<endl;
     ist>>nomJoueur;
 
@@ -69,9 +72,6 @@ void game::run(std::ostream &ost, std::istream &ist) {
 
    d_joueur = joueurSelonDifficulte(difficulte, nomJoueur);
    d_terrain.ajoutDansTerrain(d_joueur);
-
-   ost<<"Combien de debris sur le terrain ? "<<endl;
-   ist>>nbDebris;
 
    generationAleatoireDebris(nbDebris);
 
@@ -92,7 +92,7 @@ void game::run(std::ostream &ost, std::istream &ist) {
         if((isdigit(commande)))
         {
             int direction = commande-48;
-            collisionApresDeplacement(direction,joueur);
+            collisionApresDeplacementJoueur(direction, joueur);
             d_terrain.deplacement(direction,joueur);
             score+= 5;
             // deplacement des robots
@@ -256,7 +256,7 @@ void game::generationAleatoireDebris(int nbDebris) {
     }
 }
 
-void game::collisionApresDeplacement(int direction, joueur *joueur) {
+void game::collisionApresDeplacementJoueur(int direction, joueur *joueur) {
     int typeCaseDansDirection= d_terrain.typeSelonDirection(direction, joueur->getPosition());
 
     if (typeCaseDansDirection!=VIDE){
@@ -283,9 +283,12 @@ bool game::collisionApresDeplacement(int direction, robot *robotEffectuantLeDepl
         }
 
         debris debrisCollision{positionEntite.getPosY(), positionEntite.getPosX()};
+
         d_terrain.ajoutDansTerrain(debrisCollision);
         d_debris.push_back(debrisCollision);
+
         destructionRobot(robotEffectuantLeDeplacement, indexRobotDansVector);
+
         collision=true;
     } else if (typeCaseDansDirection==DEBRIS){
         destructionRobot(robotEffectuantLeDeplacement, indexRobotDansVector);

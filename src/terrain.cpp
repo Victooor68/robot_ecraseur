@@ -316,35 +316,27 @@ position terrain::getPositionDansDirection(position positionInit, int direction)
     switch (direction){
         case HAUT_DROITE :
             positionApresDeplacement.seDeplaceDe(1,-1);
-                    //this->getCase(pos.getPosX()-1,pos.getPosY()+1);
             break;
         case DROITE :
             positionApresDeplacement.seDeplaceDe(1,0);
-            //=this->getCase(pos.getPosX(),pos.getPosY()+1);
             break;
         case BAS_DROITE :
             positionApresDeplacement.seDeplaceDe(1,1);
-            //=this->getCase(pos.getPosX()+1,pos.getPosY()+1);
             break;
         case HAUT :
             positionApresDeplacement.seDeplaceDe(0,-1);
-            //=this->getCase(pos.getPosX()-1,pos.getPosY());
             break;
         case BAS :
             positionApresDeplacement.seDeplaceDe(0,1);
-            //=this->getCase(pos.getPosX()+1,pos.getPosY());
             break;
         case HAUT_GAUCHE :
             positionApresDeplacement.seDeplaceDe(-1,-1);
-                    //this->getCase(pos.getPosX()-1,pos.getPosY()-1);
             break;
         case GAUCHE :
             positionApresDeplacement.seDeplaceDe(-1,0);
-            //=this->getCase(pos.getPosX(),pos.getPosY()-1);
             break;
         case BAS_GAUCHE :
             positionApresDeplacement.seDeplaceDe(-1,1);
-            //=this->getCase(pos.getPosX()+1,pos.getPosY()-1);
             break;
     }
     return positionApresDeplacement;

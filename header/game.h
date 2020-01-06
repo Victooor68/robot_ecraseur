@@ -76,9 +76,9 @@ private:
     /**
      * Methode calculant la case d'arrive d'un joueur et le tue si ce n'est pas une case VIDE
      * @param direction
-     * @param pJoueur
+     * @param joueur
      */
-    void collisionApresDeplacement(int direction, joueur *pJoueur);
+    void collisionApresDeplacementJoueur(int direction, joueur *joueur);
 
 
     /**
