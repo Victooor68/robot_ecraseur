@@ -11,3 +11,5 @@ débris: contructeur qui initialise identité à une valeur précise
 joueurs: joueur normal classe de base avec tout les déplacements et joueur expert qui hérite de cette classe et a les meme deplacement mais en limité. 
 
 robot: choixDeplacement()
+
+
