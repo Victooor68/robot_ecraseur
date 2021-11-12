@@ -32,7 +32,7 @@
                   "class": "element-shape hasNoOpenThreats isInScope"
                 },
                 "text": {
-                  "text": "process 2"
+                  "text": "Web\nApplication"
                 },
                 ".element-text": {
                   "class": "element-text hasNoOpenThreats isInScope"
@@ -47,7 +47,7 @@
               },
               "position": {
                 "x": 997,
-                "y": 181
+                "y": 182
               },
               "angle": 0,
               "id": "e19c6a65-d02b-4d97-99f8-18c4913f1334",
@@ -58,7 +58,7 @@
                   "class": "element-shape hasNoOpenThreats isInScope"
                 },
                 "text": {
-                  "text": "process 3"
+                  "text": "Background\nWorker Process"
                 },
                 ".element-text": {
                   "class": "element-text hasNoOpenThreats isInScope"
@@ -124,7 +124,7 @@
                 "height": 80
               },
               "position": {
-                "x": 959,
+                "x": 960,
                 "y": 425
               },
               "angle": 0,
@@ -136,7 +136,7 @@
                   "class": "element-shape hasNoOpenThreats isInScope"
                 },
                 "text": {
-                  "text": "store 6"
+                  "text": "Worker Config"
                 },
                 ".element-text": {
                   "class": "element-text hasNoOpenThreats isInScope"
@@ -162,7 +162,7 @@
                   "class": "element-shape hasNoOpenThreats isInScope"
                 },
                 "text": {
-                  "text": "store 7"
+                  "text": "Message Queue"
                 },
                 ".element-text": {
                   "class": "element-text hasNoOpenThreats isInScope"
@@ -176,8 +176,8 @@
                 "height": 80
               },
               "position": {
-                "x": 86,
-                "y": 57
+                "x": 83,
+                "y": 58
               },
               "angle": 0,
               "id": "6fbdaf47-82e7-4cac-b5b3-13e56a49b908",
@@ -188,7 +188,7 @@
                   "class": "element-shape hasNoOpenThreats isInScope"
                 },
                 "text": {
-                  "text": "actor 7"
+                  "text": "browser"
                 },
                 ".element-text": {
                   "class": "element-text hasNoOpenThreats isInScope"
@@ -409,7 +409,7 @@
                   "position": 0.5,
                   "attrs": {
                     "text": {
-                      "text": "flow 13",
+                      "text": "Read worker config",
                       "font-weight": "400",
                       "font-size": "small"
                     }
@@ -482,7 +482,7 @@
                   "position": 0.5,
                   "attrs": {
                     "text": {
-                      "text": "flow 15",
+                      "text": "Put Message",
                       "font-weight": "400",
                       "font-size": "small"
                     }
