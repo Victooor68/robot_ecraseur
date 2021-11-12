@@ -84,7 +84,7 @@
                   "class": "element-shape hasNoOpenThreats isInScope"
                 },
                 "text": {
-                  "text": "store 4"
+                  "text": "Web Application config"
                 },
                 ".element-text": {
                   "class": "element-text hasNoOpenThreats isInScope"
@@ -110,7 +110,7 @@
                   "class": "element-shape hasNoOpenThreats isInScope"
                 },
                 "text": {
-                  "text": "store 5"
+                  "text": "Database"
                 },
                 ".element-text": {
                   "class": "element-text hasNoOpenThreats isInScope"
@@ -306,7 +306,7 @@
                   "position": 0.5,
                   "attrs": {
                     "text": {
-                      "text": "flow 10",
+                      "text": "read web app config",
                       "font-weight": "400",
                       "font-size": "small"
                     }
@@ -315,12 +315,13 @@
               ],
               "z": 13,
               "hasOpenThreats": false,
+              "outOfScope": true,
               "attrs": {
                 ".marker-target": {
                   "class": "marker-target hasNoOpenThreats isInScope"
                 },
                 ".connection": {
-                  "class": "connection hasNoOpenThreats isInScope"
+                  "class": "connection hasNoOpenThreats isOutOfScope"
                 }
               }
             },
@@ -341,7 +342,7 @@
                   "position": 0.5,
                   "attrs": {
                     "text": {
-                      "text": "flow 11",
+                      "text": "queries",
                       "font-weight": "400",
                       "font-size": "small"
                     }
@@ -375,7 +376,7 @@
                   "position": 0.5,
                   "attrs": {
                     "text": {
-                      "text": "flow 12",
+                      "text": "Worker Queries",
                       "font-weight": "400",
                       "font-size": "small"
                     }
@@ -561,7 +562,7 @@
                   },
                   "attrs": {
                     "text": {
-                      "text": "flow 18",
+                      "text": "Web App query\nresulst",
                       "font-weight": "400",
                       "font-size": "small"
                     }
@@ -600,7 +601,7 @@
                   "position": 0.5,
                   "attrs": {
                     "text": {
-                      "text": "flow 19",
+                      "text": "worker query resulst",
                       "font-weight": "400",
                       "font-size": "small"
                     }
